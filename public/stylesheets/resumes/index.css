@@ -1,0 +1,79 @@
+
+#content{
+	margin-right: 5%;
+	margin-left: 5%;
+	padding-bottom: 5%;
+	padding-top: 5%;
+	overflow: auto;
+	font-family: tahoma;
+}
+
+/* about box */
+#content #about_box{
+	float: left;
+	width: 65%;
+	background-color: #DAE6F0;
+	color: #23415A;	
+}
+#about_box .interior{
+	padding: 2em 3em;
+}
+#about_box .welcome{
+	font-size: 220%;
+}
+#about_box .punchline{
+	font-size: 130%;
+	padding: 1em 0;
+}
+
+/* login form */
+#content #login_form{
+	float: right;
+	height: 12em;
+	width: 30%;
+	background-color: #DAE6F0;
+}
+#login_form .interior{
+	padding: 1em 1em 0 2em;
+}
+#login_form  .form_heading{
+	font-size: 130%;
+	color: #23415A;						
+	padding: 0 0 1em 0;
+}
+#login_form .form_item{
+	clear: both;
+	overflow: auto;
+	padding: 0.25em 0;
+	font-family: tahoma;
+	font-size: 80%;
+	color: #23415A;
+}
+#login_form .key{
+	float: left;
+	width: 30%;
+}
+
+/* signup box */
+#content #signup_box{
+	float: right;
+	margin-top: 3em;
+	width: 30%;
+	background-color: #DAE6F0;
+	text-align: center;
+}
+#signup_box .interior{
+	padding: 1em 2em 2em 2em;
+}
+#signup_box .signup_msg{
+	color: #23415A;
+	font-size: 110%;
+	padding: 0 0 0.5em 0;
+}
+#signup_box .signup_link{
+	font-size: 250%;
+	font-family: arial;
+}
+#signup_box .signup_link a:hover{
+	text-decoration: none;
+}

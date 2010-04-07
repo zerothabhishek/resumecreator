@@ -1,0 +1,53 @@
+<!-- markup for content heading -->
+
+<%
+	# all urls
+	dashboard_url 	= "/dashboard/"
+	newResume_url 	= "/new" 
+	logout_url 		= "/logout"
+	options_url 	= "/options/#{resume.title}"	unless !resume
+
+	canvas_url		= "/canvas/#{resume.title}"		unless !resume
+	view_url 		= "/view/#{resume.title}" 		unless !resume
+	pdf_url 		= "/makepdf/#{resume.title}" 	unless !resume
+	publish_url 	= "#{options_url}#publish" 
+	templates_url 	= "#{options_url}#templates" 
+	
+%>
+
+
+<div id="heading">
+
+	<div id="left_side_heading">
+		<span class="resume_title"><%=h "#{resume.title}-options" %></span>
+	</div>
+	
+	<ul id="menu">
+	
+		<li class="dropdown_list" id="actions">
+			<span class="menu_header">actions</span>
+			<ul class="menu_items hidden">
+				<li class="menu_item"><%= link_to 'view resume (html)', view_url, 	{:target => "_blank"} %></li>
+				<li class="menu_item"><%= link_to 'create pdf',	 		pdf_url, 	{:target => "_blank"} %></li>
+				<li class="menu_item"><%= link_to 'publish', 			publish_url 		%></li>
+				<li class="menu_item"><%= link_to 'change template',	templates_url 	%></li>
+				<li class="menu_item"><%= link_to 'create new resume',	newResume_url 	%></li>
+			</ul>
+		</li>	<!-- dropdown_list -->	
+		
+		<li class="dropdown_list" id="go-to">
+			<span class="menu_header">go to</span>
+			<ul class="menu_items hidden">
+				<li class="menu_item hidden"><%= link_to "#{resume.title}: edit-canvas", canvas_url	%></li>
+				<li class="menu_item hidden"><%= link_to "next-part", canvas_url	%></li>
+				<li class="menu_item hidden"><%= link_to "prev-part", canvas_url	%></li>
+				<li class="menu_item"><%= link_to "#{resume.title}-canvas", 		canvas_url	%></li>
+				<li class="menu_item"><%= link_to "#{resume.title}-options", 		options_url	%></li>
+				<li class="menu_item"><%= link_to "dashboard", 						dashboard_url 	%></li>
+				<li class="menu_item"><%= link_to 'logout', 						logout_url 		%></li>		
+			</ul>
+		</li>	<!-- dropdown_list -->	
+		
+	</ul>	<!-- action_menu -->
+</div>
+

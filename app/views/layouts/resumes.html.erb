@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+	<head>  
+		<meta http-equiv="content-type"  content="text/html;charset=UTF-8" />  
+		<title><%= controller.action_name %> : resumeCreator</title>  
+		<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+	</head> 
+	<body> 
+		<div id="header">
+			<div class="name_banner">
+				<span>resumeCreator</span>
+			</div>
+		</div>
+		
+		<%= yield %> 
+
+		<div id="footer">
+			<span class="footer_item about"><a href="">about</a></span>
+			<span class="footer_item contact"><a href="">contact</a></span>
+			<span class="footer_item blog"><a href="">blog</a></span>
+			<span class="footer_item terms"><a href="">terms</a></span>
+			<span class="footer_item privacy"><a href="">privacy</a></span>
+			<span class="footer_item privacy"><a href="">feedback</a></span>			
+		</div>
+		
+	</body> 
+</html> 

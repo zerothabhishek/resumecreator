@@ -1,0 +1,71 @@
+<!--
+			URL/signup/
+			app/views/users/signup.html.erb 
+			The user signup view - displays the form to sign-up a new user
+			controller: users, action: signup
+-->
+<link rel="stylesheet" type="text/css" href="/stylesheets/users/signup.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/tipTip.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/jquery.jgrowl.css" />
+	
+
+<div id="content">
+
+<div id="signup_form">
+	
+	<div class="form_heading">
+		sign-up with resumeCreator
+	</div>
+
+	<% url = '/user/create' %>
+	<% form_tag(url, :method => "post") do %>
+
+		<div class="form_item" id="username">	
+			<div class="key_text">desired username</div>  
+			<input class="value_item tooltip_trigger" name="user[username]" type="text" /> 
+			<span class="tooltip hidden">only aphabets, numbers and underscores please</span>
+		</div>
+		<div class="availability_check">
+			<span class="availability_check_button">check availability</span>
+			<span class="result"></span>
+		</div>	
+		<div class="form_item" id="password">	
+			<div class="key_text">new password</div>
+			<input class="value_item tooltip_trigger" name="user[password]" type="password" />  	
+			<span class="tooltip hidden">your account password</span>
+		</div>
+		<div class="form_item" id="password_again">	
+			<div class="key_text">password again</div>
+			<input class="value_item tooltip_trigger" name="password_again" type="password" />  	
+			<span class="tooltip hidden">type in the same password again</span>
+		</div>		
+		<div class="form_item" id="email_id">	
+			<div class="key_text">email-id</div>  
+			<input class="value_item tooltip_trigger" name="user[email_id]" type="text" />  		
+			<span class="tooltip hidden">your email-id, no spam would be sent, nor will it be shared</span>
+		</div>	
+		<div class="submit_button">	
+			<button name="commit" type="submit">signup</button>
+			<button type="button" class="dummy_submit tooltip_trigger hidden">signup</button>
+			<span class="tooltip hidden">activated after you enter valid inputs</span>
+		</div>						
+	<% end %>
+</div>	<!-- /signup form -->
+				
+</div>	<!-- /content -->
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/users/signup.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/users/signup.js"></script>
+<% end %>

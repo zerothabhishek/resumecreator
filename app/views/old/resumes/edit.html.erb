@@ -1,0 +1,218 @@
+<!--
+			URL/show/:title	
+			app/views/resumes/show.html.erb
+			The show resume view - shows a particular resume of the user in full
+			controller: resumes, action: show 
+-->
+
+<p>
+	<h2> Edit </h2>
+	<h3><%=h @user.username %> : <%=h @resume.title %> </h3>
+</p>
+
+<% url = '/update/'+@resume.title %>
+<% form_tag(url, :method => "post") do %>
+
+	<p>
+		<b>Name:</b> 
+		<input 	type="text"
+				class="name"
+				name="resume[name]"
+				value="<%=h @resume.name %>" >
+	</p>
+
+	<p>
+		<b>Contact:</b> 
+		<% if @resume.contact.nil? %>
+			<%= link_to 'Add contact', '/new/'+@resume.title+'/contacts' %>
+		<% else %>
+			Address -
+			<textarea
+					class="address"
+					name="contact[address]" 
+					><%=h @resume.contact.address %></textarea>
+			Phone_nos -		
+			<input	type="text"
+					class="phone_nos"
+					name="contact[phone_nos]"
+					value="<%=h @resume.contact.phone_nos %>" >
+			Emails -		
+			<input	type="text"
+					class="emails"
+					name="contact[emails]"
+					value="<%=h @resume.contact.emails %>" >
+		<% end %>
+	</p>
+
+	<p>
+		<b>Profile:</b> 
+		<% if @resume.profile.nil? %>
+			<%= link_to 'Add profile', '/new/'+@resume.title+'/profiles' %>
+		<% else %>
+			<textarea 
+					class="profile_text"
+					name="profile[profile_text]"
+					><%=h @resume.profile.profile_text %></textarea>
+		<% end %>
+	</p>
+
+	<p>
+		<b>Skills: </b>
+		<% if @resume.skills.size ==0 %>
+			<%# empty as of now %>
+		<% else %>
+			<table>
+				<th>skill_name <th>skill_remarks <th>skillset_type 
+				<% @resume.skills.each do |skill| %>
+				<tr>
+					<td>
+						<input	type="text"
+								class="skill_name"
+								name="skills[<%=h skill.id %>][skill_name]"
+								value="<%=h skill.skill_name %>" >
+					</td>
+					<td>
+						<input	type="text"
+								class="skill_remarks"
+								name="skills[<%=h skill.id %>][skill_remarks]"
+								value="<%=h skill.skill_remarks %>" >
+					</td>
+					<td>
+						<input 	type="text"
+								class="skillset_type"
+								name="skills[<%=h skill.id %>][skillset_type]"
+								value="<%=h skill.skillset_type %>" >
+					</td>
+				</tr>
+				<% end %>
+			</table>		
+		<% end %>
+		<%= link_to 'Add skills', '/new/'+@resume.title+'/skills' %>	
+	</p>
+
+	<p>
+		<b>Education: </b>
+		<% if @resume.educations.size ==0 %>
+			<%# empty as of now %>
+		<% else %>
+			<table>
+				<th>level <th>major <th>college <th>score <th>more_info
+				<% @resume.educations.each do |education| %>
+				<tr>
+					<td>
+						<input	type="text"
+								class="level"
+								name="education[<%=h education.id %>][level]"
+								value="<%=h education.level %>" >
+					</td>
+					<td>
+						<input	type="text"
+								class="major"
+								name="education[<%=h education.id %>][major]"
+								value="<%=h education.major %>" >
+					</td>
+					<td>
+						<input	type="text"
+								class="college"
+								name="education[<%=h education.id %>][college]"
+								value="<%=h education.college %>" >
+					</td>
+					<td>
+						<input	type="text"
+								class="score"
+								name="education[<%=h education.id %>][score]"
+								value="<%=h education.score %>" >
+					</td>
+					<td>
+						<textarea
+								class="more_info"
+								name="education[<%=h education.id %>][more_info]"
+								><%=h education.more_info %></textarea>
+					</td>
+				</tr>
+				<% end %>
+			</table>		
+		<% end %>
+		<%= link_to 'Add Education', '/new/'+@resume.title+'/educations' %>
+	</p>
+
+	<p>
+		<b> Experience: </b>
+		<% if @resume.experiences.size == 0 %>	
+			<%# empty as of now %>
+		<% else %>
+			<table>
+				<th>title <th>company <th>duration <th>role <th>more_info
+				<% @resume.experiences.each do |experience| %>
+				<tr>
+					<td>
+						<input	type="text"
+								class="experience-title"
+								name="experience[<%=h experience.id %>][title]"
+								value="<%=h experience.title %>" >
+					</td>
+					<td>
+						<input 	type="text"
+								class="company"
+								name="experience[<%=h experience.id %>][company]"
+								value="<%=h experience.company %>" >
+					</td>
+					<td>
+						<input	type="text"
+								class="duration"
+								name="experience[<%=h experience.id %>][duration]"
+								value="<%=h experience.duration %>" >
+					</td>
+					<td>
+						<textarea	
+								class="role"
+								name="experience[<%=h experience.id %>][role]"
+								><%=h experience.role %>" </textarea>
+					</td>
+					<td>
+						<textarea
+								class="more_info"
+								name="experience[<%=h experience.id %>][more_info]"
+								><%=h experience.more_info %></textarea>
+					</td>
+				</tr>
+				<% end %>
+			</table>	
+		<% end %>
+		<%= link_to 'Add Experience', '/new/'+@resume.title+'/experiences' %>
+	</p>
+
+	<p>
+		<b>Achievements:</b>
+		<% if @resume.achievement.nil? %>
+			<%= link_to 'Add Achievements', '/new/'+@resume.title+'/achievements' %>
+		<% else %>	
+			<textarea
+					class="achievements_text"
+					name="achievement[achievements_text]"
+					><%=h @resume.achievement.achievements_text %></textarea>
+			
+		<% end %>
+	</p>
+
+	<p>
+		<b>Hobbies:</b>
+		<% if @resume.hobby.nil? %>
+			<%= link_to 'Add Hobbies', '/new/'+@resume.title+'/hobbies' %>
+		<% else %>	
+			<textarea
+					class="hobbies_text"
+					name="hobby[hobbies_text]"
+					><%=h @resume.hobby.hobbies_text %></textarea>
+		<% end %>
+	</p>
+	
+	<p>  
+		<input name="commit" type="submit" value="Update" /> 
+	</p> 
+	
+<% end %>
+
+<%= link_to 'Edit', '/edit/'+@resume.title %> 
+<%= link_to 'Home', '/home' %>
+<%= link_to 'Logout', '/logout' %>

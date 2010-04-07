@@ -1,0 +1,100 @@
+
+
+
+#content{
+	margin-right: 5%;
+	margin-left: 5%;
+	padding-bottom: 5%;
+	padding-top: 5%;
+	overflow: auto;
+}
+#content .about_box{
+	float: left;
+	height: 12em;
+	width: 65%;
+	margin-bottom: 3em;
+	font-family: tahoma;
+	background-color: #DAE6F0;
+	color: #23415A;	
+}
+#content .about_box_interior{
+	padding: 2em 3em;
+}
+#content .about_box .welcome{
+	font-size: 220%;
+}
+#content .about_box .punchline{
+	font-size: 130%;
+	padding: 1em 0;
+}
+
+#content .login_form{
+	float: right;
+	margin-bottom: 3em;
+	height: 12em;
+	width: 30%;
+	background-color: #DAE6F0;
+}
+#content .login_form_interior{
+	padding: 1em 1em 0 2em;
+}
+#content .login_form  .form_heading{
+	font-size: 130%;
+	font-family: tahoma;
+	color: #23415A;						
+	padding: 0 0 1em 0;
+}
+#content .login_form .form_item{
+	clear: both;
+	overflow: auto;
+	padding: 0.25em 0;
+	font-family: tahoma;
+	font-size: 80%;
+	color: #23415A;
+}
+#content .login_form .key{
+	float: left;
+	width: 30%;
+}
+
+#content .actions{
+	clear: both;
+	margin-top: 3em;
+	padding: 1em;
+	text-align: center;
+}
+#content .actions_interior{
+}
+#content .actions .myButton{
+	padding: 0.5em;
+	margin: 0 0.5em;
+	font-family: tahoma;
+	font-size: 130%;
+	background-color: #DAE6F0;
+	color: #23415A;
+}
+
+/************ hidden blocks *******************/
+#start_block{
+	margin: auto;
+	width: 60%;
+	background-color: #DAE6F0;
+	color: #23415A;	
+}
+#start_block .interior{
+	padding: 2em 3em;
+}
+#start_block .signup_form{
+}
+#start_block .signup_form .form_item{
+	clear: both;
+	overflow: auto;
+	padding: 0.25em 0;
+	font-family: tahoma;
+	font-size: 80%;
+	color: #23415A;
+}
+#start_block .signup_form .key{
+	float: left;
+	width: 30%;
+}

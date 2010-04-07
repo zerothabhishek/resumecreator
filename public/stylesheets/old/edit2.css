@@ -1,0 +1,166 @@
+
+h3{
+	font-family:Helvetica,sans-serif;
+	margin:0;
+}
+
+th{
+	text-align: left;
+}
+
+.hidden{
+	display: none;
+}
+
+.heading{
+	width: 80%;
+	overflow: auto;			/* To prevent the collapse of the element, since its children are floated */
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid black;
+}
+.heading h3{
+	float: left;
+	margin: 0;
+}
+.heading .links{
+	float: right;
+	text-align: right;
+	padding-top: 0.2em;		/* links appear a bit raised. Hence the padding */
+	padding-right: 0.2em;	/* a scrollbar appears if you right-click. hence the padding */
+}
+
+
+.parts_container{
+	width: 80%;
+}
+.part{
+	margin-top: 1em;
+	padding: 1em;
+}
+
+.part .part_header{
+	padding-left: 0.5em;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	background-color: #ababff;
+}
+
+.part .part_data{
+	border: 1px solid #ababff;
+	padding: 1em;
+}
+
+.part p{				/* <P></P> is to identify elements that need to display contents with line-breaks */
+	margin: 0;		/* Remove the automatic margin. */
+}
+
+
+.delete_button{
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	border: 1px solid black;
+}
+
+.plusButton{
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+	border: 1px solid black;
+}
+.button_stripe span{
+	background-color: orange;
+	padding-left: 1em;
+	padding-right: 1em;
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+}
+
+#skills .skills_table{
+	clear: both;
+	width: 90%;
+	border-collapse: collapse;
+}
+#skills .skills_table tr{
+	border: 0;
+}
+#skills .skills_table .skillset_type{
+	font-weight: bold;
+	width: 20%;
+}
+#skills .skills_table .skill_name{
+	width: 20%;
+}
+#skills .skills_table .skill_remarks{
+	font-style: italic;
+}
+#skills .skills_table .delete_column{
+	width: 10%;
+	text-align: right;
+}
+
+#educations td{
+	vertical-align: top;
+	text-align: justify;
+}
+#educations .education_table{
+	clear:both;
+	width:90%;
+	border-collapse:collapse;
+	margin-top:1em;
+	margin-bottom:2em;
+}
+#educations .education_table tr{
+	border:0;
+}
+#educations .education_table .column1{
+	font-weight: bold;
+	width: 20%;
+	text-align: right;
+	padding-right: 1em;
+}
+#educations .education_table .delete_column{
+	width: 10%;
+	text-align: right;
+}
+
+
+#experiences td{
+	vertical-align: top;
+	text-align: justify;
+}
+#experiences .experience_table{
+	clear:both;
+	width:90%;
+	border-collapse:collapse;
+	margin-top:1em;
+	margin-bottom:2em;
+}
+#experiences .experience_table tr{
+	border:0;
+}
+#experiences .experience_table .column1{
+	font-weight: bold;
+	width: 20%;
+	text-align: right;
+	padding-right: 1em;
+}
+#experiences .experience_table .column3{
+	width: 10%;
+	text-align: right;
+}
+#experiences .experience_table .delete_column{
+	width: 10%;
+	text-align: right;
+}
+/*
+.display_hover_in{
+	background-color:#ADFF2F;
+}
+
+.display_hover_out{
+	background-color:#dedeff;
+}
+*/

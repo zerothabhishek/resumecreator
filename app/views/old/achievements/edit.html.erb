@@ -1,0 +1,47 @@
+<!--
+	URL/edit/:title/achievements
+	app/views/achievements/edit.html.erb 
+	The edit resume-achievements view - displays the form to edit achievement part for a resume (:title) of a user
+	controller: achievements, action: edit 
+-->
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/achievements/edit.css" />	
+	
+<div class="heading">
+	<h3> Edit achievements </h3>
+	<div class="links">
+		<%= link_to 'Show', '/show/'+@resume.title+'/achievements' %>
+		<%= link_to 'Remove', '/destroy/'+@resume.title+'/achievements', :confirm => 'Are you sure?', :method => :delete %>	
+	</div>	
+</div>
+
+<% url = '/update/'+@resume.title+'/achievements' %>
+<% form_tag(url, :method => "post") do %>
+
+	<% if @achievement %>
+	<table class="achievements_table">
+		<tr>
+			<td class="column1">Achievements </td>
+			<td class="column2">
+				<textarea 
+					class="achievements_text"
+					name="achievement[achievements_text]"
+					><%=h @achievement.achievements_text%></textarea></td>
+		</tr>
+		<tr>  
+			<td></td>
+			<td class="submit"><input name="commit" type="submit" value="Update"></td>	
+		</tr> 
+	</table>
+	<% else %>
+	<p>
+		No achievement data.
+		<%= link_to 'Add', '/new/'+@resume.title+'/achievements' %>		
+	</p>	
+	<% end #if-else %>		
+<% end %> 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/achievements/edit.js"></script>

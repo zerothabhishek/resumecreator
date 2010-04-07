@@ -1,0 +1,67 @@
+
+
+#content{
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: verdana;
+	font-size: 80%;
+}
+#content #signup_form{
+	margin: 4em 2em 3em 2em;
+	padding: 2em 1em 2em 0;
+	background-color: #DAE6F0;	/* a lighter shade of steelblue */
+}
+
+#signup_form .form_heading{
+	padding: 0 0 1em 0;
+	text-align: center;
+	font-family: arial;
+	font-size: 175%;
+	color: #23415A;
+}
+
+#signup_form .form_item{
+	clear: both;
+	overflow: auto;
+	padding: 0.5em 0;
+}
+#signup_form  .key_text{
+	float: left;
+	width: 35%;
+	text-align: right;
+	padding: 0.5em 1em 0 0;
+	font-family: arial;
+	font-weight: bold;
+	color: #23415A;
+}
+#signup_form  .value_item{
+	float: left;
+	padding: 0.25em 0;
+	font-weight: bold;
+	width: 14em;
+}
+
+#signup_form .availability_check{
+	margin-left: 35%;				/* same as key_text width */
+	padding: 0 0 0.5em 1em;			/* same as key_text padding-right */
+}
+#signup_form .availability_check .availability_check_button{
+	font-size: 70%;
+}
+#signup_form .availability_check .result{
+	font-size: 70%;
+	font-weight: bold;
+}
+
+#signup_form .submit_button{
+	margin-left: 35%;				/* same as key_text width */
+	padding: 1em 0 0.5em 1em;		/* same as key_text padding-right */
+}
+#signup_form .submit_button button{
+	font-family: arial;
+	font-size: 175%;
+}
+#signup_form .submit_button .dummy_submit{
+	color: #aaaaaa;
+}

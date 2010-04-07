@@ -1,0 +1,217 @@
+<!--
+	URL/edit2/:title
+	app/views/resumes/edit2.html.erb 
+	The edit2 resume view - edits (AJAXified) a particular resume of the user in full
+	controller: resumes, action: edit2 
+	
+	Conventions used for this file - 
+	1. part block id should be the controller name	
+-->
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/edit3.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/tipTip.css" />
+
+<span class="loading_msg_baloon" style="background-color: red">Loading</span>
+
+<div id="content" style="display:none"> <!-- display is none so that full 'naked' html is not visible while scripts load. Displayed later -->
+
+	<%= render :partial => "qedit_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
+
+	<% url = '/update/'+@resume.title %>
+	<% form_tag(url, :method => "post") do %>
+
+	<div id="parts_container">
+
+			<div class="resume_part" id="username">
+				<div class="part_data">
+					<div class="editPart">
+						<div class="partItem name">
+							<div class="value_block">
+								<span class="display"><%=h @resume.name %></span>
+								<input 	type="text"
+									class="edit"
+									name="resume[name]"
+									value="<%=h @resume.name %>" >
+							</div>		
+						</div>	
+					</div>
+				</div>	
+			</div>	<!-- /username -->
+
+			<div class="resume_part" id="contacts">
+				<div class="part_header">contact</div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.contact %>
+						<%= render :partial => "contacts/edit_contact.html.erb" , :locals => {:contact => @resume.contact} %> 
+						<% end #if %>	
+					</div>		
+					<div class="plus_button  <%=h (@resume.contact)? "hidden" : "" %>">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add contact</span>
+					</div>
+					<%= render :partial => "contacts/add_contact.html.erb" %> 
+				</div> <!-- /part_data -->	
+				<div class="part_footer">
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "next-part", "/qedit/#{@resume.title}/profiles" %>
+				</div>	
+			</div>	<!-- /contacts -->
+
+			<div class="resume_part" id="profiles">
+				<div class="part_header">profile<%#= link_to 'profile', '/edit2/'+@resume.title+'/profiles' %></div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.profile %>
+						<%= render :partial => "profiles/edit_profile.html.erb" , :locals => {:profile => @resume.profile} %> 
+						<% end #if %>	
+					</div>		
+					<div class="plus_button <%=h (@resume.profile)? "hidden" : "" %>">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add profile</span>
+					</div>
+					<%= render :partial => "profiles/add_profile.html.erb" %> 	
+				</div> <!-- /part_data -->	
+				<div class="part_footer">
+					<%#= link_to "prev-part", "/qedit/#{@resume.title}/contacts" %>
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "next-part", "/qedit/#{@resume.title}/skills" %>
+				</div>	
+			</div>	<!-- /profiles -->
+
+			<div class="resume_part" id="skills">
+				<div class="part_header">skills<%#= link_to 'skills', '/edit2/'+@resume.title+'/skills' %></div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.skills.size !=0 %>
+							<% @resume.skills.each do |skill| %>
+							<%= render :partial => "skills/edit_skill.html.erb" , :locals => {:skill => skill} %> 
+							<% end #loop %>
+						<% end # %>	
+					</div>		
+					<div class="plus_button">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add skills</span>
+					</div>
+					<%= render :partial => "skills/add_skill.html.erb" %> 
+				</div> <!-- part_data -->	
+				<div class="part_footer">
+					<%#= link_to "prev-part", "/qedit/#{@resume.title}/profiles" %>
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "next-part", "/qedit/#{@resume.title}/educations" %>
+				</div>	
+			</div>	<!-- /skills -->
+
+			<div class="resume_part" id="educations">
+				<div class="part_header">education<%#= link_to 'education', '/edit2/'+@resume.title+'/educations' %></div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.educations.size !=0 %>
+							<% @resume.educations.each do |education| %>
+							<%= render :partial => "educations/edit_education.html.erb" , :locals => {:education => education} %> 
+							<% end #loop %>
+						<% end # %>	
+					</div>		
+					<div class="plus_button">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add education</span>
+					</div>
+					<%= render :partial => "educations/add_education.html.erb" %> 
+				</div> <!-- part_data -->
+				<div class="part_footer">
+					<%#= link_to "prev-part", "/qedit/#{@resume.title}/skills" %>
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "next-part", "/qedit/#{@resume.title}/experiences" %>
+				</div>	
+			</div>		<!-- educations -->
+
+			<div class="resume_part" id="experiences">
+				<div class="part_header">experiences<%#= link_to 'experiences', '/edit2/'+@resume.title+'/experiences' %></div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.experiences.size !=0 %>
+							<% @resume.experiences.each do |experience| %>
+							<%= render :partial => "experiences/edit_experience.html.erb" , :locals => {:experience => experience} %> 
+							<% end #loop %>
+						<% end # %>	
+					</div>		
+					<div class="plus_button">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add expereinces</span>
+					</div>
+					<%= render :partial => "experiences/add_experience.html.erb" %> 
+				</div> <!-- part_data -->	
+				<div class="part_footer">
+					<%#= link_to "prev-part", "/qedit/#{@resume.title}/educations" %>
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "next-part", "/qedit/#{@resume.title}/achievements" %>
+				</div>	
+			</div>	<!-- /experiences -->
+			
+			<div class="resume_part" id="achievements">
+				<div class="part_header">achievements<%#= link_to 'achievements', '/edit2/'+@resume.title+'/achievements' %></div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.achievement %>
+						<%= render :partial => "achievements/edit_achievement.html.erb" , :locals => {:achievement => @resume.achievement} %> 
+						<% end #if %>	
+					</div>		
+					<div class="plus_button <%=h (@resume.achievement)? "hidden" : "" %>">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add achievements</span>
+					</div>
+					<%= render :partial => "achievements/add_achievement.html.erb" %> 					
+				</div> <!-- part_data -->	
+				<div class="part_footer">
+					<%#= link_to "prev-part", "/qedit/#{@resume.title}/experiences" %>
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "next-part", "/qedit/#{@resume.title}/hobbies" %>
+				</div>					
+			</div>	<!-- /achievements -->
+
+			<div class="resume_part" id="hobbies">
+				<div class="part_header">hobbies<%#= link_to 'hobbies', '/edit2/'+@resume.title+'/hobbies' %></div>	
+				<div class="part_data">
+					<div class="editPart">
+						<% if @resume.hobby %>
+						<%= render :partial => "hobbies/edit_hobby.html.erb" , :locals => {:hobby => @resume.hobby} %> 
+						<% end #if %>	
+					</div>		
+					<div class="plus_button <%=h (@resume.hobby)? "hidden" : "" %>">
+						<button class="tooltip_trigger" type="button">+</button>
+						<span class="tooltip hidden">click to add hobbies</span> 
+					</div>
+					<%= render :partial => "hobbies/add_hobby.html.erb" %> 
+				</div> <!-- part_data -->	
+				<div class="part_footer">
+					<%#= link_to "prev-part", "/qedit/#{@resume.title}/achievements" %>
+					<%#= link_to "all-parts", "/qedit/#{@resume.title}" %>
+					<%= link_to "view-resume", "/show_p/#{@resume.title}", {:target => "_blank"} %>
+				</div>									
+			</div>	<!-- hobbies -->
+	
+	</div>	<!-- /parts_container -->		
+	<% end #form %>
+</div>	<!-- /content -->
+
+<div class="button_stripe hidden">
+	<button type="button" class="update">Update</button>
+	<button type="button" class="clear">Clear</button>
+	<span class="ajax_processing_msg hidden">doing...</span>
+</div>
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/edit3.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/edit3.js"></script>
+<% end %>

@@ -1,0 +1,15 @@
+<table>	<tr><td><%= debug(session) %></td><td><%= debug(params) %></td> </tr>
+	<tr><td colspan="2"> |......
+			URL/update/:title		.....|......
+			app/views/resumes/update.html.erb ......|...... 
+			The update resume view - displayed after form submission for edit of particular resume of the user ......|......
+			controller: resumes, action: update ......|</td></tr></table>			
+<hr><br />
+
+<p>
+	<%=h flash[:notice] %>
+</p>
+
+<%= link_to 'Back to resume', '/show/'+@resume.title %> 
+<%= link_to 'Home', '/home' %>
+<%= link_to 'Logout', '/logout' %>

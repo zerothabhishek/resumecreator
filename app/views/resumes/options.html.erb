@@ -1,0 +1,313 @@
+<!--
+			URL/options/:title
+			app/views/resumes/options.html.erb
+			The options resume view - shows options related to a particular resume of the user
+			controller: resumes, action: options 
+
+			Documentation:
+			- data within <p></p> is presented with linebreaks by the script
+-->
+<%
+	# all urls
+	canvas_url 		= "/canvas/#{@resume.title}" unless !@resume
+	options_url 	= "/options/#{@resume.title}" unless !@resume
+	view_url		= "/view/#{@resume.title}" unless !@resume
+	public_url		= "/#{@user.username}/#{@resume.title}"
+	dashboard_url 	= "/dashboard"
+	
+%>	
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/options.css" />	
+<link rel="stylesheet" type="text/css" href="/stylesheets/tipTip.css" />
+
+<span class="loading_msg_baloon">Loading</span>
+
+<div id="content" style="display:none">
+
+	<%= render :partial => "resume_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
+
+	<% form_tag('', :method => "post") do %>	<!-- for authenticity token -->
+	<div class="all_container" id="resumeId_<%=h @resume.id %>">
+
+		<div id="resume_meta_desc">
+			<%=h @resume.meta_desc %>
+		</div>
+
+		<div id="tab_bar">
+			<%# Convention: id here should be <id of the tab item>-tab_button %>
+			<div class="tab_button" id="resume_parts-tab_button">
+				resume parts
+			</div>
+			<div class="tab_button" id="templates-tab_button">
+				templates
+			</div>
+			<div class="tab_button" id="publish-tab_button">
+				publish
+			</div>
+			<div class="tab_button" id="delete_resume-tab_button">
+				delete resume
+			</div>
+		</div>	<!-- tab_bar -->
+		
+		<div id="tab_stage">		<!-- all tab_items are displayed in this stage -->
+			
+			<div class="tab_item" id="resume_parts">
+				
+				<div class="part" id="name">
+				<% isPartPresent = (@resume.name)? true : false %>
+
+					<div class="part_name">
+						name<%#= link_to 'name', canvas_url %>
+					</div>		
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">name has been added</span>						
+					</div>
+					
+					<div class="plus_button <%=h (isPartPresent)? "hidden":"" %>">
+						<span class="tooltip_trigger"><%= link_to '+', canvas_url %></span>
+						<span class="tooltip hidden">click to open a quick add form for name</span>
+					</div>
+					
+				</div>	<!-- /name part -->	
+				
+				<div class="part" id="contacts">
+				<% isPartPresent = (@resume.contact)? true : false %>
+				
+					<div class="part_name">
+						contact<%#= link_to 'contact', "#{canvas_url}/contacts" %>
+					</div>
+
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">contact has been added</span>
+					</div>					
+					<div class="plus_button <%=h (isPartPresent)? "hidden":"" %>">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click to open a quick-add form for contacts</span>
+					</div>
+
+					<!-- partial -->
+					<%= render :partial => "contacts/add_contact.html.erb" %> 
+					<!-- /partial -->
+							
+				</div>	<!-- /contact part -->
+				
+				<div class="part" id="profiles">
+				<% isPartPresent = (@resume.profile)? true : false %>
+					
+					<div class="part_name">
+						profile<%#= link_to 'profile', "#{canvas_url}/profiles" %>
+					</div>		
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">profile has been added</span>
+					</div>
+					<div class="plus_button <%=h (isPartPresent)? "hidden":"" %>">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click to open a quick-add form for profile</span>
+					</div>
+					
+					<!-- partial -->
+					<%= render :partial => "profiles/add_profile.html.erb" %> 
+					<!-- /partial -->
+					
+				</div>	<!-- /profile part -->
+				
+				<div class="part" id="skills">
+				<% isPartPresent = (@resume.skills.size !=0)? true : false %>
+				
+					<div class="part_name">
+						skills<%#= link_to 'skills', "#{canvas_url}/skills" %>
+					</div>			
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">some skills have been added</span>
+					</div>
+					<div class="plus_button">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click to open a quick-add form for skills</span>
+					</div>
+					
+					<!-- partial -->
+					<%= render :partial => "skills/add_skill.html.erb" %> 
+					<!-- /partial -->	
+				</div>	<!-- /skills part -->
+				
+				<div class="part" id="educations">
+				<% isPartPresent = (@resume.skills.size !=0)? true : false %>
+				
+					<div class="part_name">
+						education<%#= link_to 'education', "#{canvas_url}/educations" %>
+					</div>		
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">some education has been added</span>
+					</div>
+					<div class="plus_button">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click to open a quick-add form for education</span>
+					</div>
+					
+					<!-- partial -->
+					<%= render :partial => "educations/add_education.html.erb" %> 
+					<!-- /partial -->
+										
+				</div>	<!-- /educations part -->
+				
+				<div class="part" id="experiences">
+				<% isPartPresent = (@resume.experiences.size !=0)? true : false %>
+					
+					<div class="part_name">
+						experience<%#= link_to 'experiences', "#{canvas_url}/experiences" %>
+					</div>	
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">some experience has been added</span>
+					</div>
+					<div class="plus_button">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click to open a quick-add form for experience</span>
+					</div>
+					
+					<!-- partial -->
+					<%= render :partial => "experiences/add_experience.html.erb" %> 
+					<!-- /partial -->
+										
+				</div>	<!-- /experience part -->
+				
+				<div class="part" id="achievements">
+				<% isPartPresent = (@resume.achievement)? true : false %>
+					
+					<div class="part_name">
+						achievements<%#= link_to 'achievements', "#{canvas_url}/achievements" %>
+					</div>	
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">achievements have been added</span>
+					</div>
+					<div class="plus_button <%=h (isPartPresent)? "hidden":"" %>">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click open a quick-add form for achievements</span>
+					</div>
+					
+					<!-- partial -->
+					<%= render :partial => "achievements/add_achievement.html.erb" %> 
+					<!-- /partial -->
+					
+				</div>	<!-- /achievement part -->
+				
+				<div class="part" id="hobbies">
+				<% isPartPresent = (@resume.achievement)? true : false %>
+				
+					<div class="part_name">
+						hobbies<%#= link_to 'hobbies', "#{canvas_url}/hobbies" %>
+					</div>		
+					
+					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
+						<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+						<span class="tooltip hidden">hobbies have been added</span>
+					</div>
+					<div class="plus_button <%=h (isPartPresent)? "hidden":"" %>">
+						<button type="button" class="tooltip_trigger">+</button>
+						<span class="tooltip hidden">click to open a quick-add form for hobbies</span> 
+					</div>
+
+					<!-- partial -->
+					<%= render :partial => "hobbies/add_hobby.html.erb" %> 
+					<!-- /partial -->	
+									
+				</div>	<!-- /hobbies part -->
+			</div>	<!-- /resume_parts tab -->
+			
+			<div class="tab_item" id="templates">
+				<div id="rtemplates_block">
+				<% for rtemplate in @all_rtemplates %>
+					<% isCurrent = (rtemplate.id==@resume.rtemplate_id) ? true: false %>
+					
+					<div id="rtemplate_<%=h rtemplate.id %>" class="<%=h (isCurrent) ? "current": "" %> rtemplate_item" >
+						
+						<div class="thumbnail">
+							<a href ="<%=h '/preview/'+@resume.title+'/'+rtemplate.name %>" class="tooltip_trigger" target="_blank">
+								<img src="<%=h rtemplate.thumbnail_url %>" alt="thumbnail">
+							</a>
+							<span class="tooltip hidden">Click to preview</span>
+						</div>
+							
+						<div class="details">
+							<div class="name">	<%=h rtemplate.name %>		</div>
+							<div class="author">by <%=h rtemplate.author %>	</div>
+							<div class="desc">	<%=h rtemplate.desc %>		</div>			
+						</div>
+						
+						<div class="tick_mark <%=h (isCurrent) ? "": "hidden" %>" >
+							<img src="/images/green_tick_mark.png" alt="yes" class="tooltip_trigger">
+							<span class="tooltip hidden">currently used template</span>
+						</div>
+
+						<div class="set_button <%=h (isCurrent) ? "hidden": "" %>" title="">
+								<button type="button" class="tooltip_trigger">Set</button>
+								<span class="tooltip hidden">set <%=h rtemplate.name %> as the template</span>
+						</div>	
+						
+					</div>
+				<% end #loop %>	
+				</div>		<!-- rtemplates_block -->
+			</div>			<!-- tab_item -->
+			
+			<div class="tab_item" id="publish">
+				<div id="public_status">
+					<h4>Publish status</h4>
+					<span class="public_status_text"><%=h (@resume.public_status) ? @resume.public_status : "not set yet" %></span>
+					<button class="setting_action tooltip_trigger" type="button">change</button>
+					<span class="tooltip hidden">decide if the resume shall be private or public (publically visible)</span>
+				</div>
+				
+				<% isPrivate = (@resume.public_status=="private") ? true : false %>
+				<div class="public_url_info <%= (isPrivate) ? "hidden" : "" %> ">
+					Your public URL is <span class="public_url"><%= link_to 'this', public_url %></span>
+				</div>
+
+			</div>	<!-- publish -->
+				
+			<div class="tab_item" id="delete_resume">
+					<h4>Delete this resume ?</h4>	
+					<span class="delete_resume_text">All the data will be lost. </span>
+					<button class="setting_action" type="button">Delete this resume</button>
+			</div>
+			
+		</div> <!-- /tab_stage -->
+
+	</div> 	<!-- /container -->
+	<% end # form %>
+
+</div>	<!-- /content -->
+
+		
+<div class="button_stripe hidden">
+	<button type="button" class="update">Update</button>
+	<button type="button" class="clear">Clear</button>
+</div>	
+
+	
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/options.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/options.js"></script>
+<% end %>

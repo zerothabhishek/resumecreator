@@ -1,0 +1,90 @@
+	
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/index2.css" />
+<div id="content">
+
+		<div class="about_box">
+			<div class="about_box_interior">
+				<div class="welcome">Welcome.</div>
+				<div class="punchline">resumeCreator helps create and update your resume easily.</div>
+			</div>	
+		</div>
+
+		<div class="login_form">
+			<div class="login_form_interior">
+				<% url = '/login' %>
+				<% form_tag(url, :method => "post") do %>
+						<div class="form_heading">Login</div>
+						<div class="form_item">	
+							<div class="key">Username</div>  
+							<input name="username" type="text" />  		
+						</div>
+						<div class="form_item">	
+							<div class="key">Password</div>
+							<input name="password" type="password" />  	
+						</div>
+						<div class="form_item">	
+							<div class="key">&nbsp</div>
+							<input name="commit" type="submit" value="logon" /> 				
+						</div>
+					<% end %>		
+			</div>		
+		</div>	
+	
+		<!--
+		<div class="actions">
+			<div class="actions_interior">
+				<span class="myButton" id="tour_button">How it works?</span>
+				<span class="myButton" id="try_button">Take a trial</span>
+				<span class="myButton" id="start_button">Get Started</span>
+			</div>	
+		</div>
+		-->
+				
+</div>	<!-- /content -->
+	
+<div id="hidden_blocks">	
+		<!-- these blocks are displayed only on javascript interaction triggers -->
+		
+		<div id="tour_block" class="hidden">
+			Here's how it works
+		</div>
+		
+		<div id="try_block" class="hidden">
+			Take a test ride
+		</div>
+		
+		<div id="start_block" class="hidden">
+			<div class="interior">
+				<h2>Sign up to start</h2>
+				<div id="signup_form">
+					<% url = '/signup' %>
+					<% form_tag(url, :method => "post") do %>
+						<div class="form_item">	
+							<div class="key">desired username</div>  
+							<input name="user[username]" type="text" />  		
+						</div>	
+						<div class="form_item">	
+							<div class="key">Password</div>
+							<input name="user[password]" type="password" />  	
+						</div>
+						<div class="form_item">	
+							<div class="key">email-id</div>  
+							<input name="user[email_id]" type="text" />  		
+						</div>	
+						<div class="form_item">	
+							<div class="key">&nbsp</div>
+							<input name="commit" type="submit" value="signup" />
+						</div>						
+					<% end %>
+				</div>
+			</div>
+		</div>
+		
+		<div class="back_button hidden">
+			<span>back</span>
+		</div>
+</div>	
+	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/index2.js"></script>	

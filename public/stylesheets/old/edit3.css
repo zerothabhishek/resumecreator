@@ -1,0 +1,202 @@
+
+body{
+	background-color: #DAE6F0;	
+}
+
+#content{
+	font-family: verdana;
+	font-size: 90%;
+	margin: auto;
+	width: 8.5in;
+}
+
+.button_stripe_active{
+	padding: 0;
+}
+
+
+/****** qedit heading *******/
+
+#heading #menu{
+	float: right;
+	font-family: arial;
+	text-align: right;
+	list-style: none;
+	margin: 0;
+}
+#menu li{
+	margin: 0;
+}
+#menu .dropdown_list{
+	position: relative;
+	float: right;
+}
+#menu .menu_header{
+	font-weight: bold;
+	color: #23415A;
+	padding: 0 1em;
+}
+#menu .menu_items{
+	position: absolute;
+	list-style: none;
+	margin: 0;
+	right: 0;
+	width: 10em;
+	opacity: 0.7;
+}
+#menu .menu_items .menu_item{
+	padding: 0.25em 1em;
+	background-color: #bbb;		
+	border-bottom: 1px solid #888;
+	font-size: 80%;
+}
+.menu_header_hover{
+	cursor: pointer;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #fff;
+}
+.menu_header_click{
+	cursor: pointer;
+	border-top: 1px solid #000;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+}
+#menu a:hover{
+	text-decoration: none;
+}
+/****** part container *******/
+
+#parts_container{
+	clear: both;
+	background-color: #fff;
+	font-size: 80%;
+	line-height: 200%;
+	padding: 2em 2em 2em 1in;
+}
+#parts_container .resume_part{
+	margin: 0 0 5em 0;
+	padding: 0;
+	clear: both;
+	overflow: auto;
+}
+
+.resume_part .part_header{
+	float: left;
+	width: 20%;
+	text-align: left;
+	font-family: arial;
+	font-size: 175%;
+	font-weight: bold;
+	color: #23415A;
+}
+.resume_part .part_data{
+	float: left;
+	width: 70%;
+	padding: 0 0 0 1em;	
+}
+.resume_part p{		/* <P></P> is to identify elements that need to display contents with line-breaks */
+	margin: 0;		/* Remove the automatic margin. */
+}
+.resume_part .partUnit{
+	clear: both;
+	padding: 0 0 1em 0;
+}
+.resume_part .partItem{
+	clear: both;
+	overflow: hidden;
+}
+.resume_part .key_text{ 	/* for both editPart and addPart */
+	float: left;
+	width: 15%;
+	text-align: left;
+	padding: 0em 1em 0 0;
+	font-family: arial;
+	color: #aaa;
+}
+.resume_part .value_block{
+	float: left;
+}
+.resume_part .plus_button{
+	/*padding-left: 1em;		/* same as key_text padding-right */
+}
+
+/*********** edit_part *************/
+.resume_part .editPart{
+}
+.editPart .edit{
+}
+.editPart .display{
+	font-weight: bold;
+	color: #23415A;
+}
+.editPart .delete_button{
+	text-align: right;
+	margin-top: -1em;
+}
+.editPart .delete_button button{
+	font-size: 90%;
+}
+
+/*********** add_part *************/
+.resume_part .addPart{
+	clear: both;
+}
+.resume_part .addPart textarea{
+	height: 5em;
+	width: 20em;
+}
+
+/*********** part_footer *************/
+.resume_part .part_footer{
+	font-size: 150%;
+	font-family: arial;
+	font-weight: bold;
+	float: right;
+	color: #23415A;
+}
+.resume_part .part_footer a{
+	margin: 0 0.5em 0 0;
+}
+
+
+/************** name ************/
+#username .part_data{			/* this cancels the above mentioned .resume_parts .part_data style - which is what is needed */
+	font-weight: bold;
+	font-family: arial;
+	font-size: 200%;
+	border-bottom: 1px solid #23415A;
+	padding: 0.25em 0;
+	margin: 2em 0 0 0;
+	width: 90%;
+}
+
+
+/************** educations ************/
+#educations .editPart .level .key_text{
+	display: none;
+}
+#educations .editPart .level .value_block{
+	font-size: 130%;
+	font-family: arial;
+	color: #23415A;
+}
+#educations .editPart .more_info .key_text{
+
+}
+
+/************** experiences ************/
+#experiences .editPart .title .key_text{
+	display: none;
+}
+#experiences .editPart .title .value_block{
+	font-size: 130%;
+	font-family: arial;
+	color: #23415A;
+}
+#experiences .editPart .more_info .key_text{
+	
+}
+

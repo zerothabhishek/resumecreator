@@ -1,0 +1,96 @@
+<!--
+	URL/new/:title/experiences	
+	app/views/experiences/new.html.erb 
+	The new resume/experiences view - form for adding a new experience instance for the resume of a user
+	controller: experiences, action: new 
+-->
+	
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/experiences/new.css" />
+
+<div class="heading">
+	<h3> New Experience </h3>
+	<div class="links">
+		<%= link_to 'Edit', '/edit/'+@resume.title+'/experiences' %>	
+		<%= link_to 'Show', '/show/'+@resume.title+'/experiences' %>
+	</div>	
+</div>
+
+<% url = '/create/'+@resume.title+'/experiences' %>
+<% form_tag(url, :method => "post") do %> 
+
+	<table class="experience_table">
+		<tr>
+			<td class="column1">Title</td>
+			<td class="column2">
+				<input 
+					type="text"
+					class="title"
+					name="experience[title]"></td>
+		</tr>
+		
+		<tr>
+			<td class="column1">company</td>
+			<td class="column2">
+				<input 
+					type="text" 
+					class="company"
+					name="experience[company]">
+			</td>
+		</tr>
+
+		<tr>
+			<td class="column1">Duration</td>
+			<td class="column2"> 
+				<input 
+					type="text" 
+					class="duration"
+					name="experience[duration]">
+			</td>
+		</tr>
+
+		<tr>
+			<td class="column1">Role</td>
+			<td class="column2"> 
+				<textarea 
+					class="role"
+					name="experience[role]"></textarea>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="column1">more_info</td>
+			<td class="column2">
+				<span class="more_info_button">+</span>
+				<textarea 
+					type="text" 
+					class="more_info" 
+					name="experience[more_info]" ></textarea>
+			</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td class="column2 submit">
+				<input name="commit" type="submit" value="Create"> 
+			</td>
+		</tr>
+		
+	</table>
+<% end %>
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/experiences/new.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/experiences/new.js"></script>
+<% end %>

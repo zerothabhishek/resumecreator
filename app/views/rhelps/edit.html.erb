@@ -1,0 +1,32 @@
+<h1>Editing rhelp</h1>
+
+<% form_for(@rhelp) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :rcontroller %><br />
+    <%= f.text_field :rcontroller %>
+  </p>
+  <p>
+    <%= f.label :raction %><br />
+    <%= f.text_field :raction %>
+  </p>
+  <p>
+    <%= f.label :rview %><br />
+    <%= f.text_field :rview %>
+  </p>
+  <p>
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </p>
+  <p>
+    <%= f.label :msg %><br />
+    <%= f.text_area :msg %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @rhelp %> |
+<%= link_to 'Back', rhelps_path %>

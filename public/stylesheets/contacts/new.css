@@ -1,0 +1,62 @@
+
+h3{
+	font-family:Helvetica,sans-serif;
+}
+
+.heading{
+	width: 60%;
+	overflow: auto;			/* To prevent the collapse of the element, since its children are floated */
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding-bottom: 0.5em;
+	border-bottom:2px solid black;
+}
+
+.heading h3{
+	float: left;
+	margin: 0;
+}
+
+.heading .links{
+	float: right;
+	text-align: right;
+	padding-top: 0.2em;		/* links appear a bit raised. Hence the padding */
+	padding-right: 0.2em;	/* a scrollbar appears if you right-click. hence the padding */
+}
+
+.contact_table{
+	clear:both;
+	width:50%;
+	border-collapse:collapse;
+	margin-top:1em;
+	margin-bottom:2em;
+}
+
+.contact_table tr{
+	border:0;
+}
+
+.contact_table td{
+}
+
+.contact_table .column1{
+	font-weight: bold;
+	width: 20%;
+	text-align: right;
+	padding-right: 1em;
+}
+
+.contact_table .address{
+	width: 20em;
+	height: 6em;
+}
+
+.contact_table .phone_nos{
+}
+
+.contact_table .emails{
+}
+
+.submit{
+	padding-top: 0.5em;
+}

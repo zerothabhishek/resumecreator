@@ -1,0 +1,59 @@
+<!--
+	URL/show/:title/contacts
+	app/views/contacts/show.html.erb
+	The show resume/contacts view - shows contacts for the resume of a use
+	controller: contacts, action: show 
+-->
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/contacts/show.css" />	
+
+<div class="heading">
+	<h3> Contacts </h3>
+	<div class="links">
+		<%= link_to 'Edit', '/edit/'+@resume.title+'/contacts' %>
+		<%= link_to 'Remove', '/destroy/'+@resume.title+'/contacts', :confirm => 'Are you sure?', :method => :delete %>	
+	</div>	
+</div>
+
+
+<% if @contact %>
+	
+	<table class="contact_table">
+		<tr>
+			<td class="column1">Address</td>
+			<td class="column2 address"><%=h @contact.address %></td>
+		</tr>
+
+		<tr>
+			<td class="column1">Phone no.</td>
+			<td class="column2"><%=h @contact.phone_nos %></td>
+		</tr>
+
+		<tr>
+			<td class="column1">emails</td>
+			<td class="column2"><%=h @contact.emails %></td>
+		</tr>
+	</table>
+	
+<% else %>
+	<p>
+		No contact data
+	</p>	
+<% end #if-else %>
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/contacts/show.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/contacts/show.js"></script>
+<% end %>

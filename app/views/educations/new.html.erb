@@ -1,0 +1,91 @@
+<!--
+	URL/new/:title/educations 
+	app/views/educations/new.html.erb
+	The new resume/educations view - $form for adding a new education instance for the resume of a user	
+	controller: educations, action: new 
+-->
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/educations/new.css" />
+
+<div class="heading">
+	<h3> New Education </h3>
+	<div class="links">
+		<%= link_to 'Show', '/show/'+@resume.title+'/educations' %>	
+		<%= link_to 'Edit', '/edit/'+@resume.title+'/educations' %>
+	</div>	
+</div>
+
+<% url = '/create/'+@resume.title+'/educations' %>
+<% form_tag(url, :method => "post") do %> 
+		
+	<table class="education_table">
+		<tr>
+			<td class="column1">level</td> 
+			<td class="column2">
+				<input 	
+					type	= "text" 
+					class	= "level" 
+					name	= "education[level]" ></td>
+		</tr>
+		
+		<tr>
+			<td class="column1">major</td>
+			<td class="column2">
+				<input 	
+					type	= "text"
+					class	= "major" 
+					name	= "education[major]" ></td>
+		</tr>
+
+		<tr>
+			<td class="column1">college</td>
+			<td class="column2">
+				<input 	
+					type	= "text"
+					class	= "college" 
+					name	= "education[college]" ></td>
+		</tr>
+
+		<tr>
+			<td class="column1">score</td>
+			<td class="column2">
+				<input 	
+					type	= "text" 
+					class	= "score" 
+					name	= "education[score]" ></td>
+		</tr>
+
+		<tr>
+			<td class="column1">more_info</td>
+			<td class="column2">
+				<span class="more_info_button">+</span>
+				<textarea 
+					class	= "more_info" 
+					name	= "education[more_info]" ></textarea></td>
+		</tr>	
+		
+		<tr>
+			<td></td>
+			<td class="column2 submit">  
+				<input name="commit" type="submit" value="Create" /> 
+			</td>
+		</tr> 
+	</table>	
+<% end %>
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/educations/new.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/educations/new.js"></script>
+<% end %>

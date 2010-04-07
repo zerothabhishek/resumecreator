@@ -1,0 +1,69 @@
+<!--
+	URL/show/:title/educations	
+	app/views/educations/show.html.erb 
+	The show resume/educations view - shows educations for the resume of a user	
+	controller: educations, action: show 
+-->	
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/educations/show.css" />	
+
+<div class="heading">
+	<h3> Education </h3>
+	<div class="links">
+		<%= link_to 'Add', '/new/'+@resume.title+'/educations' %>	
+		<%= link_to 'Edit', '/edit/'+@resume.title+'/educations' %>
+	</div>	
+</div>
+
+<% form_tag("", :method => "post") do %> <!-- Has to be a form to enable AJAX requests with authenticity tokens -->
+
+	<% if @educations.length !=0 %>
+		<% @educations.each do |education| %>
+		<table class="education_table deleteable">
+			<tr class="education_data_row">
+				<td class="column1">level</td>
+				<td class="level"><%=h education.level %></td>
+				<td class="deleteColumn"><span id="<%=h education.id %>" class="deleteButton">Delete </span></td>
+			</tr>
+			<tr>
+				<td class="column1">major</td>
+				<td class="major"><%=h education.major %></td>
+			</tr>
+			<tr>
+				<td class="column1">score</td>
+				<td class="score"><%=h education.score %></td>
+			</tr>
+			<tr>
+				<td class="column1">college</td>
+				<td class="college"><%=h education.college %></td>
+			</tr>
+			<tr>
+				<td class="column1">more info</td>
+				<td class="more_info"><%=h education.more_info %></td>
+			</tr>			
+		<% end #loop %>
+	<% else %>
+		<p>
+			No education data.
+			<%= link_to 'Add', '/new/'+@resume.title+'/educations' %>
+		</p>
+	<% end #if-else %>
+	
+<% end # form_tag %>
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/educations/show.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/educations/show.js"></script>
+<% end %>

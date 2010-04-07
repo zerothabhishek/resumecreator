@@ -1,0 +1,57 @@
+	
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/index.css" />
+<div id="content">
+
+		<div id="about_box">
+			<div class="interior">
+				<div class="welcome">Welcome.</div>
+				<div class="punchline">resumeCreator helps create and update your resume easily.</div>
+			</div>	
+		</div>
+
+		<div id="login_form">
+			<div class="interior">
+				<% url = '/login' %>
+				<% form_tag(url, :method => "post") do %>
+						<div class="form_heading">Login</div>
+						<div class="form_item">	
+							<div class="key">Username</div>  
+							<input name="username" type="text" />  		
+						</div>
+						<div class="form_item">	
+							<div class="key">Password</div>
+							<input name="password" type="password" />  	
+						</div>
+						<div class="form_item">	
+							<div class="key">&nbsp</div>
+							<input name="commit" type="submit" value="logon" /> 				
+						</div>
+					<% end %>		
+			</div>		
+		</div>	
+		
+		<div id="signup_box">
+			<div class="interior">
+				<div class="signup_msg">new user ?</div>
+				<div class="signup_link"><%= link_to 'sign up', '/signup' %></div>
+			</div>
+		</div>
+		
+					
+</div>	<!-- /content -->
+	 
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/index.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/index.js"></script>
+<% end %>

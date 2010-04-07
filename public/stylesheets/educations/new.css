@@ -1,0 +1,66 @@
+
+h3{
+	font-family:Helvetica,sans-serif;
+}
+
+.heading{
+	width: 60%;
+	overflow: auto;			/* To prevent the collapse of the element, since its children are floated */
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid black;
+}
+
+.heading h3{
+	float: left;
+	margin: 0;
+}
+
+.heading .links{
+	float: right;
+	text-align: right;
+	padding-top: 0.2em;		/* links appear a bit raised. Hence the padding */
+	padding-right: 0.2em;	/* a scrollbar appears if you right-click. hence the padding */
+}
+
+.education_table{
+	clear: both;
+	width: 50%;
+	border-collapse: collapse;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.education_table tr{
+	border: 0;
+}
+
+.education_table .column1{
+	width: 20%;
+	text-align: right;
+	font-weight: bold;
+	padding-right: 1em;
+}
+
+.education_table .column2{
+	padding-left: 1em;
+}
+
+.education_table textarea{
+	height: 6em;
+	width: 20em;
+}
+
+.education_table .more_info{
+}
+
+.more_info_button{
+	border: 1px solid black;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+}
+
+.submit{
+	padding-top: 0.5em;
+}

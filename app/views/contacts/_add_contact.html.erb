@@ -1,0 +1,55 @@
+<!-- add markup for contact part. Includes a button stripe at the end -->
+<!-- 
+	CLASSname 	:DESCRIPTION and USAGE
+	partUnit 	:a single instance of the part - one contact detail (represnted by one object)
+	partItem	:an item within a part - field of the model (a property of object) eg - contact level
+	deleteable	:an element that can be deleted with a delete button within it
+	key_text	:the text that is displayed as the label for data displayed or input box renderd 
+	display		:identifies an element that displays data while show
+	edit		:identifies an imput box meant for editing
+	add			:identifies an input box meant for adding
+	delete_button:	a button that can trigger the delete functionality and delete the deletable element
+-->
+
+<div class="addPart">
+	
+	<div class="partItem address">
+		<span class="key_text">Address</span>
+		<div class="value_block">
+			<span class="display hidden"></span>
+			<textarea
+					class="add tooltip_trigger"
+					name="contact[address]" 
+					></textarea>
+			<span class="tooltip hidden">correspondance address</span>
+		</div>			
+	</div>
+					
+	<div class="partItem phone_nos">
+		<span class="key_text">Phone_nos</span>
+		<div class="value_block">
+			<span class="display hidden"></span>
+			<input	type="text"
+					class="add tooltip_trigger"
+					name="contact[phone_nos]">
+			<span class="tooltip hidden">your phone no(s). - separated by commas</span>
+		</div>			
+	</div>
+					
+	<div class="partItem emails">
+		<span class="key_text">Emails</span>
+		<div class="value_block">
+			<span class="display hidden"></span>
+			<input	type="text"
+					class="add tooltip_trigger"
+					name="contact[emails]" >
+			<span class="tooltip hidden">your email address(es) - separated by commas</span>
+		</div>			
+	</div>
+	
+	<div class="delete_button">	
+		<button type="button">delete</button>
+	</div>	
+
+</div> <!-- addPart -->	
+				

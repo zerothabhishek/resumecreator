@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+	<head>  
+		<meta http-equiv="content-type"  content="text/html;charset=UTF-8" />  
+		<title> 
+			<% if controller.action_name == "preview" %>
+				single-page rTemplate - preview
+			<% else %>
+				Resume : <%=h @resume.name %>
+			<% end %>
+		</title>  
+	</head> 
+	<body> 
+
+		<style type="text/css">
+		body{ }
+		p{ 	margin: 0;	}
+
+		.hidden{
+			visibility: hidden;
+		}
+		.subpart {
+			page-break-inside: aviod;
+		}
+		.container{
+			width: 21cm;		/* a4 size: 210mmX297mm */
+			border: 1px solid black;
+		}
+		.inner-container{
+			font-family: verdana, sans-serif;
+			font-size: 80%;
+			line-height: 150%;
+		}
+		.inner-container .part{
+			clear: both;
+			overflow: hidden;
+		}
+		.inner-container .column1{
+			float: left;
+			width: 25%;
+			padding-right: 3%;
+			text-align: right;
+		}
+		.inner-container .column2{
+			float: left;
+			width: 60%;
+			padding-bottom: 4em;
+			padding-left: 3%;
+			border-left: 2px solid #aaaaaa;
+		}
+		.inner-container .column1 h3{
+			margin: 0;
+			font-weight: bold;
+		}
+		#contact .address{
+		}
+		#skills td{
+			vertical-align: top;
+			overflow-x: hidden;
+		}
+		#skills .skillset_type{
+			width: 30%;
+			padding-right: 1em;
+		}
+		#skills .skill_name{
+			width: 30%;
+			padding-right: 1em;
+		}
+		#skills .skill_remarks{
+			width: 35%;
+			padding-right: 1em;
+		}
+		#education .edu_block{
+			margin-bottom: 1em;
+		}
+		#education .level{
+			font-weight: bold;
+		}
+		#education .major{
+		}
+		#experiences .exp_block{
+			margin-bottom: 1em;
+		}
+		#experiences .exp_title{
+			font-weight: bold;
+		}
+		#experiences .company{
+			font-size: 120%;
+		}
+		#experiences .duration{
+			font-size: 80%;
+			font-style: italic;
+		}
+		</style>
+
+		<div class="container">	
+		<div class="inner-container">
+
+			<div class="part">
+				<div class="column1 hidden"> to add space at top</div>
+				<div class="column2 hidden"> to add space at top</div>				
+			</div>
+			
+			<div class="part" id="contact">
+				<div class="column1 name">
+					<h3><%=h @resume.name %></h3>
+				</div>	
+
+				<div class="column2">
+				<% if @resume.contact %>
+					<div class="address">
+						<p><%=h @resume.contact.address %></p>
+					</div>
+					<div class="email">
+						<%=h @resume.contact.emails %>
+					</div>	
+					<div class="phone_nos">
+						<%=h @resume.contact.phone_nos %>						
+					</div>	
+				<% end  # if %>
+				</div>
+			</div>		<!-- contact -->
+			
+			<div class="part" id="profile">
+				<div class="column1">
+					<h3>profile</h3>
+				</div>
+				
+				<div class="column2">
+				<% if @resume.profile %>
+					<p><%=h @resume.profile.profile_text %></p>
+				<% end %>
+				</div>
+			</div>	<!-- skills -->
+			
+			<div  class="part" id="skills">
+				<div class="column1">
+					<h3>skills</h3>
+				</div>
+				
+				<div class="column2">	
+				<% if @skills.size !=0 %>
+					<table>
+					<% prev = nil %>
+					<% @skills.each do |skill| %>
+						<% isDiffSkillSet = (!prev or (skill.skillset_type!=prev.skillset_type)) %>	
+						<tr>
+							<td class="skillset_type <%=h isDiffSkillSet ? '' : 'hidden' %>"><%=h skill.skillset_type %></td>
+							<td class="skill_name">: <%=h skill.skill_name %></td>
+							<td class="skill_remarks"><%=h skill.skill_remarks %></td>
+						</tr>
+					<% prev = skill %>	
+					<% end #loop %>
+					</table>		
+				<% end %>
+				</div>
+			</div>		<!-- skills -->
+			
+			<div class="part" id="education">
+				<div class="column1">
+					<h3>education</h3>					
+				</div>
+
+				<div class="column2">
+				<% if @resume.educations.size !=0 %>
+					<% @resume.educations.each do |education| %>
+						<div class="subpart edu_block">
+							<span class="level"><%=h education.level %></span>
+							<span class="major"><%=h education.major %></span>		<br>
+							<span class="college"><%=h education.college %></span>	<br>
+							<span class="score"><%=h education.score %></span>
+							<span class="more_info"><p><%=h education.more_info %></p></span>
+						</div>	
+					<% end #loop %>	
+				<% end # if %>
+				</div>
+			</div>		<!-- education -->
+			
+			<div class="part" id="experiences">
+				<div class="column1">
+					<h3>experience</h3>
+				</div>
+				
+				<div class="column2">
+				<% if @resume.experiences %>
+					<% @resume.experiences.each do |experience| %>
+						<div class="exp_block subpart">
+							<span class="exp_title">	<%=h experience.title %>	</span>
+							<span class="company">		<%=h experience.company %>	</span>		<br>
+							<span class="duration">		<%=h experience.duration %>	</span>		
+							<span class="role"><p><%=h experience.role %>	</p>	</span>
+						</div>	
+					<% end #loop %>
+				<% end #if %>
+				</div>		<!-- column2 -->
+			</div>		<!-- experiences -->
+			
+			<div class="part" id="achievements">
+				<div class="column1">
+					<h3>achievements</h3>
+				</div>
+				
+				<div class="column2">
+					<% if @resume.achievement %>
+						<p><%=h @resume.achievement.achievements_text %></p>
+					<% end %>
+				</div>
+			</div>		<!-- achievements -->
+
+			<div class="part" id="hobbies">
+				<div class="column1">
+					<h3>hobbies</h3>
+				</div>
+				
+				<div class="column2">
+					<% if @resume.hobby %>
+						<p><%=h @resume.hobby.hobbies_text %></p>
+					<% end %>
+				</div>
+			</div>		<!-- hobbies -->
+			
+		</div> 		<!-- inner-container -->
+		</div>			<!-- container -->
+
+		<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+		<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+		<script type="text/javascript" src="/javascripts/show_p.js"></script>
+
+	</body>
+</html>	
+	

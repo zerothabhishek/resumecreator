@@ -1,0 +1,77 @@
+
+
+h3{
+	font-family:Helvetica,sans-serif;
+}
+
+.heading{
+	overflow: auto;			/* To prevent the collapse of the element, since its children are floated */
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding-bottom: 0.5em;
+}
+
+.heading h3{
+	float: left;
+	margin: 0;
+}
+
+.heading .links{
+	float: right;
+	text-align: right;
+	padding-top: 0.2em;		/* links appear a bit raised. Hence the padding */
+	padding-right: 0.2em;	/* a scrollbar appears if you right-click. hence the padding */
+}
+
+.skills_table{
+	clear: both;
+	width: 50%;
+	border-collapse: collapse;
+}
+
+.skills_table .table_heading_row{
+	border-bottom: 2px solid black;
+}
+
+.skills_table .table_heading_row th{
+	font-weight: bold;
+	font-style: normal;
+}
+
+.skills_table th{
+	margin:0;
+	text-align: left;
+	font-weight: normal;
+}
+
+.skills_table tr{
+	border: 0;
+}
+	
+.skills_table .new_skillset td{
+	padding-top: 1em;
+}
+
+.skills_table .skillset_type{
+	font-weight: bold;
+	width: 20%;
+}
+
+.skills_table .skill_name{
+	width: 20%;
+}
+
+.skills_table .skill_remarks{
+	width: 40%;
+	font-style: italic;
+}
+
+.skills_table .deleteColumn{
+	text-align: right;
+	width: 20%;
+}
+
+.deleteButton{
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+}

@@ -1,0 +1,62 @@
+
+#content{
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: verdana;
+	font-size: 90%;
+}
+
+#content #new_resume_block{
+	margin-top: 3em;
+	background-color: #DAE6F0;
+	padding: 2em 1em 2em 0;
+}
+#new_resume_block .form_heading{
+	padding: 0 0 1em 0;
+	text-align: center;
+	font-family: arial;
+	font-size: 175%;
+	color: #23415A;
+}
+#new_resume_block .newItem{
+	clear:both;
+	overflow: auto;
+	padding: 0.25em 0;
+}
+#new_resume_block .key_text{
+	float: left;
+	width: 35%;
+	text-align: right;
+	padding: 0.5em 1em 0 0;
+	font-family: arial;
+	font-weight: bold;
+	color: #23415A;
+}
+#new_resume_block .value_item{
+	float: left;
+}
+#new_resume_block .create_button_block{
+	margin-left: 35%;				/* same as key_text */
+	padding: 0 0 0 1em;				/* same as value block */
+	margin-top: 1em;
+}
+#new_resume_block .create_button_block .dummy_submit{
+	color: #aaaaaa;
+}
+
+#new_resume_block #desc textarea{
+	width: 20em;
+	height: 5em;
+}
+
+/*
+#content #done_msg{
+	background-color: #DAE6F0;
+	text-align: center;
+	padding: 0.5em 1em 1em 1em;
+	font-size: 130%;
+	font-family: arial;
+	line-height: 150%;
+	color: #23415A;	
+}*/

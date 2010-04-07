@@ -1,0 +1,202 @@
+
+
+/****************************/
+
+#content{
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: verdana;
+	font-size: 90%;
+}
+
+#content .all_container{
+	font-family: verdana;
+	font-size: 80%;
+	clear: both;
+	overflow: auto;
+}
+
+.all_container #resume_meta_desc{
+	width: 100%;
+	font-style: italic;
+	margin: 2em 0 0 0;
+	padding: 0 0 2em 0;
+	text-align: center;
+}
+.all_container #tab_bar{
+	float: left;
+	width: 20%;
+}
+.all_container #tab_stage{
+	float: left;
+	width: 70%;
+	min-height: 20em;
+	padding-left: 2em;
+	border-left: 1px solid #4682B4 ;		/* steelblue */
+}
+
+#tab_bar .tab_button{
+	padding: 1em 1em 1em 1em;
+	font-weight: bold;
+	margin: 0 0 0.5em 0;
+}
+.active_tab_button{
+	background-color: #C8DAE8;			/* lighter shade of steelblue */	
+}
+.inactive_tab_button{
+	border: 0;
+}
+.hover_tab_button{
+	background-color: #C8DAE8;			/* lighter shade of steelblue */
+	cursor: default;
+}
+
+
+
+/***************** resume parts CSS *****************/
+
+#resume_parts{
+	margin-top: 1em;
+	font-family: verdana, sans-serif;
+	font-size: 100%;
+}
+
+#resume_parts .part{
+	clear: both;
+	overflow: hidden;
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+	line-height: 1.5em;
+}
+
+#resume_parts .part .part_name{
+	width: 30%;
+	float: left;
+	text-align: left;
+	padding-left: 2em;
+}
+
+#resume_parts .part .tick_mark{
+	float: left;
+	margin: 0 0 0 1em;
+}
+
+#resume_parts .part .plus_button{
+	float: left;
+	margin: 0 0 0 1em;
+}
+#resume_parts .part .plus_button button{
+	padding: 0;
+	height: 1.5em;	/* this is less than the default height */
+	width: 2em;
+}
+#resume_parts .part .addPart{
+	clear: left;
+	padding: 1em 0;
+}
+#resume_parts .part .addPart .key_text{
+	display: block;		/* as it is a SPAN */
+	width: 30%;			
+	float: left;
+	text-align: right;
+	font-size: 90%;
+}
+#resume_parts .part .addPart .add{
+	margin-left: 3em;
+}
+#resume_parts .part .addPart .button_stripe{
+	margin-left: 30%;	
+	padding-left: 3em;
+}
+#resume_parts a{
+	text-decoration: none;
+	font-weight: bold;
+}
+#resume_parts a:hover{
+	text-decoration: underline;	
+}
+
+/********** publish ******************/
+#publish{
+}
+#publish .public_url_info{
+	padding: 1em 0;
+}
+#publish .public_url_info .public_url{
+	font-size: bold;
+}
+
+/********** templates ******************/
+
+#templates{
+	margin-top: 2em;
+	font-family: verdana, sans-serif;
+	font-size: 100%;
+}
+#templates #rtemplates_block{
+	overflow-y: visible;
+}
+
+#templates .rtemplate_item{
+	clear: both;
+	overflow: auto;
+}
+.rtemplate_item .thumbnail{
+	float: left;
+	width: 25%;
+	margin-bottom: 1em;
+}
+.rtemplate_item .thumbnail img{
+	border: 1px solid #ABABFF;
+	height: 8em;
+}
+.rtemplate_item .details{
+	float: left;
+	width: 35%;
+	height: 8em;
+	padding: 0 1em;
+}
+.rtemplate_item  .details .name{
+	font-weight: bold;
+}
+.rtemplate_item .tick_mark{
+	float: right;
+	width: 20%;
+	text-align: right;
+	padding-right: 2em;
+}
+.rtemplate_item .set_button{
+	float: right;
+	width: 20%;
+	text-align: right;
+	padding-right: 2em;
+}
+
+
+#other_settings{
+	font-family: verdana, sans-serif;
+	font-size: 80%;	
+	width: 50%;
+}
+#other_settings .setting_div{
+	margin-top: 2em;
+	margin-bottom: 3em;
+	padding-left: 0.5em;
+	clear: both;
+}
+#other_settings a{
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 90%;
+}
+#other_settings a:hover{
+	text-decoration: underline;	
+}
+#other_settings h4{
+	margin-bottom: 0.5em;
+	border-bottom: 1px solid #dedeff;
+}
+#other_settings .setting_action{
+	float: right;
+}

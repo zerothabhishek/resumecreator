@@ -1,0 +1,168 @@
+
+/************* misc **************/
+.hidden{
+	display: none;
+}
+p{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+.loading_msg_baloon{
+	background-color: red;
+}
+.button_stripe{
+}
+.button_stripe button{
+	font-family: arial;
+	font-weight: bold;
+	color: #23415A;		
+}
+.ajax_processing_msg{
+	background-color: #DAE6F0;
+}
+
+/************* header **************/
+#header{
+	margin-top: 3em;
+}
+#header .name_banner{
+	font-size: 220%;
+	font-family: Georgia;
+	border-bottom: 1px solid #DAE6F0;	/* a lighter shade of steelblue */
+	color: #23415A;						/* a deeper shade of steelblue: #4682B4 */
+	text-align: center;
+	font-style: italic;
+}
+#header .name_banner span{
+	background-color: #DAE6F0;
+	padding: 0 0.5em;
+}
+#header .link_header{
+	width: 65%;
+	margin: auto;
+	overflow: auto;
+	font-family: verdana;
+	font-size: 80%;
+	font-weight: bold;
+}
+#header .link_header .link_header_item{
+	margin: 0 0.5em;
+	padding: 0 0.5em;
+	background-color: #DAE6F0;
+}
+#header .link_header .left_side{
+	float: left;
+}
+#header .link_header .right_side{
+	float: right;
+}	
+
+/****** canvas heading *******/
+#heading #left_side_heading{
+	float: left;
+}
+#left_side_heading .resume_title{
+	font-family: arial;
+	color: #23415A;
+	font-weight: bold;
+}
+
+#heading #menu{
+	float: right;
+	font-family: arial;
+	text-align: right;
+	list-style: none;
+	margin: 0;
+}
+#menu li{
+	margin: 0;
+}
+#menu .dropdown_list{
+	position: relative;
+	float: right;
+}
+#menu .menu_header{
+	font-weight: bold;
+	color: #23415A;
+	padding: 0 1em;
+}
+#menu .menu_items{
+	position: absolute;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	right: 0;
+	width: 10em;
+	background-color: #fff;
+	border-top: 1px solid #888;
+}
+#menu .menu_items .menu_item{
+	padding: 0.25em 1em;
+	border-right: 1px solid #888;
+	border-bottom: 1px solid #888;
+	border-left: 1px solid #888;
+	font-size: 80%;
+}
+.menu_item_hover{
+	background-color: #dedeff;
+	color: #23415A;
+}
+
+.menu_header_hover{
+	cursor: pointer;
+	border-top: 1px solid #fff;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-left: 1px solid #fff;
+}
+.menu_header_click{
+	cursor: pointer;
+	border-top: 1px solid #000;
+	border-right: 1px solid #fff;
+	border-bottom: 1px solid #fff;
+	border-left: 1px solid #000;
+}
+#menu a:hover{
+	text-decoration: none;
+}
+
+/************* content heading **********************/
+#content .heading{
+	overflow: auto;			/* To prevent the collapse of the element, since its children are floated */
+	padding-bottom: 0.2em;
+	font-weight: bold;			/* override the defaults */
+	font-family: verdana;
+	font-size: 80%;
+}
+#content .heading .heading_item{
+	margin: 0 0.25em;
+}
+#content .heading .left_side{
+	float: left;
+	width: 45%;
+}
+#content .heading .right_side{
+	float: right;
+	width: 45%;
+	text-align: right;
+}
+.current_item{			/* to be added only in script */
+	padding: 0 0.5em;
+	background-color: #DAE6F0;
+}
+
+/************* footer **************/
+#footer{
+	margin-top: 5em;
+	border-top: 1px solid #DAE6F0;	/* a lighter shade of steelblue */
+	text-align: center;
+	font-family: tahoma;
+	font-size: 80%;
+}
+#footer a { text-decoration: none; color:#4682B4}
+#footer a:hover { text-decoration: underline;}

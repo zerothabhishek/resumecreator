@@ -1,0 +1,41 @@
+<!--
+	URL/change/:title/rtemplates
+	app/views/rtemplates/show.html.erb 
+	The change resume-template view - displays the options for changing the user's template 
+	controller: rtemplates, action: change 
+-->
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/rtemplates/change.css" />	
+
+<div class="heading">
+	<h3> Templates </h3>
+	<div class="links">	</div>	
+</div>
+
+<% form_tag('', :method => "post") do %>	<!-- for authenticity token -->
+<table id="rtemplates_table">
+	<% for rtemplate in @all_rtemplates %>
+		<% trClass= (rtemplate.id==@resume.rtemplate_id) ? "current": "" %>
+		<tr id="<%=h rtemplate.id %>" class="rtemplate_block <%=h trClass %>">
+			<td class="column1 thumbnail">
+				<a href ="<%=h '/preview/'+@resume.title+'/'+rtemplate.name %>" title="Click to preview">
+					<img src="<%=h rtemplate.thumbnail_url %>" alt="thumbnail">
+				</a>	
+			</td>
+			<td class="column2">
+				<div class="name">	<%=h rtemplate.name %>		</div>
+				<div class="author">by <%=h rtemplate.author %>	</div>
+				<div class="desc">	<%=h rtemplate.desc %>		</div>
+			</td>
+			<td class="column3">
+				<button type="button" class="set_button">Set</button>
+			</td>
+		</tr>
+	<% end #loop %>	
+</table>
+<% end #form %>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/rtemplates/change.js"></script>

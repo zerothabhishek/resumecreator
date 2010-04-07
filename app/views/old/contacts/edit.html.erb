@@ -1,0 +1,63 @@
+<!--
+	URL/edit/<title>/contacts
+	app/views/contacts/edit.html.erb
+	The edit resume/contacts view - edit the contact for the resume of a user
+	controller: contacts, action: edit
+-->
+		
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/contacts/edit.css" />	
+
+<div class="heading">
+	<h3> Edit contacts </h3>
+	<div class="links">
+		<%= link_to 'Show', '/show/'+@resume.title+'/contacts' %>
+		<%= link_to 'Remove', '/destroy/'+@resume.title+'/contacts', :confirm => 'Are you sure?', :method => :delete %>	
+	</div>	
+</div>
+
+<% url = '/update/'+@resume.title+'/contacts' %>
+<% form_tag(url, :method => "post") do %>
+<% if @contact %>
+
+	<table class="contact_table">
+		<tr>
+			<td class="column1">Address</td>
+			<td class="column2">
+				<textarea 
+					class="address"
+					name="contact[address]"
+					><%= @contact.address %></textarea></td>
+		</tr>
+
+		<tr>
+			<td class="column1">Phone nos.</td>
+			<td class="column2">
+				<input 	
+					type="text"
+					class="phone_nos"
+					name="contact[phone_nos]" 
+					value="<%= @contact.phone_nos %>"></td>
+		</tr>
+
+		<tr>
+			<td class="column1">emails</td>
+			<td class="column2">
+				<input 	
+					type="text"
+					class="emails"
+					name="contact[emails]" 
+					value="<%= @contact.emails %>"></td>
+		</tr>
+
+		<tr>  
+			<td class="column1"></td>
+			<td class="column2 submit"><input name="commit" type="submit" value="Update" > </td>
+		</tr> 
+	</table>
+<% end #if-else %>	
+<% end #form %> 
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/contacts/edit.js"></script>
