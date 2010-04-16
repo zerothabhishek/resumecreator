@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 		if user
 			session[:current_user_id] = user.id
 			flash[:notice] = "logged in"
-			redirect_to '/dashboard'
+			redirect_to '/home'
 		else
 			flash[:notice] = "Wrong username/password"
 			redirect_to '/index'
@@ -19,8 +19,14 @@ class UsersController < ApplicationController
 
 	# POST /logout
 	def logout
+		@user = User.find(session[:current_user_id])	
 		session[:current_user_id] = nil
-		flash[:notice] = "Logged out"
+		if @user.user_type == 'TRIAL'		# delete the account if its a trial account (only account is deleted, not the resumes)
+			result = @user.destroy
+			if !result
+				logger.error "Error: Trial account not deleted successfully"
+			end
+		end
 		redirect_to '/index'
 	end
 
@@ -83,6 +89,33 @@ class UsersController < ApplicationController
 		else
 			render :json => { :retVal => "available" }			
 		end
+	end
+	
+	# GET /trial
+	def trial
+		# create a temp user
+		@user = User.new(:username => "trialUser", :user_type => "TRIAL")
+		result1 = @user.save
+		if !result1
+			flash[:notice] = "some error"
+			logger.error "Error: creating trial user"
+			redirect_to '/index'
+		end
+		
+		# create a trial resume for the user
+		@resume = @user.resumes.build(:title => "trialResume", :name => "trialUser")
+		result2 = @resume.save
+		if !result2
+			flash[:notice] = "some error"
+			logger.error "Error: creating trial user"
+			redirect_to '/index'			
+		end		
+		
+		# log the user in, by settting the session
+		session[:current_user_id] = @user.id
+		
+		# redirect the user to canvas page
+		redirect_to '/canvas/trialResume'
 	end
 end
 

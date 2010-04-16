@@ -3,15 +3,15 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.root 							:controller => 'resumes', 	:action => 'dashboard'
 	map.connect '/new',					:controller => 'resumes', 	:action => 'new'
-	#map.connect '/canvas',				:controller => 'resumes', 	:action => 'canvas'
-	map.connect '/canvas/:title',		:controller => 'resumes', 	:action => 'canvas'
-	#map.connect '/canvas/:title/:part',	:controller => 'resumes', 	:action => 'canvas'
-	map.connect '/dashboard',			:controller => 'resumes', 	:action => 'dashboard'
+	map.connect '/home',				:controller => 'resumes', 	:action => 'home'
+	map.connect '/edit/:title',			:controller => 'resumes', 	:action => 'edit'
+	map.connect '/dashboard/:title',	:controller => 'resumes', 	:action => 'dashboard'
 	map.connect '/options/:title',		:controller => 'resumes', 	:action => 'options'
 	map.connect '/view/:title',			:controller => 'resumes', 	:action => 'view'
 
 	map.connect '/index',				:controller => 'resumes', 	:action => 'index'	
 	
+	map.connect '/trial',	:controller => 'users',		:action => 'trial'
 	map.connect '/login',	:controller => 'users', 	:action => 'login'
 	map.connect '/logout',	:controller => 'users', 	:action => 'logout'
 	map.connect '/signup',	:controller => 'users', 	:action => 'signup'
@@ -28,8 +28,18 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/preview/:title/:rtname',	:controller => 'rtemplates', :action => 'preview'
 	map.connect '/set_rtemplates',			:controller => 'rtemplates', 	:action => 'set_rtemplates'
 
-	map.connect '/:action/:title/:controller'		# default for urls like /new/<title>/educations or create/<title>/contact
+	#all the static pages
+	map.connect '/faqs',		:controller => 'static_pages', 	:action => 'show', 	:page => 'faqs'
+	map.connect '/about',		:controller => 'static_pages', 	:action => 'show', 	:page => 'about'
+	map.connect '/contact',		:controller => 'static_pages', 	:action => 'show',	:page => 'contact'
+	map.connect '/terms',		:controller => 'static_pages', 	:action => 'show',	:page => 'terms'
+	map.connect '/privacy',		:controller => 'static_pages', 	:action => 'show',	:page => 'privacy'
+	map.connect '/feedback',	:controller => 'static_pages', 	:action => 'show',	:page => 'feedback'
 
+	# default for urls like /new/<title>/educations or create/<title>/contact	
+	map.connect '/:action/:title/:controller'		
+
+	# default url for user's public resume
 	map.connect '/:username/:title',	:controller => 'resumes',	:action => 'view'
 	
 # 	old ones

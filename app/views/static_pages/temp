@@ -1,0 +1,9 @@
+				resumeCreator provides an easy interface to create-update and manage your resumes.
+				It has the following interfaces -
+				<ul>
+					<li><b>dashboard</b>: shows all your existing resume, and various actions you can perform with them</li>
+					<li><b>canvas</b>: the resume editing page. Data can be added, edited and deleted here. 
+					It contains some commonly used resume-parts (education,experience etc), and data can be added under these part headings</li>
+					<li></li>
+					<li></li>
+				</ul>

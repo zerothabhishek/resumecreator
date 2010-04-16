@@ -1,0 +1,135 @@
+/************* header **************/
+
+#header{
+	margin-top: -1em;			/* because body has a 1em margin */
+	overflow: visible; 			/* overflow shud be visible, to get the desired effect */
+	height: 7em;				/* so that border-bottom comes at 7em depth, while page_name can climb across */
+	margin-left:15%;			/* so header starts at a gap from left */
+	border-bottom: 1px solid #DAE6F0;
+	font-family: arial;
+}
+#header a{
+	color: #23415A;
+}
+#header #page_name{
+	float: left;
+	/*width: 20%;*/				/* no width - let it take the width of the text inside */
+	margin: 4em 0 0 0;
+	padding: 1em 1em 0.5em 1em;
+	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	text-align: center;
+}
+#header #page_name .interior{
+	font-size: 100%;
+	font-weight: bold;
+}
+#header #page_name a:hover{
+	text-decoration: none;
+}
+#header #name_banner_and_basic_links{
+	float: right;
+	margin: 1em 1em 0 0;
+}
+#header .header_item{
+	margin: 0.5em 0 0 0;
+	text-align: right;
+}
+#header #name_banner{
+	font-weight: bold;
+	font-size: 100%;
+}
+#header #name_banner .interior{
+	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	padding: 0 0.5em;
+}
+#header #name_banner a:hover{
+	text-decoration: none;
+}
+#header #basic_links{
+	font-weight: bold;
+	font-size: 80%;
+}
+#header #basic_links .interior{
+	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	padding: 0 0.75em;
+}
+#header #basic_links .basic_links_item{
+	padding: 0 0 0 0.5em;
+}
+
+#back_to_dashboard_button{
+	clear: right;		/*	this clears the prev right float	*/
+	float: right;		/* 	and this one puts it on right, just below the prev right-floated element	*/
+	margin-top: 3.5em;	/*	this brings it below the header bottom border line */
+	padding: 0 1em;
+}
+#back_to_dashboard_button .interior{
+	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	font-weight: bold;
+	padding: 0.5em;
+}
+#back_to_dashboard_button a:hover{
+	text-decoration: none;	
+}
+
+/******** for edit page *************/
+#edit_header{
+	font-family: arial;
+	overflow: auto;
+	width: 98%;				/* 78% content + 20% sidebar */
+}
+#edit_header a{
+	color: #23415A;
+}
+#edit_header #name_banner{
+	font-weight: bold;
+	font-size: 100%;
+	float: right;
+	border: 3px solid #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+}
+#edit_header #name_banner .interior{
+	padding: 0 0.5em;
+	background-color: #fff;
+}
+#edit_header #name_banner a:hover{
+	text-decoration: none;
+}
+
+/*********** for index and signup page *********/
+#index_header a{
+	color: #23415A;
+}
+#index_header #name_banner{
+	font-family: arial;	
+	font-weight: bold;
+	font-size: 200%;
+	text-align: center;	
+	padding: 5% 0 1% 0;
+}
+#index_header  #name_banner .interior{
+	background-color: #DAE6F0 ;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	border: 2px solid #C8DAE8;	
+	padding: 0 0.5em;
+}
+#index_header #name_banner a:hover{
+	text-decoration: none;
+}
+
+#signup_header a{
+	color: #23415A;
+}
+#signup_header #name_banner{
+	font-family: arial;	
+	font-weight: bold;
+	font-size: 200%;
+	text-align: center;	
+	padding: 5% 0 1% 0;
+}
+#signup_header #name_banner .interior{
+	background-color: #DAE6F0 ;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	border: 2px solid #C8DAE8;	
+	padding: 0 0.5em;
+}
+#signup_header #name_banner a:hover{
+	text-decoration: none;
+}

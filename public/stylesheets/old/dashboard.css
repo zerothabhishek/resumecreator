@@ -1,0 +1,158 @@
+
+
+#content{
+	width: 65%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: verdana;
+	font-size: 90%;
+}
+#content .heading .new_resume_button {
+	font-family: helvetica;
+	font-size: 120%;
+}
+
+#content #all_resumes_container{
+	font-family: verdana;
+	font-size: 90%;
+	clear: both;
+	margin-top: 3em;
+}
+#all_resumes_container a{
+	text-decoration: none;
+}
+#all_resumes_container a:hover{
+	text-decoration: underline;	
+}
+#all_resumes_container .each_resume{
+	margin: 2em 0;
+	padding: 0 0 0.5em 0;
+	clear: both;
+	overflow: auto;
+/*	background-color: #DAE6F0;		/* shade of steelblue */
+/*	border: 1px solid #C8DAE8;		/* shade of steelblue, deeper than #dae6f0 */
+}
+
+.each_resume .thumbnail{
+	float: left;
+	width: 20%;
+}
+.each_resume .thumbnail img{
+	border: 1px solid #ABABFF;
+	height: 12em;
+}
+.each_resume .other_details{
+	float: right;
+	width: 75%;
+}
+.each_resume .each_resume_heading{
+	clear: both;
+	overflow: auto;
+/*	background-color: #C8DAE8;		/* shade of steelblue, deeper than #dae6f0 */
+}
+.each_resume .each_resume_heading .resume_title{
+	float: left;
+	font-weight: bold;
+	font-size: 110%;
+}
+.each_resume  .updated_at{
+	font-size: 85%;
+	margin: 0.25em 0 0 0;
+	color: #AAAAAA;
+}
+.each_resume .desc{
+	height: 6em;
+	width: 70%;
+	margin: 1em 0 0 0;
+}
+.each_resume .desc p{
+	margin: 0;
+}
+.each_resume .actions{
+	clear: both;
+	overflow: auto;
+	font-size: 85%;
+	margin: 1em 0 0 0;
+}
+.each_resume .actions .action_item{
+	display: inline;
+	margin: 0 0.5em 0 0;
+}
+.each_resume .actions .delete_resume{
+}
+
+
+
+#all_resumes_container #no_resume_block{
+	width: 65%;
+	margin: auto;
+	background-color: #DAE6F0;
+	text-align: center;
+}
+#no_resume_block .info{
+	color: #23415A;
+	font-size: 130%;
+	padding: 0.5em 0;
+}
+#no_resume_block .create_new{
+	font-size: 200%;
+	font-style: arial;
+	padding: 0 0 0.5em 0;
+}
+#no_resume_block .new_resume_button{
+}
+
+
+/******** help ********/
+#help_activator{
+	font-weight: bold;
+	background-color: #DAE6F0;
+	color: #23415A;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#help_activator .interior{
+	padding: 0 0.5em;
+}
+#help_block{
+	display: none;
+	width: 20em;
+	height: 30em;
+	background-color: #dedeff;
+	border: 1px solid black;
+	opacity: 0.9;
+}
+#help_block .interior{
+	padding: 1em 1em 1em 2em;
+}
+.help_block_class{
+	z-index: 2;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+#help_block .hide_activator{
+	text-align: right;
+	font-weight: bold;
+}
+#help_block .hide_activator .interior{
+	background-color: #000000;
+	color: #ffffff;
+	padding: 0 0.5em;
+}
+#help_block .help_text{
+}
+
+/*** stage ***/
+#front_stage{
+	margin-top: 2em;
+	margin-bottom: 2em;
+	overflow: auto;
+}
+#front_stage .latest_resume{
+	float: left;
+}
+#front_stage .new_resume_button{
+	float: left;
+}

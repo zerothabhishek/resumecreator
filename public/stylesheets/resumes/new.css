@@ -1,14 +1,15 @@
 
 #content{
+	clear: both;
 	width: 65%;
-	margin-left: auto;
+	margin-left: 15%;
 	margin-right: auto;
+	margin-top: 3em;
 	font-family: verdana;
 	font-size: 90%;
 }
 
 #content #new_resume_block{
-	margin-top: 3em;
 	background-color: #DAE6F0;
 	padding: 2em 1em 2em 0;
 }

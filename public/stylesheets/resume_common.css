@@ -25,42 +25,12 @@ a:hover{
 .ajax_processing_msg{
 	background-color: #DAE6F0;
 }
+.error_msg{
+	background-color: #DAE6F0;
+	color: #23415A;		
+	text-align: center;	
+}
 
-/************* header **************/
-#header{
-	margin-top: 3em;
-}
-#header .name_banner{
-	font-size: 220%;
-	font-family: Georgia;
-	border-bottom: 1px solid #DAE6F0;	/* a lighter shade of steelblue */
-	color: #23415A;						/* a deeper shade of steelblue: #4682B4 */
-	text-align: center;
-	font-style: italic;
-}
-#header .name_banner span{
-	background-color: #DAE6F0;
-	padding: 0 0.5em;
-}
-#header .link_header{
-	width: 65%;
-	margin: auto;
-	overflow: auto;
-	font-family: verdana;
-	font-size: 80%;
-	font-weight: bold;
-}
-#header .link_header .link_header_item{
-	margin: 0 0.5em;
-	padding: 0 0.5em;
-	background-color: #DAE6F0;
-}
-#header .link_header .left_side{
-	float: left;
-}
-#header .link_header .right_side{
-	float: right;
-}	
 
 /****** canvas heading *******/
 #heading #left_side_heading{

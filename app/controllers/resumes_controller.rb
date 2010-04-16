@@ -1,16 +1,29 @@
 class ResumesController < ApplicationController
 	
 	before_filter :check_session,			# filter routine (applied before the action starts) checks for session
-		:only => [:dashboard, :options, :new, :create, :canvas, :update, :destroy, :makepdf] 	# actions where filter is applied
+		:only => [:home, :dashboard, :options, :new, :create, :edit, :update, :destroy, :makepdf] 	# actions where filter is applied
 
+	# GET /index	
 	def index
+		set_urls(@latest_resume)
 		# render index.html.erb
 	end
 	
-   	# GET /dashboard
+	# GET /home
+	def home
+		@user = User.find(session[:current_user_id])
+		@all_resumes = @user.resumes.all(:order => "updated_at DESC")	
+		@latest_resume = @all_resumes[0]
+		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@latest_resume.rtemplate_id]) 
+		set_urls(@latest_resume)
+	end
+	
+	# GET /dashboard/:title
 	def dashboard
 		@user = User.find(session[:current_user_id])
-		@resumes = @user.resumes.all(:order => "updated_at DESC")	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@resume.rtemplate_id])	
+		set_urls(@resume)
 	end
 
 	# GET /options/:title
@@ -19,12 +32,14 @@ class ResumesController < ApplicationController
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@resume.rtemplate_id])
 		@all_rtemplates = Rtemplate.all
+		set_urls(@resume)
 		session[:return_to] = "/options/"+@resume.title
 	end
 	
 	# GET /new
 	def new
 		@user = User.find(session[:current_user_id])
+		set_urls(@resume)
 	end
 	
 	# POST /create
@@ -62,17 +77,15 @@ class ResumesController < ApplicationController
 	end
 
 
-	# GET /canvas or /canvas/:title or /canvas/:title/:part
-	def canvas
+	# GET /edit/:title
+	def edit
 		@user = User.find(session[:current_user_id])
 		if params[:title]
 			@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		else	#select the latest one as no title is provided
 			#@resume = @user.resumes.find(:first, :order => "updated_at DESC")
 		end
-		if params[:part]	# a part page is requested
-		end
-		render :file => "resumes/canvas.html.erb", :layout => "resume_canvas"
+		set_urls(@resume)
 	end
 	
 	# PUT /update/:title

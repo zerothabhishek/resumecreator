@@ -121,7 +121,8 @@ function update_the_edited_callback(e, response)
 	displayElement.html(editElementValue);		// the display element now holds the new value
 	
 	display_with_linebreaks(displayElement);	// the display element should, again, present its contents with linebreaks
-	
+	empty_box_handler(displayElement);			// if the display element is empty, replace it with '--'
+
 	deactivate_edit(e);							// the editelement should be deactivated now
 }
 
@@ -235,6 +236,8 @@ function update_the_added_callback(e, response)
 	addPartBlock.find(".button_stripe").remove();						// remove the button_stripe	
 	addPartBlock.find(".delete_button").show();							// show the delete button
 
+	empty_box_handler(addPartBlock.find(".display"));					// if any of the display elements in addPartBlock is empty, replace it with '--'
+	
 	var newId = partBlock.attr("id") + '_' + id ;						// Get it an id - <part's id attribute>_<id of created object>
 	addPartBlock.attr("id",newId);										//	eg- education_<id>
 

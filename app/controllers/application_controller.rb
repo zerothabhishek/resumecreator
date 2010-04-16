@@ -19,6 +19,20 @@ class ApplicationController < ActionController::Base
 				redirect_to '/index'
 			end		
 		end	
+		
+		def set_urls(resume)
+			# global urls
+			@index_url		= "/index"
+			@home_url 		= "/home"
+			@new_resume_url	= "/new"
+			@logout_url		= "/logout"
+			# resume specific urls
+			@dashboard_url	= "/dashboard/#{resume.title}"				unless !resume
+			@edit_url 		= "/edit/#{resume.title}" 					unless !resume
+			@options_url 	= "/options/#{resume.title}" 				unless !resume
+			@view_url		= "/view/#{resume.title}" 					unless !resume
+			@pdf_url		= "/makepdf/#{resume.title}" 				unless !resume
+		end
 
 	def update_timestamp(resume)
 		retVal	= resume.update_attributes({"updated_at" => DateTime.now()})

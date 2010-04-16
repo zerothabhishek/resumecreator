@@ -1,0 +1,303 @@
+
+/************* misc **************/
+.invisible{
+	visibility: hidden;
+}
+/* copied from resume_common.css */
+.hidden{
+	display: none;
+}
+p{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+.loading_msg_baloon{
+	background-color: red;
+}
+.button_stripe{
+}
+.button_stripe button{
+	font-family: arial;
+	font-weight: bold;
+	color: #23415A;		
+}
+.ajax_processing_msg{
+	background-color: #DAE6F0;
+}
+/* ENDOF copied stuff */
+
+body{
+	background-color: #DAE6F0;	
+}
+
+.button_stripe_active{
+	padding: 0;
+}
+
+/************* header **************/
+#header{
+	margin-top: 3em;
+}
+
+#header .name_banner{
+	font-size: 220%;
+	font-family: Georgia;
+	border-bottom: 1px solid #DAE6F0;	/* a lighter shade of steelblue */
+	color: #23415A;						/* a deeper shade of steelblue: #4682B4 */
+	font-style: italic;
+	text-align: center;
+}
+#header .name_banner span{
+	background-color: #DAE6F0;
+	padding: 0 0.5em;
+}
+#header .link_header{
+	width: 65%;
+	margin: auto;
+	overflow: auto;
+	font-family: verdana;
+	font-size: 80%;
+	font-weight: bold;
+}
+#header .link_header .link_header_item{
+	margin: 0 0.5em;
+	padding: 0 0.5em;
+	background-color: #DAE6F0;
+}
+#header .link_header .left_side{
+	float: left;
+	display: none;
+}
+#header .link_header .right_side{
+	float: right;
+	display: none;
+}	
+#header a:hover{
+	text-decoration: none;
+}
+
+
+/****** content *************/
+#content{
+	clear: both;
+	font-family: verdana;
+	font-size: 90%;
+	margin: 1em 0 0 1em;
+	overflow: both;
+	clear: both;
+	overflow: auto;
+}
+
+/****** part container *******/
+#parts_container{
+	clear: both;
+	background-color: #fff;
+	font-size: 80%;
+	line-height: 200%;
+	width: 78%;
+	float: left;
+}
+#parts_container .interior{
+	padding: 2em 1em 2em 0.75in;
+	border: 4px solid #C8DAE8;
+}
+#parts_container .resume_part{
+	margin: 0 0 5em 0;
+	padding: 0;
+	clear: both;
+	overflow: auto;
+}
+.resume_part .part_header{
+	float: left;
+	width: 20%;
+	text-align: left;
+	font-family: arial;
+	font-size: 175%;
+	font-weight: bold;
+	color: #23415A;
+}
+.resume_part .part_data{
+	float: left;
+	width: 75%;
+	padding: 0 0 0 1em;	
+}
+.resume_part p{		/* <P></P> is to identify elements that need to display contents with line-breaks */
+	margin: 0;		/* Remove the automatic margin. */
+}
+.resume_part .partUnit{
+	clear: both;
+	padding: 0 0 1em 0;
+}
+.resume_part .partItem{
+	clear: both;
+	overflow: hidden;
+}
+.resume_part .key_text{ 	/* for both editPart and addPart */
+	float: left;
+	width: 15%;
+	text-align: left;
+	padding: 0em 1em 0 0;
+	font-family: arial;
+	color: #aaa;
+}
+.resume_part .value_block{
+	float: left;
+}
+.resume_part .plus_button{
+}
+
+/*********** edit_part *************/
+.resume_part .editPart{
+}
+.editPart .edit{
+}
+.editPart .display{
+	font-weight: bold;
+	color: #23415A;
+}
+.editPart .delete_button{
+	text-align: right;
+	margin-top: -1em;
+	visibility: hidden;		/* made visible on hover - done in javascript */
+}
+.editPart .delete_button button{
+	font-size: 90%;
+}
+
+/*********** add_part *************/
+.resume_part .addPart{
+	clear: both;
+}
+.resume_part .addPart textarea{
+	height: 5em;
+	width: 20em;
+}
+
+/*********** part_footer *************/
+.resume_part .part_footer{
+	font-size: 120%;
+	font-family: arial;
+	font-weight: bold;
+	clear: both;
+	color: #23415A;
+}
+.resume_part .part_footer a{
+	margin: 0 0.5em 0 0;
+}
+
+/************** name ************/
+#username .part_data{			/* this cancels the above mentioned .resume_parts .part_data style - which is what is needed */
+	font-weight: bold;
+	font-family: arial;
+	font-size: 200%;
+	border-bottom: 1px solid #23415A;
+	padding: 0.25em 0;
+	margin: 2em 0 0 0;
+	width: 97%;
+}
+
+/************** educations ************/
+#educations .editPart .level .key_text{
+	display: none;
+}
+#educations .editPart .level .value_block{
+	font-size: 130%;
+	font-family: arial;
+	color: #23415A;
+}
+#educations .editPart .more_info .key_text{
+}
+
+/************** experiences ************/
+#experiences .editPart .title .key_text{
+	display: none;
+}
+#experiences .editPart .title .value_block{
+	font-size: 130%;
+	font-family: arial;
+	color: #23415A;
+}
+#experiences .editPart .more_info .key_text{
+}
+
+/************ sidebar *************/
+#sidebar{
+	width: 20%;
+	float: left;
+}
+#sidebar .interior{
+	margin: 0 0 0 1em;
+}
+#sidebar .sidebar_item{
+	margin-bottom: 10%;				/* got by hit n trial - works better than em as font size differs */
+	background-color: #fff;
+	border: 4px solid #C8DAE8;		/*	lighter shade of steelblue, deeper than	DAE6F0*/
+}
+#sidebar #full_menu{
+	padding: 1em;
+}
+#full_menu .sidebar_subitem{
+	font-size: 120%;
+	font-family: arial;
+	font-weight: bold;
+}
+#full_menu #heading{
+	border-bottom: 1px solid #DAE6F0;
+	padding: 0 0 0.5em 1em;
+}
+#full_menu #meta_desc{
+	font-size: 80%;
+	padding: 1.5em 0 1.5em 1.5em;
+	font-family: verdana;
+	font-weight: normal;
+	border-bottom: 1px solid #DAE6F0;
+}
+#full_menu #resume_actions{
+	border-bottom: 1px solid #DAE6F0;
+	padding: 0.5em 0 0.5em 1em;
+}
+#full_menu #navigation{
+	padding: 0.5em 0 0.5em 1em;
+}
+#full_menu a{
+	color: #23415A;
+}
+#sidebar .resume_action_item{
+	padding:0.25em 0;
+}
+#sidebar .navigation_item{
+	padding:0.25em 0;
+}
+#sidebar .big_button{
+	color: #23415A;
+	font-family: arial;
+	font-size: 200%;
+	font-weight: bold;	
+	text-align: center;
+	padding: 0.5em 0;
+}
+.big_button a{
+	color: #23415A;
+}
+.big_button a:hover{
+	text-decoration: none;
+}
+
+/************* footer **************/
+/* copied from resume_common.css */
+#footer{
+	clear: both;
+	margin-top: 5em;
+	border-top: 1px solid #DAE6F0;	/* a lighter shade of steelblue */
+	text-align: center;
+	font-family: tahoma;
+	font-size: 80%;
+}
+#footer a { text-decoration: none; color:#4682B4}
+#footer a:hover { text-decoration: underline;}
+/* ENDOF copied stuff */

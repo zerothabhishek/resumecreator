@@ -1,0 +1,46 @@
+
+#container{
+	width: 65%;
+	margin-top: 3em;
+	margin-left: 15%;
+	margin-right: auto;
+	background-color: #DAE6F0;
+	color: #23415A;
+	font-family: verdana;
+	line-height: 1.5em;
+	font-size: 80%;
+}
+
+#container a{
+	font-weight: bold;
+}
+
+#container .interior{
+	padding: 2em 2em 1em 4em;
+}
+
+#container .heading{
+	font-size: 130%;
+	padding: 0 0 1em 0;
+}
+#container .text{
+	text-align: justify;
+}
+#container .text p{
+	padding: 0 0 1em 0;
+}
+
+#container ul{
+	margin: 0;
+	padding-bottom: 1em;
+}
+
+#container .qa_pair{
+	padding: 0 0 2em 0;
+}
+.qa_pair .question{
+	font-weight: bold;
+}
+.qa_pair .answer{
+	margin-top: 1em;
+}

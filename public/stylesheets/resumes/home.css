@@ -1,0 +1,131 @@
+
+
+#content{
+	clear: both;
+	width: 70%;
+	margin-left: 15%;		/* same as margin-left for header */
+	margin-right: auto;
+	margin-top: 5em;
+	font-family: verdana;
+	font-size: 90%;
+	overflow: auto;
+}
+
+
+/*** latest resume block *****/
+#content #latest_resume{
+	float: left;
+	width: 55%;
+	border-right: 1px solid #DAE6F0;
+	overflow: none;
+}
+#latest_resume .latest_resume_heading{
+	font-size: 100%;
+	font-family: arial;
+	font-weight: bold;
+	margin-bottom: 1em;
+	color: #23415A;
+}
+#latest_resume .thumbnail{
+	float: left;
+	width: 40%;
+}
+#latest_resume .thumbnail img{
+	border: 1px solid #ABABFF;
+	height: 12em;
+}
+#latest_resume .other_details{
+	float: left;
+	width: 50%;
+}
+#latest_resume .resume_heading{
+	font-weight: bold;
+	font-size: 100%;
+}
+#latest_resume .updated_at{
+	font-size: 80%;
+	margin: 0.25em 0 0 0;
+	color: #AAAAAA;
+}
+#latest_resume .desc{
+	height: 9em;
+	margin: 1em 0 0 0;
+	font-size: 80%;
+}
+#latest_resume .desc p{
+	margin: 0;
+}
+#latest_resume .actions{
+	clear: both;
+	overflow: auto;
+	font-size: 85%;
+	font-weight: bold;
+	padding: 1em 0 0 0;
+}
+#latest_resume .actions .action_item{
+	display: inline;
+	margin: 0 0.5em 0 0;
+}
+
+
+/**** big_button_block ***/
+#content .big_buttons_block{
+	float: left;
+	padding: 3em 0 3em 3em;
+}
+.big_buttons_block .big_button{
+	background-color: #DAE6F0; 
+	color: #23415A;
+	font-family: arial;
+	font-size: 240%;
+	font-weight: bold;
+	padding: 0.5em;
+}
+.big_button a{
+	color: #23415A;
+}
+.big_button a:hover{
+	text-decoration: none;
+}
+
+
+/***** older resume block ********/
+#content #older_resume{
+	clear: both;
+	padding: 2em 0;
+}
+#older_resume .older_resume_heading{
+	font-size: 100%;
+	font-family: arial;
+	font-weight: bold;
+	margin-bottom: 1em;
+	color: #23415A;
+}
+.older_resume_highlight{
+	cursor: pointer;
+	text-decoration: underline;
+}
+#older_resume .older_resume_list{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#older_resume .each_resume{
+	margin: 0;
+	padding: 0.5em 0 0 0;
+	list-style: none;
+	clear: both;
+	overflow: none;
+}
+#older_resume .each_resume .resume_title{
+	float: left;
+	font-weight: bold;
+	font-size: 90%;
+}
+#older_resume .each_resume .resume_desc{
+	float: left;
+	width: 30em;
+	margin-left: 2em;
+	overflow: hide;
+	font-size: 80%;
+}

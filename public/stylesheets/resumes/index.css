@@ -3,7 +3,7 @@
 	margin-right: 5%;
 	margin-left: 5%;
 	padding-bottom: 5%;
-	padding-top: 5%;
+	padding-top: 2%;
 	overflow: auto;
 	font-family: tahoma;
 }
@@ -24,6 +24,21 @@
 #about_box .punchline{
 	font-size: 130%;
 	padding: 1em 0;
+}
+#about_box .learnmore{
+	font-family: arial;
+	font-style: italic;
+	font-size: 80%;
+	font-weight: bold;
+}
+#about_box .trial_link{
+	font-family: arial;
+	font-size: 150%;
+	font-weight: bold;
+	margin: 6em 0 0;			/* to create a gap so that about_box height increases to equal that of login and signup boxes */
+}
+#about_box .trial_link a:hover{
+	text-decoration: none;
 }
 
 /* login form */

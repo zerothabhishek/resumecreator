@@ -2,6 +2,7 @@
 
 <%
 	dashboard_url 	= "/dashboard"	
+	home_url		= "/home"
 	options_url		= "/options/#{resume.title}" 	unless !resume
 	canvas_url 		= "/canvas/#{resume.title}" 	unless !resume	
 	view_url		= "/view/#{resume.title}" 		unless !resume	
@@ -14,11 +15,10 @@
 <div class="heading">
 	
 		<div class="left_side">
-			<%= link_to 'dashboard', 	dashboard_url, 	{:class => "heading_item dashboard_link"} %>	
-			<%= link_to 'logout', 		logout_url, 	{:class => "heading_item logout_link"} %>	
+			<%= link_to 'home', 	home_url, 	{:class => "heading_item home_link"} %>	
 		</div>
 		<div class="right_side">
-			<%= link_to 'New resume',	newResume_url,	{:class => "new_resume_button heading_item" } %>
+			<%= link_to 'logout', 		logout_url, 	{:class => "heading_item logout_link"} %>	
 		</div>
 			
 </div>

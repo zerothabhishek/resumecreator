@@ -7,15 +7,6 @@
 			Documentation:
 			- data within <p></p> is presented with linebreaks by the script
 -->
-<%
-	# all urls
-	canvas_url 		= "/canvas/#{@resume.title}" unless !@resume
-	options_url 	= "/options/#{@resume.title}" unless !@resume
-	view_url		= "/view/#{@resume.title}" unless !@resume
-	public_url		= "/#{@user.username}/#{@resume.title}"
-	dashboard_url 	= "/dashboard"
-	
-%>	
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resumes/options.css" />	
 <link rel="stylesheet" type="text/css" href="/stylesheets/tipTip.css" />
@@ -24,14 +15,8 @@
 
 <div id="content" style="display:none">
 
-	<%= render :partial => "resume_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
-
 	<% form_tag('', :method => "post") do %>	<!-- for authenticity token -->
 	<div class="all_container" id="resumeId_<%=h @resume.id %>">
-
-		<div id="resume_meta_desc">
-			<%=h @resume.meta_desc %>
-		</div>
 
 		<div id="tab_bar">
 			<%# Convention: id here should be <id of the tab item>-tab_button %>
@@ -57,7 +42,7 @@
 				<% isPartPresent = (@resume.name)? true : false %>
 
 					<div class="part_name">
-						name<%#= link_to 'name', canvas_url %>
+						name<%#= link_to 'name', @edit_url %>
 					</div>		
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -66,7 +51,7 @@
 					</div>
 					
 					<div class="plus_button <%=h (isPartPresent)? "hidden":"" %>">
-						<span class="tooltip_trigger"><%= link_to '+', canvas_url %></span>
+						<span class="tooltip_trigger"><%= link_to '+', @edit_url %></span>
 						<span class="tooltip hidden">click to open a quick add form for name</span>
 					</div>
 					
@@ -76,7 +61,7 @@
 				<% isPartPresent = (@resume.contact)? true : false %>
 				
 					<div class="part_name">
-						contact<%#= link_to 'contact', "#{canvas_url}/contacts" %>
+						contact<%#= link_to 'contact', "#{@edit_url}/contacts" %>
 					</div>
 
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -98,7 +83,7 @@
 				<% isPartPresent = (@resume.profile)? true : false %>
 					
 					<div class="part_name">
-						profile<%#= link_to 'profile', "#{canvas_url}/profiles" %>
+						profile<%#= link_to 'profile', "#{@edit_url}/profiles" %>
 					</div>		
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -120,7 +105,7 @@
 				<% isPartPresent = (@resume.skills.size !=0)? true : false %>
 				
 					<div class="part_name">
-						skills<%#= link_to 'skills', "#{canvas_url}/skills" %>
+						skills<%#= link_to 'skills', "#{@edit_url}/skills" %>
 					</div>			
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -141,7 +126,7 @@
 				<% isPartPresent = (@resume.skills.size !=0)? true : false %>
 				
 					<div class="part_name">
-						education<%#= link_to 'education', "#{canvas_url}/educations" %>
+						education<%#= link_to 'education', "#{@edit_url}/educations" %>
 					</div>		
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -163,7 +148,7 @@
 				<% isPartPresent = (@resume.experiences.size !=0)? true : false %>
 					
 					<div class="part_name">
-						experience<%#= link_to 'experiences', "#{canvas_url}/experiences" %>
+						experience<%#= link_to 'experiences', "#{@edit_url}/experiences" %>
 					</div>	
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -185,7 +170,7 @@
 				<% isPartPresent = (@resume.achievement)? true : false %>
 					
 					<div class="part_name">
-						achievements<%#= link_to 'achievements', "#{canvas_url}/achievements" %>
+						achievements<%#= link_to 'achievements', "#{@edit_url}/achievements" %>
 					</div>	
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -207,7 +192,7 @@
 				<% isPartPresent = (@resume.achievement)? true : false %>
 				
 					<div class="part_name">
-						hobbies<%#= link_to 'hobbies', "#{canvas_url}/hobbies" %>
+						hobbies<%#= link_to 'hobbies', "#{@edit_url}/hobbies" %>
 					</div>		
 					
 					<div class="tick_mark <%=h (isPartPresent)? "":"hidden" %>">
@@ -270,6 +255,7 @@
 				</div>
 				
 				<% isPrivate = (@resume.public_status=="private") ? true : false %>
+				<% public_url = "/#{@user.username}/#{@resume.title}" %>
 				<div class="public_url_info <%= (isPrivate) ? "hidden" : "" %> ">
 					Your public URL is <span class="public_url"><%= link_to 'this', public_url %></span>
 				</div>

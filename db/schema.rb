@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100325203759) do
+ActiveRecord::Schema.define(:version => 20100409053049) do
 
   create_table "achievements", :force => true do |t|
     t.text     "achievements_text"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20100325203759) do
   create_table "resumes", :force => true do |t|
     t.string   "title"
     t.string   "name"
-    t.string   "public_status"
+    t.string   "public_status", :default => "private"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20100325203759) do
     t.datetime "updated_at"
     t.integer  "default_resume"
     t.string   "email_id"
+    t.string   "user_type",      :default => "REGULAR"
   end
 
 end

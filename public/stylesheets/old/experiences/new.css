@@ -1,0 +1,63 @@
+
+h3{
+	font-family:Helvetica,sans-serif;
+}
+
+.heading{
+	overflow: auto;			/* To prevent the collapse of the element, since its children are floated */
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid black;
+}
+
+.heading h3{
+	float: left;
+	margin: 0;
+}
+
+.heading .links{
+	float: right;
+	text-align: right;
+	padding-top: 0.2em;		/* links appear a bit raised. Hence the padding */
+	padding-right: 0.2em;	/* a scrollbar appears if you right-click. hence the padding */
+}
+
+.experience_table{
+	clear: both;
+	width: 40%;
+	border-collapse: collapse;
+	margin-top: 1em;
+	margin-bottom: 2em;
+}
+
+.experience_table tr{
+	border:0;
+}
+
+.experience_table .column1{
+	width: 20%;
+	padding-right: 1em;
+	text-align: right;
+	font-weight: bold;
+}
+
+.experience_table .role{
+	height: 6em;
+	width: 20em;
+}
+
+.experience_table .more_info{
+	height:6em;
+	width:20em;
+}
+
+.experience_table .more_info_button{
+	border: 1px solid black;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
+}
+
+.submit{
+	padding-top: 0.5em;
+}

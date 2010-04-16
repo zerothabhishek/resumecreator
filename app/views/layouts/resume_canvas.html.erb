@@ -4,27 +4,18 @@
 		<meta http-equiv="content-type"  content="text/html;charset=UTF-8" />  
 		<title><%= controller.action_name %> : resumeCreator</title>  
 		<!-- 
+		used for edit template only
 		removing resume_common.css stylesheet because common style is little on this page
 		<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css" />
 		-->
 	</head> 
 	<body> 
-		<div id="header">
-			<div class="name_banner">
-				<span>resumeCreator</span>
-			</div>
-		</div>
+		<%= render :partial => "layouts/header.html.erb" %>	
 		
 		<%= yield %> 
 
-		<div id="footer">
-			<span class="footer_item about"><a href="">about</a></span>
-			<span class="footer_item contact"><a href="">contact</a></span>
-			<span class="footer_item blog"><a href="">blog</a></span>
-			<span class="footer_item terms"><a href="">terms</a></span>
-			<span class="footer_item privacy"><a href="">privacy</a></span>
-			<span class="footer_item privacy"><a href="">feedback</a></span>			
-		</div>
+		<%= render :partial => "layouts/footer.html.erb" %>
 		
 	</body> 
 </html> 

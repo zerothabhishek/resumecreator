@@ -1,104 +1,135 @@
 
 
 #content{
-	width: 65%;
-	margin-left: auto;
+	clear: both;
+	width: 70%;
+	margin-left: 15%;		/* same as margin-left for header */
 	margin-right: auto;
 	font-family: verdana;
 	font-size: 90%;
-}
-#content .heading .new_resume_button {
-	font-family: helvetica;
-	font-size: 120%;
-}
-
-#content #all_resumes_container{
-	font-family: verdana;
-	font-size: 90%;
-	clear: both;
-	margin-top: 3em;
-}
-#all_resumes_container a{
-	text-decoration: none;
-}
-#all_resumes_container a:hover{
-	text-decoration: underline;	
-}
-#all_resumes_container .each_resume{
-	margin: 2em 0;
-	padding: 0 0 0.5em 0;
-	clear: both;
 	overflow: auto;
-/*	background-color: #DAE6F0;		/* shade of steelblue */
-/*	border: 1px solid #C8DAE8;		/* shade of steelblue, deeper than #dae6f0 */
+	padding-bottom: 5em;
 }
 
-.each_resume .thumbnail{
+#content #current_resume{
 	float: left;
-	width: 20%;
+	width: 55%;
+	margin-top: 5em;
+	border-right: 1px solid #DAE6F0;
+	overflow: none;
 }
-.each_resume .thumbnail img{
+#current_resume .current_resume_heading{
+	font-size: 100%;
+	font-family: arial;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+#current_resume .thumbnail{
+	float: left;
+	width: 40%;
+}
+#current_resume .thumbnail img{
 	border: 1px solid #ABABFF;
 	height: 12em;
 }
-.each_resume .other_details{
-	float: right;
-	width: 75%;
-}
-.each_resume .each_resume_heading{
-	clear: both;
-	overflow: auto;
-/*	background-color: #C8DAE8;		/* shade of steelblue, deeper than #dae6f0 */
-}
-.each_resume .each_resume_heading .resume_title{
+#current_resume .other_details{
 	float: left;
-	font-weight: bold;
-	font-size: 110%;
+	width: 50%;
 }
-.each_resume  .updated_at{
-	font-size: 85%;
+#current_resume .resume_heading{
+	font-weight: bold;
+	font-size: 100%;
+}
+#current_resume .updated_at{
+	font-size: 80%;
 	margin: 0.25em 0 0 0;
 	color: #AAAAAA;
 }
-.each_resume .desc{
-	height: 6em;
-	width: 70%;
+#current_resume .desc{
+	height: 7em;
 	margin: 1em 0 0 0;
+	font-size: 80%;
 }
-.each_resume .desc p{
+#current_resume .desc p{
 	margin: 0;
 }
-.each_resume .actions{
+#current_resume .actions{
 	clear: both;
 	overflow: auto;
 	font-size: 85%;
-	margin: 1em 0 0 0;
+	font-weight: bold;
+	padding: 1em 0 0 0;
 }
-.each_resume .actions .action_item{
+#current_resume .actions .action_item{
 	display: inline;
 	margin: 0 0.5em 0 0;
 }
-.each_resume .actions .delete_resume{
-	float: right;
+
+
+#content .big_buttons_block{
+	float: left;
+	margin-top: 5em;
+	padding: 0 0 3em 0;
+	margin-left: 5%;
+	width: 35%;
 }
-
-
-
-#all_resumes_container #no_resume_block{
-	width: 65%;
-	margin: auto;
-	background-color: #DAE6F0;
+.big_buttons_block .big_button{
+	background-color: #DAE6F0; 
+	color: #23415A;
+	font-family: arial;
+	font-size: 200%;
+	font-weight: bold;
+	padding: 0.5em;
+	margin: 1em 0 0 0;
+	width: 80%;
 	text-align: center;
 }
-#no_resume_block .info{
+.big_button a{
 	color: #23415A;
-	font-size: 130%;
-	padding: 0.5em 0;
 }
-#no_resume_block .create_new{
-	font-size: 200%;
-	font-style: arial;
-	padding: 0 0 0.5em 0;
+.big_button a:hover{
+	text-decoration: none;
 }
-#no_resume_block .new_resume_button{
+
+
+
+#content #older_resume{
+	clear: both;
+	padding: 2em 0;
+}
+#older_resume .older_resume_heading{
+	font-size: 100%;
+	font-family: arial;
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+#older_resume .older_resume_heading .activator{
+	padding: 0 2em 0 1em;
+}
+.older_resume_highlight{
+	cursor: default;
+	background-color: #DAE6F0;
+}
+#older_resume .older_resume_list{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#older_resume .each_resume{
+	margin: 0;
+	padding: 0.5em 0 0 0;
+	list-style: none;
+	clear: both;
+	overflow: none;
+}
+#older_resume .each_resume .resume_title{
+	float: left;
+	font-weight: bold;
+}
+#older_resume .each_resume .resume_desc{
+	float: left;
+	width: 30em;
+	margin-left: 1em;
+	overflow: hide;
+	font-size: 90%;
 }
