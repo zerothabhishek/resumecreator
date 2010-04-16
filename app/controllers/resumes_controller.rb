@@ -196,7 +196,7 @@ class ResumesController < ApplicationController
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		fileName = "#{@user.username}_#{@resume.title}"
-		pdf_filePath = "#{RAILS_ROOT}/public/pdf/#{fileName}.pdf"
+		pdf_filePath = "#{RAILS_ROOT}/user_data/pdf/#{fileName}.pdf"
 		
 		# check if a pdf is already generated for this, and is not outdated
 		if @resume.pdf_timestamp													# a pdf exists	
@@ -212,7 +212,7 @@ class ResumesController < ApplicationController
 		content = render_to_string :file =>	@rtemplate.location
 
 		# and save it to a file
-		html_filePath = "#{RAILS_ROOT}/tmp/htmls/#{fileName}.html"
+		html_filePath = "#{RAILS_ROOT}/user_data/html/#{fileName}.html"
 		File.open(html_filePath, "w+") do |f| 
 			f.write(content) 
 		end

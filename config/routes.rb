@@ -1,14 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :rhelps
 
-	map.root 							:controller => 'resumes', 	:action => 'dashboard'
+	map.root 							:controller => 'resumes', 	:action => 'home'
 	map.connect '/new',					:controller => 'resumes', 	:action => 'new'
 	map.connect '/home',				:controller => 'resumes', 	:action => 'home'
 	map.connect '/edit/:title',			:controller => 'resumes', 	:action => 'edit'
 	map.connect '/dashboard/:title',	:controller => 'resumes', 	:action => 'dashboard'
 	map.connect '/options/:title',		:controller => 'resumes', 	:action => 'options'
 	map.connect '/view/:title',			:controller => 'resumes', 	:action => 'view'
-
 	map.connect '/index',				:controller => 'resumes', 	:action => 'index'	
 	
 	map.connect '/trial',	:controller => 'users',		:action => 'trial'
