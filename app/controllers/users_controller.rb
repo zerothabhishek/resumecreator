@@ -115,7 +115,7 @@ class UsersController < ApplicationController
 		session[:current_user_id] = @user.id
 		
 		# redirect the user to canvas page
-		redirect_to '/canvas/trialResume'
+		redirect_to '/edit/trialResume'
 	end
 end
 

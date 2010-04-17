@@ -112,11 +112,16 @@
 		</div>
 	</div>	<!-- /name_banner_and_basic_links -->
 	
-	<div id="back_to_dashboard_button">
-		<span class="interior"><%= link_to 'back to dashboard', @dashboard_url %></span>
-	</div>
-
 </div>	<!-- /header -->
+
+<div id="option_buttons">
+		<span class="interior">
+			<%= link_to 'edit', 	@edit_url, 		{:class => "option_buttons_item"} %>
+			<%= link_to 'output', 	@output_url, 	{:class => "option_buttons_item"} %>
+			<%= link_to 'dashboard',@dashboard_url, {:class => "option_buttons_item"} %>
+		</span>
+</div>
+
 <% end %>
 
 <% if page == "edit" %>
@@ -148,7 +153,9 @@
 			<span class="interior">
 				<%= link_to 'home', 		@home_url, 	{:class => "basic_links_item"} %>
 				<%#= link_to 'my-account', 	@home_url, 	{:class => "basic_links_item"} %>
-				<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+				<% if session[:current_user_id] %>
+					<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+				<% end %>	
 			</span>	
 		</div>
 	</div>	<!-- /name_banner_and_basic_links -->

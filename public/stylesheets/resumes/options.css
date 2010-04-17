@@ -3,7 +3,6 @@
 /****************************/
 
 #content{
-	clear: both;
 	width: 65%;
 	margin-left: 15%;
 	margin-right: auto;
@@ -15,7 +14,6 @@
 #content .all_container{
 	font-family: verdana;
 	font-size: 80%;
-	clear: both;
 	overflow: auto;
 }
 

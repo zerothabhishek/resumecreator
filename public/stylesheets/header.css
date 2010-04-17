@@ -57,18 +57,28 @@
 	padding: 0 0 0 0.5em;
 }
 
-#back_to_dashboard_button{
-	clear: right;		/*	this clears the prev right float	*/
-	float: right;		/* 	and this one puts it on right, just below the prev right-floated element	*/
-	margin-top: 3.5em;	/*	this brings it below the header bottom border line */
+
+/********* options page ***********/
+#option_buttons{
+	float: right;		/* 	this one puts it on right, just below the prev right-floated element	*/
+	font-family: arial;
+	text-align: right;
 	padding: 0 1em;
 }
-#back_to_dashboard_button .interior{
-	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+#option_buttons .interior{
 	font-weight: bold;
-	padding: 0.5em;
+	font-size: 130%;
 }
-#back_to_dashboard_button a:hover{
+#option_buttons .option_buttons_item{
+	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
+	padding: 0.25em 0.5em; 
+	display: block;
+	margin: 0.5em 0 0 0;
+}
+#option_buttons a{
+	color: #23415A;
+}
+#option_buttons a:hover{
 	text-decoration: none;	
 }
 

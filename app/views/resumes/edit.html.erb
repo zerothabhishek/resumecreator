@@ -7,19 +7,7 @@
 	Conventions used for this file - 
 	1. part block id should be the controller name	
 -->
-<%
-	# all urls
-	edit_url 		= "/edit/#{@resume.title}" unless !@resume
-	options_url 	= "/options/#{@resume.title}" unless !@resume
-	view_url		= "/view/#{@resume.title}" unless !@resume
-	pdf_url 		= "/makepdf/#{@resume.title}" 	unless !@resume
-	publish_url 	= "#{options_url}#publish" 
-	templates_url 	= "#{options_url}#templates" 
-	dashboard_url 	= "/dashboard"
-	home_url		= "/home"
-	newResume_url 	= "/new" 
-	logout_url 		= "/logout"	
-%>	
+	
 <link rel="stylesheet" type="text/css" href="/stylesheets/resumes/edit.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/tipTip.css" />
 
@@ -62,14 +50,10 @@
 					</div>
 					<%= render :partial => "contacts/add_contact.html.erb" %> 
 				</div> <!-- /part_data -->	
-				<div class="part_footer">
-					<%= link_to "all-parts", edit_url %>
-					<%= link_to "next-part", "#{edit_url}/profiles" %>
-				</div>	
 			</div>	<!-- /contacts -->
 
 			<div class="resume_part url_holder" id="profiles">
-				<div class="part_header">profile<%#= link_to 'profile', "#{edit_url}/profiles" %></div>	
+				<div class="part_header">profile<%#= link_to 'profile', "#{@edit_url}/profiles" %></div>	
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.profile %>
@@ -82,15 +66,10 @@
 					</div>
 					<%= render :partial => "profiles/add_profile.html.erb" %> 	
 				</div> <!-- /part_data -->	
-				<div class="part_footer">
-					<%#= link_to "prev-part", "#{edit_url}/contacts" %>
-					<%#= link_to "all-parts", edit_url %>
-					<%= link_to "next-part", "#{edit_url}/skills" %>
-				</div>	
 			</div>	<!-- /profiles -->
 
 			<div class="resume_part url_holder" id="skills">
-				<div class="part_header">skills<%#= link_to 'skills', "#{edit_url}/skills" %></div>	
+				<div class="part_header">skills<%#= link_to 'skills', "#{@edit_url}/skills" %></div>	
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.skills.size !=0 %>
@@ -105,15 +84,10 @@
 					</div>
 					<%= render :partial => "skills/add_skill.html.erb" %> 
 				</div> <!-- part_data -->	
-				<div class="part_footer">
-					<%#= link_to "prev-part", "#{edit_url}/profiles" %>
-					<%#= link_to "all-parts", edit_url %>
-					<%= link_to "next-part", "#{edit_url}/educations" %>
-				</div>	
 			</div>	<!-- /skills -->
 
 			<div class="resume_part url_holder" id="educations">
-				<div class="part_header">education<%#= link_to 'education', "#{edit_url}/educations" %></div>	
+				<div class="part_header">education<%#= link_to 'education', "#{@edit_url}/educations" %></div>	
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.educations.size !=0 %>
@@ -128,15 +102,10 @@
 					</div>
 					<%= render :partial => "educations/add_education.html.erb" %> 
 				</div> <!-- part_data -->
-				<div class="part_footer">
-					<%#= link_to "prev-part", "#{edit_url}/skills" %>
-					<%#= link_to "all-parts", edit_url %>
-					<%= link_to "next-part", "#{edit_url}/experiences" %>
-				</div>	
-			</div>		<!-- educations -->
+			</div>	<!-- educations -->
 
 			<div class="resume_part url_holder" id="experiences">
-				<div class="part_header">experiences<%#= link_to 'experiences', "#{edit_url}/experiences" %></div>	
+				<div class="part_header">experiences<%#= link_to 'experiences', "#{@edit_url}/experiences" %></div>	
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.experiences.size !=0 %>
@@ -151,15 +120,10 @@
 					</div>
 					<%= render :partial => "experiences/add_experience.html.erb" %> 
 				</div> <!-- part_data -->	
-				<div class="part_footer">
-					<%#= link_to "prev-part", "#{edit_url}/educations" %>
-					<%#= link_to "all-parts", edit_url %>
-					<%= link_to "next-part", "#{edit_url}/achievements" %>
-				</div>	
 			</div>	<!-- /experiences -->
 			
 			<div class="resume_part url_holder" id="achievements">
-				<div class="part_header">achievements<%#= link_to 'achievements', "#{edit_url}/achievements" %></div>	
+				<div class="part_header">achievements<%#= link_to 'achievements', "#{@edit_url}/achievements" %></div>	
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.achievement %>
@@ -172,15 +136,10 @@
 					</div>
 					<%= render :partial => "achievements/add_achievement.html.erb" %> 					
 				</div> <!-- part_data -->	
-				<div class="part_footer">
-					<%#= link_to "prev-part", "#{edit_url}/experiences" %>
-					<%#= link_to "all-parts", edit_url%>
-					<%= link_to "next-part", "#{edit_url}/hobbies" %>
-				</div>					
 			</div>	<!-- /achievements -->
 
 			<div class="resume_part url_holder" id="hobbies">
-				<div class="part_header">hobbies<%#= link_to 'hobbies', "#{edit_url}/hobbies" %></div>	
+				<div class="part_header">hobbies<%#= link_to 'hobbies', "#{@edit_url}/hobbies" %></div>	
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.hobby %>
@@ -193,11 +152,6 @@
 					</div>
 					<%= render :partial => "hobbies/add_hobby.html.erb" %> 
 				</div> <!-- part_data -->	
-				<div class="part_footer">
-					<%#= link_to "prev-part", "#{edit_url}/achievements" %>
-					<%#= link_to "all-parts", edit_url %>
-					<%= link_to "view-resume", view_url, {:target => "_blank"} %>
-				</div>									
 			</div>	<!-- hobbies -->
 	
 	</div>	<!-- /interior -->
@@ -218,24 +172,24 @@
 				</div>
 				
 				<div id="resume_actions" class="sidebar_subitem">
-					<div class="resume_action_item"><%= link_to "dashboard", 	dashboard_url 	%></div>
-					<div class="resume_action_item"><%= link_to "options", 	options_url		%></div>
-					<div class="resume_action_item"><%= link_to "view html", 	view_url, 	{:target => "_blank"} %></div>
+					<div class="resume_action_item"><%= link_to "dashboard", 	@dashboard_url 	%></div>
+					<div class="resume_action_item"><%= link_to "options", 		@options_url		%></div>
+					<div class="resume_action_item"><%= link_to "view html", 	@view_url, 	{:target => "_blank"} %></div>
 				</div>
 
 				<div id="navigation" class="sidebar_subitem">
-					<div class="navigation_item"><%= link_to 'new resume',	newResume_url 	%></div>
-					<div class="navigation_item"><%= link_to 'home', 		home_url 		%></div>
-					<div class="navigation_item"><%= link_to 'logout', 		logout_url 		%></div>
+					<div class="navigation_item"><%= link_to 'new resume',	@newResume_url 	%></div>
+					<div class="navigation_item"><%= link_to 'home', 		@home_url 		%></div>
+					<div class="navigation_item"><%= link_to 'logout', 		@logout_url 		%></div>
 				</div>
 			</div>
 			
 			<div id="" class="big_button sidebar_item">
-				<%= link_to "output", pdf_url, {:target => "_blank"} %>
+				<%= link_to "output", @pdf_url, {:target => "_blank"} %>
 			</div>
 
 			<div id="" class="big_button sidebar_item">
-				<%= link_to 'publish', 	publish_url %>
+				<%= link_to 'publish', 	@publish_url %>
 			</div>
 			
 		</div>	<!-- /interior -->

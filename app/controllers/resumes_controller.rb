@@ -52,6 +52,7 @@ class ResumesController < ApplicationController
 		else
 			result = nil
 		end	
+		
 		if params["ajax"] == "true"
 			if result
 				logger.info "Info: New resume created - #{@user.username}-#{@resume.title}"
@@ -63,7 +64,7 @@ class ResumesController < ApplicationController
 		else
 			if result 
 				logger.info "Info: New resume created - #{@user.username}-#{@resume.title}"
-				redirect_to "/canvas/#{@resume.title}"
+				redirect_to "/edit/#{@resume.title}"
 			else	
 				error_msg = "Error: resume create - #{@user.username}"
 				if isAlreadyPresent

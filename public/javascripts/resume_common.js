@@ -232,7 +232,8 @@ function update_the_added_callback(e, response)
 	addPartBlock.removeClass("addPart");								// Change the classNames of addPartBlock
 	addPartBlock.addClass("partUnit");									// to convert it to editPart			
 	addPartBlock.addClass("deleteable");								// remove "addPart", add "partUnit" and  "deleteable"	
-
+	eventhandler_for_deleteables(addPartBlock);							// add eventhandlers for the new part (activate the delete button)
+	
 	addPartBlock.find(".button_stripe").remove();						// remove the button_stripe	
 	addPartBlock.find(".delete_button").show();							// show the delete button
 

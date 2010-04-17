@@ -25,13 +25,15 @@ class ApplicationController < ActionController::Base
 			@index_url		= "/index"
 			@home_url 		= "/home"
 			@new_resume_url	= "/new"
-			@logout_url		= "/logout"
+			@logout_url		= "/logout"	
 			# resume specific urls
 			@dashboard_url	= "/dashboard/#{resume.title}"				unless !resume
 			@edit_url 		= "/edit/#{resume.title}" 					unless !resume
 			@options_url 	= "/options/#{resume.title}" 				unless !resume
 			@view_url		= "/view/#{resume.title}" 					unless !resume
 			@pdf_url		= "/makepdf/#{resume.title}" 				unless !resume
+			@publish_url 	= "#{@options_url}#publish" 				unless !@options_url
+			@templates_url 	= "#{@options_url}#templates" 				unless !@options_url
 		end
 
 	def update_timestamp(resume)
