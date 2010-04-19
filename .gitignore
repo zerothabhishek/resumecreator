@@ -1,0 +1,12 @@
+
+#ignore the log files
+log/*
+
+#ignore the tmp files
+tmp/**/*
+
+#ignore the user_data files
+user_data/*
+
+#ignore the database.yml file so that passwords are not exposed on github
+config/database.yml

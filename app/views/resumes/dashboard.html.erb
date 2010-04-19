@@ -18,17 +18,10 @@
 %>
 <div id="content">
 
-	<!--
-	<%= render :partial => "general_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
-	-->
 
 	<div id="current_resume">
 		<% if @resume %>
 
-		<!--<div class="current_resume_heading">
-			<span class="interior">current resume -</span>
-		</div> -->
-		
 		<div class="thumbnail">
 			<a href ="<%=h view_url %>" title="Click to preview" target="_blank">
 					<img src="<%=h @rtemplate.thumbnail_url %>" alt="thumbnail">

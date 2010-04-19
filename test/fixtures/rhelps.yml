@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rcontroller: MyString
+  raction: MyString
+  rview: MyString
+  key: MyString
+  msg: MyText
+
+two:
+  rcontroller: MyString
+  raction: MyString
+  rview: MyString
+  key: MyString
+  msg: MyText

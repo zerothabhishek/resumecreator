@@ -52,7 +52,7 @@
 			
 		</div> <!-- /other_details -->
 		<% else %>
-			<% if @all_resumes.size != 0 %>
+			<% if @all_resumes.size == 0 %>
 				<div class="error_msg">
 					This place lists your existing resumes and options.
 					There are none yet.
@@ -66,12 +66,12 @@
 			<%= link_to 'new-resume', @new_resume_url %>
 		</div>
 	</div>
-	
+
+	<% if @all_resumes.size !=0 %>
 	<div id="older_resume">
 		<div class="older_resume_heading">
 			<a href="javascript:void(0)" class="interior">older-resumes >></a>
 		</div>
-		<% if @all_resumes.size != 0 %>
 		<ul class="older_resume_list hidden">
 			<% @all_resumes.each do |resume| %>
 				<li class="each_resume">
@@ -81,9 +81,8 @@
 				</li>
 			<% end 	# loop %>
 		</ul>
-		<% else %>
-		<% end 	# if %>
 	</div>
+	<% end # if %>
 	
 </div> <!-- /content -->
 

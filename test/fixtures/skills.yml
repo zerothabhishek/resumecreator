@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  skill_name: MyString
+  skill_remarks: MyString
+  skillset_type: MyString
+  resume: 
+
+two:
+  skill_name: MyString
+  skill_remarks: MyString
+  skillset_type: MyString
+  resume: 

@@ -72,7 +72,7 @@ class UsersController < ApplicationController
 				flash[:notice] = "created"
 				# log the user in and redirect to home
 				session[:current_user_id] = @user.id
-				redirect_to '/canvas'
+				redirect_to '/home'
 			else
 				flash[:notice] = "account creation failed"
 				redirect_to '/signup'

@@ -14,7 +14,9 @@ class ResumesController < ApplicationController
 		@user = User.find(session[:current_user_id])
 		@all_resumes = @user.resumes.all(:order => "updated_at DESC")	
 		@latest_resume = @all_resumes[0]
-		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@latest_resume.rtemplate_id]) 
+		if @latest_resume
+			@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@latest_resume.rtemplate_id]) 
+		end
 		set_urls(@latest_resume)
 	end
 	

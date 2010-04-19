@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  level: MyString
+  major: MyString
+  score: MyString
+  college: MyString
+  more_info: MyText
+  resume: 
+
+two:
+  level: MyString
+  major: MyString
+  score: MyString
+  college: MyString
+  more_info: MyText
+  resume: 
