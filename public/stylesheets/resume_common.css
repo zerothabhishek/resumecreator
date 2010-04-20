@@ -25,12 +25,6 @@ a:hover{
 .ajax_processing_msg{
 	background-color: #DAE6F0;
 }
-.error_msg{
-	background-color: #DAE6F0;
-	color: #23415A;		
-	padding: 1em;
-	font-weight: bold;
-}
 
 
 /****** canvas heading *******/

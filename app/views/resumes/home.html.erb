@@ -7,10 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/resumes/home.css" />	
 <div id="content">
 
-	<%#= render :partial => "general_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
-
+	<% if @all_resumes.size != 0 %>
 	<div id="latest_resume">
-		<% if @latest_resume %>
 		
 		<div class="latest_resume_heading">
 			<span class="interior">latest resume -</span>
@@ -51,14 +49,6 @@
 			</div>	<!-- actions -->
 			
 		</div> <!-- /other_details -->
-		<% else %>
-			<% if @all_resumes.size == 0 %>
-				<div class="error_msg">
-					This place lists your existing resumes and options.
-					There are none yet.
-				</div>	
-			<% end %>
-		<% end %>
 	</div> 	<!-- /latest_resume -->
 	
 	<div class="big_buttons_block" >
@@ -67,7 +57,6 @@
 		</div>
 	</div>
 
-	<% if @all_resumes.size !=0 %>
 	<div id="older_resume">
 		<div class="older_resume_heading">
 			<a href="javascript:void(0)" class="interior">older-resumes >></a>
@@ -82,6 +71,14 @@
 			<% end 	# loop %>
 		</ul>
 	</div>
+
+	<% else %>
+	<div class="empty_msg">
+			This page lists your existing resumes. 
+			There are none yet.<br/> 
+			You can start <%= link_to 'creating resumes', @new_resume_url %> 
+			or read the <%= link_to 'faqs', '/faqs' %>.
+	</div>	
 	<% end # if %>
 	
 </div> <!-- /content -->

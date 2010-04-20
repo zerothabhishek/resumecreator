@@ -2,7 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
 	<head>  
 		<meta http-equiv="content-type"  content="text/html;charset=UTF-8" />  
-		<title><%= controller.action_name %> : resumeCreator</title>  
+		<% 
+			if controller.controller_name == "static_pages" 
+				page_title = params[:page]
+			else
+				page_title = controller.action_name
+			end
+			page_title = page_title + ": resumeCreator"			
+		%>
+		
+		<title><%= page_title %></title>  
 		<link rel="stylesheet" type="text/css" href="/stylesheets/header.css" />
 		<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
 	</head> 
