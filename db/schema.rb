@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100409053049) do
+ActiveRecord::Schema.define(:version => 20100428140153) do
 
   create_table "achievements", :force => true do |t|
     t.text     "achievements_text"
@@ -56,6 +56,27 @@ ActiveRecord::Schema.define(:version => 20100409053049) do
     t.datetime "updated_at"
   end
 
+  create_table "keyvaluepairs", :force => true do |t|
+    t.string   "key"
+    t.text     "value"
+    t.integer  "prev"
+    t.integer  "next"
+    t.integer  "subpart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "parts", :force => true do |t|
+    t.string   "title"
+    t.string   "heading"
+    t.text     "meta_desc"
+    t.integer  "prev"
+    t.integer  "next"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "resume_id"
+  end
+
   create_table "profiles", :force => true do |t|
     t.text     "profile_text"
     t.integer  "resume_id"
@@ -100,6 +121,16 @@ ActiveRecord::Schema.define(:version => 20100409053049) do
     t.string   "skill_remarks"
     t.string   "skillset_type"
     t.integer  "resume_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subparts", :force => true do |t|
+    t.string   "title"
+    t.text     "meta_desc"
+    t.integer  "prev"
+    t.integer  "next"
+    t.integer  "part_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

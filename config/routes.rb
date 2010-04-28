@@ -10,6 +10,12 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/view/:title',			:controller => 'resumes', 	:action => 'view'
 	map.connect '/index',				:controller => 'resumes', 	:action => 'index'	
 	
+	map.connect '/new/:title/part',		:controller => 'parts', 	:action => 'new'
+	map.connect '/create/:title/part',	:controller => 'parts', 	:action => 'create'
+	map.connect '/new2/:title/part',	:controller => 'parts', 	:action => 'new2'
+	map.connect '/create2/:title/part',	:controller => 'parts', 	:action => 'create2'
+
+
 	map.connect '/trial',	:controller => 'users',		:action => 'trial'
 	map.connect '/login',	:controller => 'users', 	:action => 'login'
 	map.connect '/logout',	:controller => 'users', 	:action => 'logout'

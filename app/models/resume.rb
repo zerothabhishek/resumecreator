@@ -1,6 +1,6 @@
 class Resume < ActiveRecord::Base
   belongs_to :user
-  #belongs_to :template
+  has_many :parts
   has_one :contact
   has_one :profile
   has_many :educations
