@@ -11,4 +11,11 @@ class User < ActiveRecord::Base
 		return nil if u.nil?
 		return u
 	end
+	
+	def has_resume(resumeTitle)
+		u = self.resumes.find_by_title(resumeTitle)
+		return nil if u.nil?
+		return u
+	end
+	
 end

@@ -44,10 +44,67 @@ class ResumesController < ApplicationController
 		set_urls(@resume)
 	end
 	
+	# POST /create2
+	def create2
+	
+		# get the user and check if the resume already exists
+		@user = User.find(session[:current_user_id])
+		if @user.has_resume(params[:resume][:title])
+			logger.error "Error: #{@user.username}- resume creation- resume of same title already exists"
+			flash[:error] = "A resume of same title already exists"
+			redirect_to '/new'
+		end
+		
+		# build and save the resume
+		@resume = @user.resumes.build(params[:resume])
+		if !@resume.save
+			logger.error "Error: #{@user.username}- resume creation- save"
+			flash[:error] = "Error occurred in resume creation"
+			redirect_to '/new'
+		end
+		
+		# create default parts for the resume 
+		if !@resume.create_default_parts
+			logger.error "Error: #{@user.username}-#{@resume.title} error in default parts creation"
+		end
+		# and save it
+		if !@resume.save
+			logger.error "Error: #{@user.username}-#{@resume.title} error in save after default parts creation"
+		end
+		
+		redirect_to "/edit2/#{@resume.title}"
+	end
+	
+	# GET /edit2/:title
+	def edit2
+		@user = User.find(session[:current_user_id])
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		session[:current_resume_id] = @resume.id
+		# show the view edit2.html.erb	
+	end
+	
+	# POST /update
+	def update2
+		@user 	= User.find(session[:current_user_id])
+		@resume = @user.resumes.find(session[:current_resume_id])
+		
+		resume_hash = params[:resume]
+		result = @resume.update_it(resume_hash)
+		if params[:ajax] == "true"
+			if result
+				logger.info "Info: #{@user.username}-#{@resume.title} updated"
+				render :json => { :retVal => "updated" }
+			else
+				logger.error "Error: #{@user.username}-#{@resume.title} NOT updated"
+				render :json => { :retVal => "Not updated" }
+			end
+		end
+	end
+	
 	# POST /create
 	def create
 		@user = User.find(session[:current_user_id])
-		isAlreadyPresent = @user.resumes.find(:first, :conditions => ["title =?",params[:resume][:title]])
+		isAlreadyPresent = @user.has_resume(params[:resume][:title])
 		if isAlreadyPresent == nil
 			@resume = @user.resumes.build(params[:resume])
 			result = @resume.save
@@ -236,5 +293,14 @@ class ResumesController < ApplicationController
 		end
 	end
 
+	
+	# GET dummy001/:title
+	def dummy001
+		@user = User.find(session[:current_user_id])
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		
+		@result = @resume.create_default_parts
+		
+	end
 	
 end

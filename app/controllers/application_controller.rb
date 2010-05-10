@@ -43,7 +43,8 @@ class ApplicationController < ActionController::Base
 		end	
 		return		
 	end
-	
+
+
 	def update_contact(resume)
 	 	@contact 	= resume.contact
 	 	contactPut 	= params[:contact]
@@ -137,5 +138,5 @@ class ApplicationController < ActionController::Base
 		end	
 		return retVal
 	end
-	
+		
 end
