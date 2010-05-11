@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.connect '/dummy001/:title',		:controller => 'resumes', 	:action => 'dummy001'
 	map.connect '/create/subpart',		:controller => 'subparts',	:action => 'create'
+	map.connect '/destroy/subpart',		:controller => 'subparts',	:action => 'destroy'
 	
 	map.connect '/new/:title/part',		:controller => 'parts', 	:action => 'new'
 	map.connect '/create/:title/part',	:controller => 'parts', 	:action => 'create'

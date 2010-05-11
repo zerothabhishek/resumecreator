@@ -426,14 +426,14 @@ function deactivate_addPart(e)
 
 
 /*****************************************************/
-function delete_the_deleteable(e)
-{
-	var deleteButton = $(e.target);										// Its the delete_button > BUTTON
-	var deleteable = deleteButton.parents(".deleteable").eq(0)	
-	var deleteable_id = deleteable.attr("id").split("_")[1];			// second part of the id. eg- education_<id>
-	deleteable.css("background-color","#ababff");						// give the deleteable a separate bgColor
 	
-	var postUrl = deleteButton.parents(".resume_part").eq(0).data("deleteUrl");
+function delete_the_subpart(e)
+{
+	var deleteButton = $(e.target);
+	var deleteable = deleteButton.parents(".resume_subpart").eq(0);
+	var deleteable_id = deleteable.attr("id").split("_")[1];			// second part of the id.
+	
+	var postUrl = "/destroy/subpart"
 	var authToken = $("*[name='authenticity_token']").eq(0).val();
 	var postData = new Object();		
 		
@@ -446,36 +446,36 @@ function delete_the_deleteable(e)
 	ajaxMsgObj.show();
 	
 	$.post(			
-			postUrl,	
-			postData,
-			function(response){	
-				ajaxMsgObj.hide();
-				delete_the_deleteable_callback(e,response); 
-			}
+		postUrl,	
+		postData,
+		function(response){	
+			ajaxMsgObj.hide();
+			delete_the_subpart_callback(e,response); 
+		}
 	);	
 }
-
-function delete_the_deleteable_callback(e, response)
+function delete_the_subpart_callback(e, response)
 {
 	var responseObj = JSON.parse(response);
 	if (responseObj["retVal"] != "deleted"	){
-		$.jGrowl(responseObj["retVal"]);				// XXX: Change this action to something better
+		$.jGrowl(responseObj["retVal"]);								// XXX: Change this action to something better
 		return;
 	}	
 	
-	var deleteButton = $(e.target);					// Its the delete_button > BUTTON
+	var deleteButton = $(e.target);										// Its the delete_button > BUTTON
+	var subpartBlock = deleteButton.parents(".resume_subpart").eq(0);
 	var partBlock = deleteButton.parents(".resume_part").eq(0);
-	var partName = partBlock.attr("id");
-	if (partName=="contacts" || partName=="profiles" || partName=="achievements" || partName=="hobbies")
-	{																	// show the old plus button			
-		var plusButton = partBlock.find(".plus_button").eq(0);			// onyl for singleton elements - contacts, profiles, achievements, hobbies
-		plusButton.show();
-	}
 
-	var deleteable = deleteButton.parents(".deleteable").eq(0);
+	var deleteable = subpartBlock;
 	deleteable.hide("slow");											// hide the deleteable slowly
-	deleteable.remove();												// remove the deleteable element		
-}	
+	deleteable.remove();												// remove the deleteable element	
+	
+	var num_subparts_left = partBlock.find(".resume_subpart").length;
+	if (num_subparts_left==0){					// If there are no subparts left, remove the part block,
+		partBlock.remove();						// the server will remove the corresponding object
+	}
+}
+
 
 /*****************************************************/
 function activate_dropDownMenu()
