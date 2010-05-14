@@ -80,7 +80,8 @@ class ResumesController < ApplicationController
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		session[:current_resume_id] = @resume.id
-		# show the view edit2.html.erb	
+		
+		@parts_titles_list = PART_TITLES_ALL
 	end
 	
 	# POST /update
@@ -299,8 +300,12 @@ class ResumesController < ApplicationController
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		
-		@result = @resume.create_default_parts
+		##@result = @resume.create_default_parts
 		
+		x = GLOBAL_VAR
+		y = VAR2
+		z = EDUCATION
+		render :text => z[:title]
 	end
 	
 end
