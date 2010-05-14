@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  key: MyString
+  value: MyText
+  prev: 1
+  next: 1
+  subpart: 
+
+two:
+  key: MyString
+  value: MyText
+  prev: 1
+  next: 1
+  subpart: 

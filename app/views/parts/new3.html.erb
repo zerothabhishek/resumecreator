@@ -1,0 +1,76 @@
+<!--
+	URL/new/:title/part	
+	app/views/parts/new.html.erb 
+	The new resume/parts view - form for adding a new part instance for the resume of a user
+	controller: parts, action: new 
+-->
+	
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/parts/new.css" />
+
+<div class="heading">
+	<h3> New Part </h3>
+	<div class="links">
+		<%= link_to 'Edit', '' %>	
+		<%= link_to 'Show', '' %>
+	</div>	
+</div>
+
+<% url = '/create/'+@resume.title+'/part' %>
+<% form_tag(url, :method => "post") do %> 
+
+	<div class="part_block">
+	
+		<div class="part_title">
+			<input type="text" name="part[title]" value="part title">
+		</div>
+	
+		<div class="subpart_block">
+			<div class="keyvaluepair">
+				<input type="text" name="part[subpart][0][keyvaluepair][0][key]" value="key">
+				<textarea name="part[subpart][0][keyvaluepair][0][value]">value</textarea>
+			</div>
+			<div class="keyvaluepair">
+				<input type="text" name="part[subpart][0]keyvaluepair[1][key]" value="key">
+				<textarea name="part[subpart][0]keyvaluepair[1][value]">value</textarea>
+			</div>
+		</div>	<!-- subpart block -->
+		
+		<div class="subpart_block">
+			<div class="keyvaluepair">
+				<input type="text" name="part[subpart][1]keyvaluepair[0][key]" value="key">
+				<textarea name="part[subpart][1]keyvaluepair[0][value]">value</textarea>
+			</div>
+			<div class="keyvaluepair">
+				<input type="text" name="part[subpart][1]keyvaluepair[1][key]" value="key">
+				<textarea name="part[subpart][1]keyvaluepair[1][value]">value</textarea>
+			</div>
+			<div class="keyvaluepair">
+				<input type="text" name="part[subpart][1]keyvaluepair[2][key]" value="key">
+				<textarea name="part[subpart][1]keyvaluepair[2][value]">value</textarea>
+			</div>
+		</div>	<!-- subpart_block -->	
+	
+	</div>	<!-- part block -->
+	
+	<div class="submit_block">
+		<button type="submit">done</button>
+	</div>
+	
+<% end %>
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/parts/new.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/parts/new.js"></script>
+<% end %>

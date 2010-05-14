@@ -1,0 +1,37 @@
+<!--
+	URL/new/:title/part	
+	app/views/parts/new.html.erb 
+	The new resume/parts view - form for adding a new part instance for the resume of a user
+	controller: parts, action: new 
+-->
+	
+<link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/parts/new.css" />
+
+<% submit_path = '/create/'+@resume.title+'/part' %>
+<% form_for :part, @part, :url =>submit_path, :html => {:class=>"add_part_form"} do |part_form| %>
+	
+	part title: <%= part_form.text_field :title	%>
+	part meta desc : <%= part_form.text_field :meta_desc %>
+	
+	<div id="subparts_block">
+	<% for j in 0..1 %>
+	<% part_form.fields_for @subpart, :index=>j do |subpart_form| %>
+		<div class="subpart">
+		subpart title :<%= subpart_form.text_field :title %>
+		subpart meta desc :<%= subpart_form.text_field :meta_desc %>
+		<div id="keyvaluepairs_block">
+			<% for i in 0..2 %>
+			<div class="keyvaluepair">
+			<% subpart_form.fields_for @keyvaluepair, :index=>i do |kvp_form| 	%>
+				<%= kvp_form.text_field :key, 	{:value => "key"}	%>
+				<%= kvp_form.text_area :value, 	{:value => "value", :class=>"add"}	%>			<br/>			
+			<% end # fields for keyvaluepair %>
+			</div>
+			<% end # for loop - i%>
+		</div>
+		</div>
+	<% end # fields_for subpart %>
+	<% end # for j %>
+	<%= submit_tag "Create" %>
+<% end %>

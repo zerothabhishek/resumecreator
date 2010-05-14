@@ -1,0 +1,18 @@
+
+.add_part_form{
+}
+#subparts_block{
+	margin: 2em 0;
+}
+#subparts_block .subpart{
+	padding: 2em 0;
+}
+#keyvaluepairs_block{
+}
+#keyvaluepairs_block .keyvaluepair{
+	padding: 0 1em;
+}
+#keyvaluepairs_block textarea{
+	height: 3em;
+	width: 20em;
+}

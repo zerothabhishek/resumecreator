@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  heading: MyString
+  meta_desc: MyText
+  prev: 1
+  next: 1
+
+two:
+  title: MyString
+  heading: MyString
+  meta_desc: MyText
+  prev: 1
+  next: 1

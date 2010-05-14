@@ -1,0 +1,37 @@
+<table>	
+	<tr>
+		<td><%= debug(session) %></td>
+		<td><%= debug(params) %></td> 
+	</tr>
+	
+	<tr>
+		<td><b>part -</b><%= debug(@part) %></td>
+		<td><b>subpart[0] -</b><%= debug(@subpart0) %></td>
+	</tr>
+	<tr>
+		<td><b>kvp00 -</b><%= debug(@kvp00) %></td>
+		<td><b>key000 -</b><%= debug(@key000) %></td>
+	</tr>
+	<tr>
+		<td><b>subpart_all -</b><%= debug(@subpart_all) %></td>
+		<td><b>kvp_all -</b><%= debug(@kvp_all) %></td>
+	</tr>
+	<tr>
+		<td><b>subpart_all size-</b><%= @subpart_all_len %></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td><b>new part :</b></td>
+		<td><%#= debug(@new_part) %></td>
+	</tr>
+	
+	<tr>
+		<td> subpart array access</td>
+		<td>
+			<% @subpart_all.each_value do |subpart| %>
+				title: "<%= subpart[:title] %>"
+			<% end %>
+	</tr>
+</table>	
+

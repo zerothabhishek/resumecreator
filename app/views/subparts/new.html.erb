@@ -1,0 +1,31 @@
+<% part = @part %>
+<% subpart = @subpart %>
+
+					<% subpart_str = "resume[parts][#{part.id}][subparts][new]" %>
+					<% fields_for subpart_str, subpart do |subpart_form| %>
+
+					<div class="resume_subpart">
+						<div class="subpart_title"><h4>
+							<span class="display"><%= subpart.title %></span>
+							<%= subpart_form.text_field :title, :class=> "edit" %>
+						</h4></div>
+						<div class="subpart_data">
+						<% subpart.keyvaluepairs.each do |keyvaluepair| %>
+							<% keyvaluepair_str = subpart_str+"[keyvaluepairs][new]" %>
+							<% fields_for keyvaluepair_str, keyvaluepair do |kvp_form| %>
+							<div class="keyvaluepairs">
+								<div class="key">
+									<span class="display"><%= keyvaluepair.key %></span>
+									<%= kvp_form.text_field :key, {:value => keyvaluepair.key, :class=> "edit"} %>
+								</div>	
+								<div class="value">
+									<span class="display"><%= keyvaluepair.value %></span>
+									<%= kvp_form.text_field :value, {:value => keyvaluepair.value, :class=> "edit"} %>
+								</div>	
+							</div>
+							<% end #fields_for kvp %>		
+						<% end #loop- kvp %>
+						</div>
+						<br />
+					</div> <!-- resume_subpart -->
+					<% end #fields_for subpart %>

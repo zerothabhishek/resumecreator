@@ -1,0 +1,29 @@
+<% subpart = @new_subpart_obj %>
+<% nameCommon = "resume[parts][#{subpart.part_id}][subparts][#{subpart.id}]" %>
+<% idCommon = "resume_parts_#{subpart.part_id}_subparts_#{subpart.id}" %>
+<div class="resume_subpart">
+	<div class="subpart_title"><h4>
+		<span class="display"><%= subpart.title %></span>
+		<% titleName, titleId = "#{nameCommon}[title]", "#{idCommon}_title" %>
+		<input type="text" id="<%= titleId %>" name="<%= titleName %>" class="edit" />
+	</h4></div>
+	<div class="subpart_data">
+	<% subpart.keyvaluepairs.each do |keyvaluepair| %>
+		<div class="keyvaluepairs">
+				<div class="key">
+					<% keyName = "#{nameCommon}keyvaluepairs[#{keyvaluepair.id}][key]" %>
+					<% keyId = "#{idCommon}_keyvaluepairs_[#{keyvaluepair.id}]_key" %>
+					<span class="display"><%= keyvaluepair.key %></span>
+					<input type="text" id="<%= keyId %>" name="<%= keyName %>" class="edit" value="<%= keyvaluepair.key %>" />
+				</div>	
+				<div class="value">
+					<% valueName = "#{nameCommon}keyvaluepairs[#{keyvaluepair.id}][value]" %>
+					<% valueId = "#{idCommon}_keyvaluepairs_[#{keyvaluepair.id}]_value" %>
+					<span class="display"><%= keyvaluepair.value %></span>
+					<input type="text" id="<%= valueId %>" name="<%= valueName %>" class="edit" />
+				</div>	
+		</div>	<!-- keyvaluepairs -->
+	<% end #loop- kvp %>
+	</div>
+	<br />
+</div> <!-- resume_subpart -->
