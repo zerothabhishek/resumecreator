@@ -564,11 +564,13 @@ function delete_callback(e, response)
 }
 
 /*****************************************************/
-function display_with_linebreaks(element)
+function display_with_linebreaks(elements)
 {	
-	// display the element with line breaks at \n
-	var temp = $(element).html().replace(/\n/g,'<br>');	// /\n/ is the regex, g (global) is to replace all occurances
-	$(element).html(temp);	
+	elements.each(function(){
+		// display the element with line breaks at \n
+		var temp = $(this).html().replace(/\n/g,'<br>');	// /\n/ is the regex, g (global) is to replace all occurances
+		$(this).html(temp);	
+	});
 }
 
 function splitName(nameObj)

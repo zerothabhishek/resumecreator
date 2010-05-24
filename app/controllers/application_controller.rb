@@ -143,7 +143,8 @@ class ApplicationController < ActionController::Base
 	# returns one of the predefined parts, defined as globals in intializers/globals.rb
 	# on adding a new part there, an entry should be made here
 	def get_predefined_part(part_title)
-		
+
+		hash = {}
 		case part_title
 		when "contact"
 			hash = CONTACT
@@ -160,7 +161,6 @@ class ApplicationController < ActionController::Base
 		when "achievements"
 			hash = ACHIEVEMENTS	
 		end
-		
 		hash		# return the hash
 	end
 end

@@ -1,63 +1,65 @@
 
 
-
 $(document).ready(function(){
 
 	$.ajaxSetup ({ cache: false });
-											
-	init_data();							// add intial data to the DOM
-											// defined in resume_common.js
+	all_functionality();
 
-	empty_box_handler($(".display"));		// all the empty display elements should be replaced 
-											// with some dummy characters '--' here	
-											// defined in resume_common.js
-	
-											// Hide all the edit elements and the addPart
-	$(".edit").hide();						// only the edit fields- not the entire editParts	
-	
-	$(".display").each(function() { 			// All the display elements should show linebreaks(<br>) on \n
-		display_with_linebreaks($(this)); 		// defined in resume_common.js
-	});			
-
-
-	var displayElements = $(".display");								// Add hover and click eventhandlers to display elements	
-	eventHandlers_for_display_elements(displayElements);				// So on hovering, it changes the background-color
-																		// and on clicking, it activates the edit functionality	
-
-	var addSubPartButton = $(".new_subpart_button");					// Add evenhandlers to add subpart button
-	eventHandlers_for_addSubPart_button(addSubPartButton);				// On a click, it should activate the add new subpart
-	
-	var addPartButton = $(".addPart_block").find(".addPart_button");		// Add evenhandlers to the addpart button
-	eventHandlers_for_addPart_button(addPartButton);						// On a click, it should activate the addPart functionality
-
-	
-	var deleteButtons = $(".resume_part").find(".subpart_delete_block > .delete_button");	// Add eventhandlers for delete button
-	eventHandlers_for_delete_button(deleteButtons);											// On click, it should delete the "deleteable" item it is within	
-
-//	var deleteables = $(".deleteable");										// hover event on deleteables should show the delete button
-//	eventhandler_for_deleteables(deleteables);
-	
-//	$(".loading_msg_baloon").hide();
-//	$("#content").show();
-	
-	//show_only_one_part();								// if only a part is requested
-//	activate_tooltips();	
-
-	//activate_dropDownMenu();							// show the menu
 });
 
+/*****************************************************/
+function all_functionality()
+{
+	var usernameElement = $("#username");									// make the username editable		
+	usernameElement.find(".edit").hide();
+	eventHandlers_for_display_elements(usernameElement.find(".display"));
+
+	var parts = $(".resume_part");
+	parts.each(function(){	part_functionality($(this));	});				// functionality within each of the parts
+
+	var addPartButton = $("#addPart_block").find(".addPart_button");		// Add evenhandlers to the addpart button
+	eventHandlers_for_addPart_button(addPartButton);						// On a click, it should activate the addPart functionality		
+}
 
 /*****************************************************/
-function eventHandlers_for_display_elements(jObj)
+function part_functionality(thisPart)
 {
-														// Hover on display elements should 
-	var bgColor = jObj.css("background-color");			// change the element background color
-	jObj.hover(
-			function(){ $(this).css({"background-color":"#ABABFF", "cursor":"default"})},
-			function(){ $(this).css({"background-color":bgColor, "cursor":"auto"})}
-	);
-																// click on the display element 
-	jObj.click(function(e){ activate_edit(e);});				// should activate its editing 
+	var partHeader = thisPart.find(".part_header");						// make the part header also editable
+	partHeader.find(".edit").hide();
+	eventHandlers_for_display_elements(partHeader.find(".display"));
+	
+	var subparts = thisPart.find(".resume_subpart");
+	subparts.each(function(){	subpart_functionality($(this));	});		// functionality to each subpart within the part
+		
+	var addSubPartButton = thisPart.find(".new_subpart_button");		// Add evenhandlers to add subpart button
+	eventHandlers_for_addSubPart_button(addSubPartButton);				// On a click, it should activate the add new subpart
+}
+
+/*****************************************************/
+function subpart_functionality(thisSubpart)
+{
+	var editElements = thisSubpart.find(".edit");
+	editElements.hide();												// hide all the edit elements
+		
+	var displayElements = thisSubpart.find(".display");					// various functionality for display elements
+	eventHandlers_for_display_elements(displayElements);				// empty_box_handler, display_with_linebreaks, hover, click
+
+	var deleteButtons = thisSubpart.find(".subpart_delete_block > .delete_button");		// Add eventhandlers for delete button
+	eventHandlers_for_delete_button(deleteButtons);										// On click, it should delete the "deleteable" item it is within
+}
+
+/*****************************************************/
+function eventHandlers_for_display_elements(displayElements)
+{
+	empty_box_handler(displayElements);					// fill all the empty display elements with a '--'
+	display_with_linebreaks(displayElements);			// introduce linebreaks in displayelements
+	
+	var bgColor = displayElements.css("background-color");			// Hover on display elements should change the element background color
+	displayElements.hover(	
+				function(){ $(this).css({"background-color":"#ABABFF", "cursor":"default"})},
+				function(){ $(this).css({"background-color":bgColor, "cursor":"auto"})}		);
+																 
+	displayElements.click(function(e){ activate_edit(e);});		// click on the display element should activate its editing 
 }
 /*****************************************************/
 function eventHandlers_for_addSubPart_button(jObj)
@@ -75,7 +77,8 @@ function eventHandlers_for_addSubPart_button(jObj)
 /*****************************************************/
 function eventHandlers_for_addPart_button(jObj)
 {
-	jObj.click(function(e){ 					
+	jObj.toggle(
+		function(e){ 					
 			var addPartButton = $(e.target);	
 			var addPartBlock = addPartButton.parents(".addPart_block").eq(0);
 			var addPartOptionsBlock = addPartBlock.find(".addPart_options").eq(0);		// contains the select input list of part titles that can be created
@@ -83,23 +86,63 @@ function eventHandlers_for_addPart_button(jObj)
 			var addPart_submit = addPartBlock.find(".addPart_submit_button").eq(0);
 			var existing_parts_titles = $(".resume_part").attr("id");
 
+			addPartButton.html("Cancel");
 			addPartOptionsBlock.show();
-			addPartOptions.each(function(){
-				var this_option = $(this);
-				var option_name = this_option.val();
-				existing_parts_titles.each(function(){
-					if (option_name == $(this).get()){			// if this_option is already present - there is a 
-						this_option.hide();						// resume part in its name, remove it from option list - need not be created again
-					}	
-				});
-			});
-			
 			addPart_submit.show();
-			addPart_submit.click(function(e){
-				
-			});
-	});		
+			
+			addPart_submit.click(function(e){	post_addPartRequest(e);	});
+		},
+		function(e){
+			var addPartButton = $(e.target);	
+			var addPartBlock = addPartButton.parents(".addPart_block").eq(0);
+			var addPartOptionsBlock = addPartBlock.find(".addPart_options").eq(0);		// contains the select input list of part titles that can be created			
+			var addPart_submit = addPartBlock.find(".addPart_submit_button").eq(0);
+			
+			addPartButton.html("Add new Part");
+			addPartOptionsBlock.hide();
+			addPart_submit.hide();			
+		}
+	);		
 }
+function post_addPartRequest(e)
+{
+	var addPart_submitButton = $(e.target);
+	var addPartBlock = addPart_submitButton.parents(".addPart_block").eq(0);
+	var selectTag = addPartBlock.find("SELECT").eq(0);
+	
+	var authToken = $("*[name='authenticity_token']").eq(0).val();
+	var postUrl = "/create2/part"
+	var postData = new Object();
+			
+	postData["ajax"] = "true";
+	postData["authenticity_token"] = authToken;
+	postData[selectTag.attr("name")] = selectTag.val();
+	
+	$.post(
+		postUrl,
+		postData,
+		function(response){
+			callback_addPartRequest(e, response)
+	});
+}
+
+function callback_addPartRequest(e, response)
+{
+	// The response is HTMl. This HTML has to be embedded into the DOM within the all parts block
+
+	if (response=="error"){
+		$.jGrowl("Some error occurred");				// XXX: Change this action to something better
+		return;	
+	}
+		
+	var allParts_block = $("#all_parts");
+	allParts_block.append(response);
+	
+	var newlyAddedPart = $(".resume_part:last", allParts_block);
+	part_functionality(newlyAddedPart);					// add eventhandlers and other functionality to the new part
+}
+
+
 /*****************************************************/
 function eventHandlers_for_delete_button(jObj)
 {	

@@ -9,12 +9,12 @@ class Part < ActiveRecord::Base
 		self.title = part_hash[:title]
 		self.meta_desc = part_hash[:meta_desc]
 		
-		subpart_list = part_hash[:subpart]				# part_hash contains a list of subparts (structured as a hash - keys are indices)
+		subpart_list = part_hash[:subparts]				# part_hash contains a list of subparts (structured as a hash - keys are indices)
 		subpart_list.each_value do |subpart|			# separate out an individual subpart from the list
 			subpart_obj = Subpart.new
 			subpart_obj.title = subpart[:title]
 			subpart_obj.meta_desc = subpart[:meta_desc]
-			kvps_list = subpart[:keyvaluepair]			# subpart contains a list of kvps
+			kvps_list = subpart[:keyvaluepairs]			# subpart contains a list of kvps
 			kvps_list.each_value do |kvp|				# separate out an individial kvp
 				kvp_obj = Keyvaluepair.new
 				kvp_obj.key = kvp[:key]

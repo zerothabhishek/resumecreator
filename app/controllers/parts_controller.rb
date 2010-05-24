@@ -37,20 +37,21 @@ class PartsController < ApplicationController
 	def create2
 		begin
 			@user = User.find(session[:current_user_id])
-			@resume = @user.resumes.find_by_title(params[:title])
-			part_title = params[:part_title]
+			@resume = @user.resumes.find(session[:current_resume_id])
+			part_title = params[:new_part_title]
 			part_hash = get_predefined_part(part_title)			# gets the predefined hash for the part. defined in application_controller.rb
+			logger.debug "Debug: part-hash:" + part_hash.to_yaml
 			part_obj = Part.new
 			part_obj.create_it(part_hash)						# create the part with subparts and keyvaluepairs 
 			@resume.parts << part_obj							# add the newly created part to the resume
 			@resume.save										# save the resume - saves the parts, subparts and keyvaluepairs too		
-		rescue
-			flash[:error] = "Error creating the part"
-			logger.error "Error: exception in part creation"
-			render :json => { :retVal => "error", :error => flash[:error] }
+			
+			render :partial => "parts/show", :locals => { :part => part_obj }
+		#rescue Exception => e
+		#	flash[:error] = "Error creating the part"
+		#	logger.error e.message
+		#	render :json => { :retVal => "error", :error => flash[:error] }
 		end
-		
-		render :partial => "parts/show", :locals => { :part => part_obj }
 	end
 	
 	# GET edit/:resumeTitle/:partTitle

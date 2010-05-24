@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/new/:title/part',		:controller => 'parts', 	:action => 'new'
 	map.connect '/create/:title/part',	:controller => 'parts', 	:action => 'create'
 	map.connect '/new2/:title/part',	:controller => 'parts', 	:action => 'new2'
-	map.connect '/create2/:title/part',	:controller => 'parts', 	:action => 'create2'
+	map.connect '/create2/part',		:controller => 'parts', 	:action => 'create2'
 
 	map.connect '/new/subpart/:part_id',	:controller => 'subparts', 	:action => 'new'	
 

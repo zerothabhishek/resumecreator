@@ -6,27 +6,29 @@
 	<% submit_path = "/update2" %>
 	<% form_for :resume, @resume, :url =>submit_path, :html => {:class=>""} do |resume_form| %>
 			
-			<div class="resume_part url_holder" id="username">
-				<span class="display"><%=h @resume.name %></span>
-				<%= resume_form.text_field :name, :class=> "edit" %>
-			</div>	<!-- /username -->
-			
-			<% @resume.parts.each do |part| %>
-				<%= render :partial => "parts/show", :locals => { :part => part_obj } %>
-			<% end #loop- part%>
+			<div id="all_parts">
+				<div class="resume_part url_holder" id="username">
+					<span class="display"><%=h @resume.name %></span>
+					<%= resume_form.text_field :name, :class=> "edit" %>
+				</div>	<!-- /username -->
+				
+				<% @resume.parts.each do |part_obj| %>
+					<%= render :partial => "parts/show", :locals => { :part => part_obj } %>
+				<% end #loop- part%>
+			</div> <!-- all parts -->
 
-			<br/><br/><br/>
-			<div class="addPart_block">
-				<button type="button" class="addPart_button">Add New Part</button>
+				<br/><br/><br/>
+			<div id="addPart_block" class="addPart_block">
 				<div class="addPart_options hidden">
 					<%	options_arr = []
 						@parts_titles_list.each do |part_title|
 							options_arr << [part_title, part_title]
 						end	
 					%>
-					<%= select_tag(:new_part_name, options_for_select(options_arr) ) %>
+					<%= select_tag(:new_part_title, options_for_select(options_arr) ) %>
 				</div>
 				<button type="button" class="addPart_submit_button hidden">go</button>
+				<button type="button" class="addPart_button">Add New Part</button>
 			</div>
 
 	<% end #form_for %> 
