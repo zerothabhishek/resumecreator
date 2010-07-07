@@ -5,7 +5,7 @@
 <div id="index_header">
 	<div id="name_banner">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @index_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', index_url,	{:class => "name_banner_link"} %>
 			</span>	
 	</div>
 </div>
@@ -15,7 +15,7 @@
 <div id="signup_header">
 	<div id="name_banner">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @index_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', index_url,	{:class => "name_banner_link"} %>
 			</span>	
 	</div>
 </div>	
@@ -24,20 +24,20 @@
 <% if page == "new" %>
 <div id="header">
 	<div id="page_name">
-		<span class="interior"><%= link_to "new resume", @new_resume_url %></span>
+		<span class="interior"><%= link_to "new resume", new_resume_url %></span>
 	</div>
 
 	<div id="name_banner_and_basic_links">
 		<div id="name_banner" class="header_item">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @home_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', home_url,	{:class => "name_banner_link"} %>
 			</span>	
 		</div>
 		<div id="basic_links" class="header_item">
 			<span class="interior">
-				<%= link_to 'home', 		@home_url, 	{:class => "basic_links_item"} %>
-				<%#= link_to 'my-account', 	@home_url, 	{:class => "basic_links_item"} %>
-				<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+				<%= link_to 'home', 		home_url, 	{:class => "basic_links_item"} %>
+				<%#= link_to 'my-account', 	home_url, 	{:class => "basic_links_item"} %>
+				<%= link_to 'logout', 		logout_url, {:class => "basic_links_item"} %>
 			</span>	
 		</div>
 	</div>	<!-- /name_banner_and_basic_links -->
@@ -47,20 +47,20 @@
 <% if page=="home"%>
 <div id="header">
 	<div id="page_name">
-		<span class="interior"><%= link_to "#{@user.username}-home", @home_url %></span>
+		<span class="interior"><%= link_to "#{@user.username}-home", home_url %></span>
 	</div>
 
 	<div id="name_banner_and_basic_links">
 		<div id="name_banner" class="header_item">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @home_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', home_url,	{:class => "name_banner_link"} %>
 			</span>	
 		</div>
 		<div id="basic_links" class="header_item">
 			<span class="interior">
-				<%= link_to 'home', 		@home_url, 	{:class => "basic_links_item"} %>
-				<%#= link_to 'my-account', 	@home_url, 	{:class => "basic_links_item"} %>
-				<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+				<%= link_to 'home', 		home_url, 	{:class => "basic_links_item"} %>
+				<%#= link_to 'my-account', 	home_url, 	{:class => "basic_links_item"} %>
+				<%= link_to 'logout', 		logout_url, {:class => "basic_links_item"} %>
 			</span>	
 		</div>
 	</div>	<!-- /name_banner_and_basic_links -->
@@ -70,20 +70,20 @@
 <% if page=="dashboard"%>
 <div id="header">
 	<div id="page_name">
-		<span class="interior"><%= link_to "#{@resume.title}-dashboard", @dashboard_url %></span>
+		<span class="interior"><%= link_to "#{@resume.title}-dashboard", dashboard_url %></span>
 	</div>
 
 	<div id="name_banner_and_basic_links">
 		<div id="name_banner" class="header_item">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @home_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', home_url,	{:class => "name_banner_link"} %>
 			</span>	
 		</div>
 		<div id="basic_links" class="header_item">
 			<span class="interior">
-				<%= link_to 'home', 		@home_url, 	{:class => "basic_links_item"} %>
-				<%#= link_to 'my-account', 	@home_url, 	{:class => "basic_links_item"} %>
-				<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+				<%= link_to 'home', 		home_url, 	{:class => "basic_links_item"} %>
+				<%#= link_to 'my-account', 	home_url, 	{:class => "basic_links_item"} %>
+				<%= link_to 'logout', 		logout_url, {:class => "basic_links_item"} %>
 			</span>	
 		</div>
 	</div>	<!-- /name_banner_and_basic_links -->
@@ -94,20 +94,20 @@
 <% if page == "options" %>
 <div id="header">
 	<div id="page_name">
-		<span class="interior"><%= link_to "#{@resume.title}-options", @options_url %></span>
+		<span class="interior"><%= link_to "#{@resume.title}-options", options_url %></span>
 	</div>
 
 	<div id="name_banner_and_basic_links">
 		<div id="name_banner" class="header_item">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @home_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', home_url,	{:class => "name_banner_link"} %>
 			</span>	
 		</div>
 		<div id="basic_links" class="header_item">
 			<span class="interior">
-				<%= link_to 'home', 		@home_url, 	{:class => "basic_links_item"} %>
-				<%#= link_to 'my-account', 	@home_url, 	{:class => "basic_links_item"} %>
-				<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+				<%= link_to 'home', 		home_url, 	{:class => "basic_links_item"} %>
+				<%#= link_to 'my-account', 	home_url, 	{:class => "basic_links_item"} %>
+				<%= link_to 'logout', 		logout_url, {:class => "basic_links_item"} %>
 			</span>	
 		</div>
 	</div>	<!-- /name_banner_and_basic_links -->
@@ -116,9 +116,9 @@
 
 <div id="option_buttons">
 		<span class="interior">
-			<%= link_to 'edit', 	@edit_url, 		{:class => "option_buttons_item"} %>
-			<%= link_to 'output', 	@pdf_url, 	{:class => "option_buttons_item", :target => "_blank"} %>
-			<%= link_to 'dashboard',@dashboard_url, {:class => "option_buttons_item"} %>
+			<%= link_to 'edit', 	edit_url, 		{:class => "option_buttons_item"} %>
+			<%= link_to 'output', 	preview_url, 	{:class => "option_buttons_item", :target => "_blank"} %>
+			<%= link_to 'dashboard',dashboard_url, {:class => "option_buttons_item"} %>
 		</span>
 </div>
 
@@ -129,7 +129,7 @@
 
 	<div id="name_banner" class="header_item">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @home_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', home_url,	{:class => "name_banner_link"} %>
 			</span>	
 	</div>	<!-- /name_banner -->
 
@@ -146,15 +146,15 @@
 	<div id="name_banner_and_basic_links">
 		<div id="name_banner" class="header_item">
 			<span class="interior">
-				<%= link_to 'resumeCreator', @home_url,	{:class => "name_banner_link"} %>
+				<%= link_to 'resumeCreator', home_url,	{:class => "name_banner_link"} %>
 			</span>	
 		</div>
 		<div id="basic_links" class="header_item">
 			<span class="interior">
-				<%= link_to 'home', 		@home_url, 	{:class => "basic_links_item"} %>
-				<%#= link_to 'my-account', 	@home_url, 	{:class => "basic_links_item"} %>
+				<%= link_to 'home', 		home_url, 	{:class => "basic_links_item"} %>
+				<%#= link_to 'my-account', 	home_url, 	{:class => "basic_links_item"} %>
 				<% if session[:current_user_id] %>
-					<%= link_to 'logout', 		@logout_url, {:class => "basic_links_item"} %>
+					<%= link_to 'logout', 	logout_url, {:class => "basic_links_item"} %>
 				<% end %>	
 			</span>	
 		</div>

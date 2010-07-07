@@ -4,13 +4,11 @@ class Keyvaluepair < ActiveRecord::Base
 	def self.create_it(kvp_hash)
 		# creates a new key-value-pair object from the passed kvp hash (not the kvp hash list)
 		# does not save the object
-		# eg - in {:keyvaluepairs => {"45"=>KVP1, "51"=>KVP2}} KVP1 (and KVP2) is kvp_hash
-		# where KVP1 could be {:key=>"1",:value=>"abhi"}
-		
+	
 		kvp_obj = Keyvaluepair.new
 		kvp_obj.key = kvp_hash[:key]
 		kvp_obj.value = kvp_hash[:value]
-		return kvp_obj
+		kvp_obj
 	end
   
 	def update_it(kvp_hash)
@@ -27,7 +25,7 @@ class Keyvaluepair < ActiveRecord::Base
 	end   
 	
 	def clone_it
-		# creates and returns a deep copy of the part
-		return Marshal::load(Marshal.dump(self))
+		# creates and returns a (unsaved) deep copy of the keyvaluepair
+		self.clone 				# shallow clone with id as nil
 	end	
 end

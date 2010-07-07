@@ -25,7 +25,6 @@ class ResumesController < ApplicationController
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@resume.rtemplate_id])	
-		set_urls(@resume)
 	end
 
 	# GET /options/:title
@@ -44,8 +43,8 @@ class ResumesController < ApplicationController
 		set_urls(@resume)
 	end
 	
-	# POST /create2
-	def create2
+	# POST /create or /create2
+	def create
 	
 		# get the user and check if the resume already exists
 		@user = User.find(session[:current_user_id])
@@ -53,30 +52,18 @@ class ResumesController < ApplicationController
 			logger.error "Error: #{@user.username}- resume creation- resume of same title already exists"
 			flash[:error] = "A resume of same title already exists"
 			redirect_to '/new'
+			return
 		end
-		
-		# build and save the resume
-		@resume = @user.resumes.build(params[:resume])
-		if !@resume.save
-			logger.error "Error: #{@user.username}- resume creation- save"
-			flash[:error] = "Error occurred in resume creation"
-			redirect_to '/new'
-		end
-		
-		# create default parts for the resume 
-		if !@resume.create_default_parts
-			logger.error "Error: #{@user.username}-#{@resume.title} error in default parts creation"
-		end
-		# and save it
-		if !@resume.save
-			logger.error "Error: #{@user.username}-#{@resume.title} error in save after default parts creation"
-		end
-		
+
+		@resume = Resume.create(params)
+		@user.resumes << @resume
+		@user.save
+	
 		redirect_to "/edit2/#{@resume.title}"
 	end
 	
-	# GET /edit2/:title
-	def edit2
+	# GET /edit/:title
+	def edit
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		session[:current_resume_id] = @resume.id
@@ -85,7 +72,7 @@ class ResumesController < ApplicationController
 	end
 	
 	# POST /update
-	def update2
+	def update
 		@user 	= User.find(session[:current_user_id])
 		@resume = @user.resumes.find(session[:current_resume_id])
 		
@@ -102,93 +89,6 @@ class ResumesController < ApplicationController
 		end
 	end
 	
-	# POST /create
-	def create
-		@user = User.find(session[:current_user_id])
-		isAlreadyPresent = @user.has_resume(params[:resume][:title])
-		if isAlreadyPresent == nil
-			@resume = @user.resumes.build(params[:resume])
-			result = @resume.save
-		else
-			result = nil
-		end	
-		
-		if params["ajax"] == "true"
-			if result
-				logger.info "Info: New resume created - #{@user.username}-#{@resume.title}"
-				render :json => { :retVal => "created", :title => @resume.title }
-			else
-				logger.error "Error: resume create - #{@user.username}"
-				render :json => { :retVal => "resume creation failed"	}
-			end
-		else
-			if result 
-				logger.info "Info: New resume created - #{@user.username}-#{@resume.title}"
-				redirect_to "/edit/#{@resume.title}"
-			else	
-				error_msg = "Error: resume create - #{@user.username}"
-				if isAlreadyPresent
-					error_msg = " Error: A resume by that title already exists"
-				end
-				logger.error error_msg
-				flash[:error_new] = error_msg
-				redirect_to '/new'	
-			end		
-		end	
-	end
-
-
-	# GET /edit/:title
-	def edit
-		@user = User.find(session[:current_user_id])
-		if params[:title]
-			@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
-		else	#select the latest one as no title is provided
-			#@resume = @user.resumes.find(:first, :order => "updated_at DESC")
-		end
-		set_urls(@resume)
-	end
-	
-	# PUT /update/:title
-	def update
-		
-		@user 	= User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
-
-		resumePut = params[:resume]
-
-		resRetVal = @resume.update_attributes(resumePut)	# Update the name (resumePut contains the name only)
-		if (params["ajax"]=="true" && params["flag"]=="name_only")
-			if resRetVal
-				render :json => { :retVal => "updated" }
-			else
-				render :json => { :retVal => "error creating" }				
-			end
-			return											# without this, there can be error
-		end
-		
-		conRetVal = update_contact(@resume)					# Update the contact
-		proRetVal = update_profile(@resume)					# Update the profile
-		skiRetVal = update_skills(@resume)					# Update the skills
-		eduRetVal = update_educations(@resume)				# Update the educations
-		expRetVal = update_experiences(@resume)				# Update the experiences
-		achRetVal = update_achievement(@resume)				# Update the achievement
-		hobRetVal = update_hobby(@resume)					# Update the hobby
-		
-		errorText	=	""
-		errorText 	+= 	resRetVal ? "Name updated; " 		: "Error updating name"   		
-		errorText	+=	conRetVal ? "Contact updated; " 	: "Error updating contact" 		
-		errorText	+=	proRetVal ? "Profile updated; " 	: "Error updating profile" 		
-		errorText	+=	skiRetVal ? "Skills updated; " 		: "Error updating skills"   	
-		errorText	+=	eduRetVal ? "Educations updated; "	: "Error updating educations"   
-		errorText	+=	expRetVal ? "Experiences updated; " : "Error updating experiences"  
-		errorText	+=	achRetVal ? "Achievements updated; ": "Error updating achievements" 
-		errorText	+=	hobRetVal ? "Hobby updated; " 		: "Error updating hobby"   		
-					
-		flash[:notice] = errorText
-		
-	end
-
 	# POST /toggle_public_status
 	def toggle_public_status
 		@user = User.find(session[:current_user_id])
@@ -219,7 +119,7 @@ class ResumesController < ApplicationController
 			end
 		else
 			session[:return_to] = ""
-			redirect_to root_url
+			redirect_to "/home"
 		end
 	end
 	
@@ -292,20 +192,6 @@ class ResumesController < ApplicationController
 		if !result
 			logger.warn "Warning: problem saving pdf timestamps"
 		end
-	end
-
-	
-	# GET dummy001/:title
-	def dummy001
-		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
-		
-		##@result = @resume.create_default_parts
-		
-		x = GLOBAL_VAR
-		y = VAR2
-		z = EDUCATION
-		render :text => z[:title]
 	end
 	
 end

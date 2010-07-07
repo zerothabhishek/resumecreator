@@ -2,7 +2,7 @@
 
 #content{
 	clear: both;
-	width: 70%;
+	/*width: 70%;*/
 	margin-left: 15%;		/* same as margin-left for header */
 	margin-right: auto;
 	font-family: verdana;
@@ -13,9 +13,9 @@
 
 #content #current_resume{
 	float: left;
-	width: 55%;
+	width: 65%;
 	margin-top: 5em;
-	border-right: 1px solid #DAE6F0;
+	/*border-right: 1px solid #DAE6F0;*/
 	overflow: none;
 }
 #current_resume .current_resume_heading{
@@ -26,7 +26,7 @@
 }
 #current_resume .thumbnail{
 	float: left;
-	width: 40%;
+	width: 30%;
 }
 #current_resume .thumbnail img{
 	border: 1px solid #ABABFF;
@@ -35,6 +35,7 @@
 #current_resume .other_details{
 	float: left;
 	width: 50%;
+	margin: 0 0 0 1em;
 }
 #current_resume .resume_heading{
 	font-weight: bold;
@@ -55,10 +56,9 @@
 }
 #current_resume .actions{
 	clear: both;
-	overflow: auto;
 	font-size: 85%;
 	font-weight: bold;
-	padding: 1em 0 0 0;
+	padding: 2em 0 0 0;
 }
 #current_resume .actions .action_item{
 	display: inline;

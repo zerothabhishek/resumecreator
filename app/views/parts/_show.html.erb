@@ -1,42 +1,13 @@
 			<% part_str = "resume[parts]" %>
 			<% fields_for part_str, part, :index=>part.id do |part_form| %>
-			<div class="resume_part" id="<%= part.title %>">
+			<div class="resume_part" id="<%= "#{part.title}_#{part.id}" %>">
 				<div class="part_header"><h3>
 					<span class="display"><%= part.title %></span>
 					<%= part_form.text_field :title, :class=> "edit" %>
 				</h3></div>	
 				<div class="part_data">
-					<% part.subparts.each do |subpart| %>
-					<% subpart_str = part_str+"[#{part.id}][subparts]" %>
-					<% fields_for subpart_str, subpart, :index=>subpart.id do |subpart_form| %>
-					<div class="resume_subpart" id=<%=h "subpart_#{subpart.id}" %>>
-						<div class="subpart_title"><h4>
-							<span class="display"><%= subpart.title %></span>
-							<%= subpart_form.text_field :title, :class=> "edit" %>
-						</h4></div>
-						<div class="subpart_data">
-							<% subpart.keyvaluepairs.each do |keyvaluepair| %>
-							<% keyvaluepair_str = subpart_str+"[#{subpart.id}][keyvaluepairs]" %>
-							<% fields_for keyvaluepair_str, keyvaluepair, :index=>keyvaluepair.id do |kvp_form| %>
-							<div class="keyvaluepair">
-								<div class="key">
-									<span class="display"><%= keyvaluepair.key %></span>
-									<%= kvp_form.text_field :key, {:value => keyvaluepair.key, :class=> "edit"} %>
-								</div>	
-								<div class="value">
-									<span class="display"><%= keyvaluepair.value %></span>
-									<%= kvp_form.text_field :value, {:value => keyvaluepair.value, :class=> "edit"} %>
-								</div>	
-							</div>
-							<% end #fields_for kvp %>		
-							<% end #loop- kvp %>
-						</div>	<!-- subpart_data -->
-						<br />
-						<div class="subpart_delete_block">
-							<button type="button" class="delete_button">x</button>
-						</div>
-					</div> <!-- resume_subpart -->
-					<% end #fields_for subpart %>
+					<% part.subparts.each do |subpart_obj| %>
+						<%= render :partial => "subparts/show", :locals => { :subpart => subpart_obj } %>
 					<% end #loop- subpart %>
 				</div> <!-- /part_data -->	
 				

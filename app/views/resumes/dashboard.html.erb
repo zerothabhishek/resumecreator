@@ -5,25 +5,13 @@
 -->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resumes/dashboard.css" />	
-<% 
-	# global urls
-	home_url		= "/home"
-	new_resume_url	= "/new"
-	# resume specific urls
-	dashboard_url	= "/dashboard/#{@resume.title}"			unless !@resume
-	edit_url		= "/edit/#{@resume.title}" 				unless !@resume
-	options_url 	= "/options/#{@resume.title}" 			unless !@resume
-	view_url		= "/view/#{@resume.title}" 				unless !@resume
-	pdf_url			= "/makepdf/#{@resume.title}" 			unless !@resume
-%>
 <div id="content">
-
 
 	<div id="current_resume">
 		<% if @resume %>
 
 		<div class="thumbnail">
-			<a href ="<%=h view_url %>" title="Click to preview" target="_blank">
+			<a href ="<%=h preview_url %>" title="Click to preview" target="_blank">
 					<img src="<%=h @rtemplate.thumbnail_url %>" alt="thumbnail">
 			</a>	
 		</div>
@@ -47,18 +35,24 @@
 		</div> <!-- /other_details -->
 		
 		<div class="actions">
-				<div class="action_item options">
-					<%= link_to 'options', options_url %> -
+				<div class="action_item edit ">
+					<%= link_to 'edit', edit_url %>
 				</div>
+				
+				<div class="action_item preview">
+					<%= link_to 'preview', preview_url, {:target => "_blank"} %>
+				</div>
+				
 				<div class="action_item rtemplate">
-					<%= link_to 'change-template', "#{options_url}#templates" %>
+					<%= link_to 'change-template', rtemplate_url %>
 				</div>
+				
 				<div class="action_item public_status">
-					<% publish_msg = (@resume.public_status=='public') ? 'published' : 'publish' %>
-					<%= link_to publish_msg, "#{options_url}#publish" %>
+					<%= link_to 'publish', publish_url %>
 				</div>
+			
 				<div class="action_item delete_resume">	
-					<%= link_to 'delete', "#{options_url}#delete_resume" %>
+					<%= link_to 'delete', delete_url, :confirm => 'sure ?', :method => :delete %>
 				</div>
 						
 		</div>	<!-- actions -->				
@@ -70,15 +64,6 @@
 			</div>	
 		<% end 	#if%>
 	</div> 	<!-- /resume -->
-	
-	<div class="big_buttons_block">
-		<div id="edit_button" class="big_button">
-			<%= link_to 'edit', edit_url %>
-		</div>
-		<div id="output_button" class="big_button">
-			<%= link_to 'output', pdf_url, {:target => "_blank"} %>
-		</div>		
-	</div>	<!-- big_buttons_block -->
 		
 </div> <!-- /content -->
 

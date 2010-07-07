@@ -5,14 +5,14 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/new',					:controller => 'resumes', 	:action => 'new'
 	map.connect '/home',				:controller => 'resumes', 	:action => 'home'
 	map.connect '/edit/:title',			:controller => 'resumes', 	:action => 'edit'
-	map.connect '/edit2/:title',		:controller => 'resumes', 	:action => 'edit2'
+	#map.connect '/edit2/:title',		:controller => 'resumes', 	:action => 'edit2'
 	map.connect '/dashboard/:title',	:controller => 'resumes', 	:action => 'dashboard'
 	map.connect '/options/:title',		:controller => 'resumes', 	:action => 'options'
 	map.connect '/view/:title',			:controller => 'resumes', 	:action => 'view'
 	map.connect '/index',				:controller => 'resumes', 	:action => 'index'	
 
 	map.connect '/dummy001/:title',		:controller => 'resumes', 	:action => 'dummy001'
-	map.connect '/create/subpart',		:controller => 'subparts',	:action => 'create'
+	map.connect '/create/subpart',		:controller => 'subparts',	:action => 'create2'
 	map.connect '/destroy/subpart',		:controller => 'subparts',	:action => 'destroy'
 	
 	map.connect '/new/:title/part',		:controller => 'parts', 	:action => 'new'
@@ -30,12 +30,12 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/user/check_availability',	:controller => 'users', 	:action => 'check_availability'	
 	
 	map.connect '/create',	:controller => 'resumes',	:action => 'create'
-	map.connect '/create2',	:controller => 'resumes',	:action => 'create2'
+	map.connect '/create2',	:controller => 'resumes',	:action => 'create'
 	map.connect '/update2',	:controller => 'resumes',	:action => 'update2'
 	map.connect '/set_default_resume',	:controller => 'users', 	:action => 'set_default_resume'
 
 	map.connect '/update/:title',	:controller => 'resumes',	:action => 'update'
-	map.connect '/destroy/:title',	:controller => 'resumes',	:action => 'destroy'
+	map.connect '/destroy/:title',	:controller => 'resumes',	:action => 'destroy', :conditions => { :method => :delete }
 	map.connect '/makepdf/:title',	:controller => 'resumes',	 :action => 'makepdf'
 	map.connect '/toggle_public_status',	:controller => 'resumes',	:action => 'toggle_public_status'
 	map.connect '/preview/:title/:rtname',	:controller => 'rtemplates', :action => 'preview'
