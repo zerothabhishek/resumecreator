@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_filter :check_session,			# filter routine (applied before the action starts) checks for session
+	before_filter :check_session,				# filter routine (applied before the action starts) checks for session
 		:only => [:logout, :set_as_default] 	# actions where filter is applied
 
 

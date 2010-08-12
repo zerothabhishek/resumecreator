@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 	
 	
+	def session_exists?
+	  return false if session[:current_user_id].blank?
+	  return true
+	end
+	
+	def current_user
+	  User.find(session[:current_user_id])
+	end
+	
 	# filter - this filter routine is executed BEFORE starting the action,
 	# and looks for the existence of the session
 	private 					

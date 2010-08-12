@@ -1,6 +1,6 @@
 class Part < ActiveRecord::Base
   belongs_to :resume
-  has_many :subparts
+  has_many :keyvaluepairs
 
   require "Shared"		# the file shared.rb is needed for Shared module
   include Shared	

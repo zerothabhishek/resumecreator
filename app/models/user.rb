@@ -1,5 +1,12 @@
 class User < ActiveRecord::Base
 	has_many :resumes
+	has_many :parts
+	has_many :keyvaluepairs
+	
+	def self.current
+			
+	end
+	
 	def self.authenticate(user, pass)
 		u = find(:first, :conditions => ["username=? AND password=?", user, pass])
 		return nil if u.nil?

@@ -1,13 +1,6 @@
 class Resume < ActiveRecord::Base
   belongs_to :user
   has_many :parts
-  has_one :contact
-  has_one :profile
-  has_many :educations
-  has_many :experiences
-  has_one :hobby			
-  has_one :achievement  	
-  has_many :skills
   
   require "Shared"		# the file shared.rb is needed for Shared module
   include Shared		

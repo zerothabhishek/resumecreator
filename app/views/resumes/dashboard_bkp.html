@@ -1,0 +1,99 @@
+<!-- 	
+		The resume dashboard view : app/views/resumes/dashboard.html.erb
+		controller: resume, action: dashboard
+		URL/dashboard 	- shows a resume and various actions related
+-->
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/dashboard.css" />	
+<% 
+	# global urls
+	home_url		= "/home"
+	new_resume_url	= "/new"
+	# resume specific urls
+	dashboard_url	= "/dashboard/#{@resume.title}"			unless !@resume
+	edit_url		= "/edit/#{@resume.title}" 				unless !@resume
+	options_url 	= "/options/#{@resume.title}" 			unless !@resume
+	view_url		= "/view/#{@resume.title}" 				unless !@resume
+	pdf_url			= "/makepdf/#{@resume.title}" 			unless !@resume
+%>
+<div id="content">
+
+
+	<div id="current_resume">
+		<% if @resume %>
+
+		<div class="thumbnail">
+			<a href ="<%=h view_url %>" title="Click to preview" target="_blank">
+					<img src="<%=h @rtemplate.thumbnail_url %>" alt="thumbnail">
+			</a>	
+		</div>
+				
+		<div class="other_details">
+
+			<div class="resume_heading">
+				<div class="resume_title">
+					<%= link_to @resume.title, dashboard_url %>
+				</div>
+			</div>
+
+			<div class="updated_at">
+				updated <%=h @resume.updated_at.to_s(:long) %>
+			</div>
+					
+			<div class="desc">
+				<p><%=h @resume.meta_desc %></p>
+			</div>
+
+		</div> <!-- /other_details -->
+		
+		<div class="actions">
+				<div class="action_item options">
+					<%= link_to 'options', options_url %> -
+				</div>
+				<div class="action_item rtemplate">
+					<%= link_to 'change-template', "#{options_url}#templates" %>
+				</div>
+				<div class="action_item public_status">
+					<% publish_msg = (@resume.public_status=='public') ? 'published' : 'publish' %>
+					<%= link_to publish_msg, "#{options_url}#publish" %>
+				</div>
+				<div class="action_item delete_resume">	
+					<%= link_to 'delete', "#{options_url}#delete_resume" %>
+				</div>
+						
+		</div>	<!-- actions -->				
+		
+		<% else %>
+			<div class="error_msg">
+				A resume by that title probaby doesn't exist.<br/>
+				<%= link_to 'back home', home_url %>
+			</div>	
+		<% end 	#if%>
+	</div> 	<!-- /resume -->
+	
+	<div class="big_buttons_block">
+		<div id="edit_button" class="big_button">
+			<%= link_to 'edit', edit_url %>
+		</div>
+		<div id="output_button" class="big_button">
+			<%= link_to 'output', pdf_url, {:target => "_blank"} %>
+		</div>		
+	</div>	<!-- big_buttons_block -->
+		
+</div> <!-- /content -->
+
+<% if RAILS_ENV == "production" %>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/dashboard.js"></script>	
+<% end %>
+
+<% if RAILS_ENV == "development" %>	
+<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
+<script type="text/javascript" src="/javascripts/resume_common.js"></script>
+<script type="text/javascript" src="/javascripts/resumes/dashboard.js"></script>
+<% end %>

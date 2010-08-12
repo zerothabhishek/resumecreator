@@ -1,4 +1,36 @@
 class PartsController < ApplicationController
+  before_filter :check_session
+
+  # GET /parts/new
+  def new
+    @part = Part.new
+  end
+  
+  # POST /parts
+  def create
+    @part = Part.create!(params_hash)
+	# redirect after checking if its an AJAX request
+  end
+  
+  # GET /parts/:id/edit
+  def edit
+    @part = current_user.parts.find(params[:id])
+  end
+  
+  # PUT /parts/:id
+  def update
+    @part = current_user.parts.find(params[:id])
+	part_hash = params[:part]
+    @part.update(part_hash)
+  end
+  
+  # DELETE /parts/:id
+  def destroy
+    @part = current_user.parts.find(params[:id])
+	@part.destroy
+  end
+
+
 
 	# POST create2/part
 	def create2

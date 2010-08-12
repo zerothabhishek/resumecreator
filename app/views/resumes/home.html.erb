@@ -1,13 +1,7 @@
-<!-- 	
-		The home page view : app/views/resumes/home.html.erb
-		controller: resume, action: home
-		URL or URL/home 	- when user is logged in
--->
-
 <link rel="stylesheet" type="text/css" href="/stylesheets/resumes/home.css" />	
 <div id="content">
 
-	<% if @all_resumes.size != 0 %>
+	<% if @resumes.size != 0 %>
 	<div id="latest_resume">
 		
 		<div class="latest_resume_heading">
