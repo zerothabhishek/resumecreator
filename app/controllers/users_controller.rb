@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	def login
 		user = User.authenticate(params[:username],params[:password])
 		if user
-			session[:current_user_id] = user.id
+			session[:current_user] = user.id
 			flash[:notice] = "logged in"
 			redirect_to '/home'
 		else
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
 	# POST /logout
 	def logout
-		@user = User.find(session[:current_user_id])	
+		@user = User.find(session[:current_user])	
 		session[:current_user_id] = nil
 		if @user.user_type == 'TRIAL'		# delete the account if its a trial account (only account is deleted, not the resumes)
 			result = @user.destroy
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
 	# POST /set_default_resume
 	def set_default_resume
-		@user = User.find(session[:current_user_id])	
+		@user = User.find(session[:current_user])	
 		@user.default_resume = params["resume_id"]
 		result = @user.save
 		if (params["ajax"]=="true")
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 			if result 
 				flash[:notice] = "created"
 				# log the user in and redirect to home
-				session[:current_user_id] = @user.id
+				session[:current_user] = @user.id
 				redirect_to '/home'
 			else
 				flash[:notice] = "account creation failed"
@@ -112,7 +112,7 @@ class UsersController < ApplicationController
 		end		
 		
 		# log the user in, by settting the session
-		session[:current_user_id] = @user.id
+		session[:current_user] = @user.id
 		
 		# redirect the user to canvas page
 		redirect_to '/edit/trialResume'

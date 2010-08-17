@@ -2,50 +2,16 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include Clearance::Authentication
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-	
-	
-	def session_exists?
-	  return false if session[:current_user_id].blank?
-	  return true
-	end
-	
-	def current_user
-	  User.find(session[:current_user_id])
-	end
-	
+		
 	# filter - this filter routine is executed BEFORE starting the action,
 	# and looks for the existence of the session
-	private 					
-	def check_session		
-		if session[:current_user_id].nil?
-			# user not logged in, redirect him to root
-			flash[:notice] = "No user logged in ....!"
-			redirect_to '/index'
-		end		
-	end	
-		
-	def set_urls(resume)
-		# global urls
-		@index_url		= "/index"
-		@home_url 		= "/home"
-		@new_resume_url	= "/new"
-		@logout_url		= "/logout"	
-		# resume specific urls
-		@dashboard_url	= "/dashboard/#{resume.title}"				unless !resume
-		@edit_url 		= "/edit/#{resume.title}" 					unless !resume
-		@options_url 	= "/options/#{resume.title}" 				unless !resume
-		@view_url		= "/view/#{resume.title}" 					unless !resume
-		@pdf_url		= "/makepdf/#{resume.title}" 				unless !resume
-		@publish_url 	= "#{@options_url}#publish" 				unless !@options_url
-		@templates_url 	= "#{@options_url}#templates" 				unless !@options_url
-		
-		@output_url		= @view_url									if @view_url
-	end
+	protected
 
 
 	def get_predefined_part(part_title)

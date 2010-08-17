@@ -1,49 +1,48 @@
 class PartsController < ApplicationController
-  before_filter :check_session
+  before_filter :authenticate
 
-  # GET /parts/new
+  # GET /resumes/:resume_id/parts
+  def index
+	@resume = current_user.find(params[:resume_id], :include => :parts)
+  end
+  
+  # GET /resumes/:resume_id/parts/:id
+  def show
+    @part = Part.find(params[:id])
+  end
+  
+  # GET /resumes/:resume_id/parts/new
   def new
-    @part = Part.new
+    @resume = current_user.resumes.find(params[:resume_id])
+	@part = @resume.parts.new
   end
   
-  # POST /parts
+  # POST /resumes/:resume_id/parts
   def create
-    @part = Part.create!(params_hash)
-	# redirect after checking if its an AJAX request
+    @resume = current_user.resumes.find(params[:resume_id])
+	@part = Part.create(params[:part])
+	redirect_to resume_part_path(@resume, @part)
   end
   
-  # GET /parts/:id/edit
+  # GET /resumes/:resume_id/parts/:id/edit
   def edit
-    @part = current_user.parts.find(params[:id])
+    @resume = current_user.resumes.find(params[:resume_id])
+    @part = @resume.parts.find(params[:id])
   end
   
-  # PUT /parts/:id
+  # PUT /resumes/:resume_id/parts/:id
   def update
-    @part = current_user.parts.find(params[:id])
-	part_hash = params[:part]
-    @part.update(part_hash)
+    @resume = current_user.resumes.find(params[:resume_id])
+    @part = @resume.parts.find(params[:id])
+    @part.update_attributes(params[:part])
   end
   
-  # DELETE /parts/:id
+  # DELETE /resumes/:resume_id/parts/:id
   def destroy
-    @part = current_user.parts.find(params[:id])
+    @resume = current_user.resumes.find(params[:resume_id])
+    @part = @resume.parts.find(params[:id])
 	@part.destroy
+	redirect_to resume_path(@resume)
   end
-
-
-
-	# POST create2/part
-	def create2
-		begin
-			@user = User.find(session[:current_user_id])
-			@resume = @user.resumes.find(session[:current_resume_id])
-			
-			part_obj = Part.create_by_title(params[:new_part_title])
-			@resume.parts << part_obj									# add the newly created part to the resume
-			@resume.save												# save the resume - saves the parts, subparts and keyvaluepairs too		
-			
-			render :partial => "parts/show", :locals => { :part => part_obj }
-		end
-	end
 	
 end

@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
 
-  before_filter :check_session, :except => [:show]
+  before_filter :authenticate, :except => [:show]
   
   # GET /resumes
   def index

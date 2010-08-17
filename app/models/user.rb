@@ -1,7 +1,20 @@
 class User < ActiveRecord::Base
-	has_many :resumes
-	has_many :parts
-	has_many :keyvaluepairs
+  include Clearance::User
+  has_many :resumes
+
+
+  # Hooks for disabling email confirmation
+  after_create :confirm_user 
+  def deliver_confirmation_email 
+   # Do Nothing 
+   # or MyMailer.deliver_thank_you self 
+  end 
+  private 
+  def confirm_user 
+     self.update_attributes({:email_confirmed => true}) 
+   end 
+  end 
+  # EndOfHooks
 	
 	def self.current
 			
