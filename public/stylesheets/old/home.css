@@ -22,7 +22,7 @@
 	text-decoration: none;
 }
 #all_resumes_container a:hover{
-	text-decoration: underline;	
+	text-decoration: underline;
 }
 #all_resumes_container .each_resume{
 	margin: 2em 0;

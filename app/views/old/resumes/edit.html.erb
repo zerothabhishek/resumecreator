@@ -1,8 +1,8 @@
 <!--
-			URL/show/:title	
+			URL/show/:title
 			app/views/resumes/show.html.erb
 			The show resume view - shows a particular resume of the user in full
-			controller: resumes, action: show 
+			controller: resumes, action: show
 -->
 
 <p>
@@ -14,7 +14,7 @@
 <% form_tag(url, :method => "post") do %>
 
 	<p>
-		<b>Name:</b> 
+		<b>Name:</b>
 		<input 	type="text"
 				class="name"
 				name="resume[name]"
@@ -22,21 +22,21 @@
 	</p>
 
 	<p>
-		<b>Contact:</b> 
+		<b>Contact:</b>
 		<% if @resume.contact.nil? %>
 			<%= link_to 'Add contact', '/new/'+@resume.title+'/contacts' %>
 		<% else %>
 			Address -
 			<textarea
 					class="address"
-					name="contact[address]" 
+					name="contact[address]"
 					><%=h @resume.contact.address %></textarea>
-			Phone_nos -		
+			Phone_nos -
 			<input	type="text"
 					class="phone_nos"
 					name="contact[phone_nos]"
 					value="<%=h @resume.contact.phone_nos %>" >
-			Emails -		
+			Emails -
 			<input	type="text"
 					class="emails"
 					name="contact[emails]"
@@ -45,11 +45,11 @@
 	</p>
 
 	<p>
-		<b>Profile:</b> 
+		<b>Profile:</b>
 		<% if @resume.profile.nil? %>
 			<%= link_to 'Add profile', '/new/'+@resume.title+'/profiles' %>
 		<% else %>
-			<textarea 
+			<textarea
 					class="profile_text"
 					name="profile[profile_text]"
 					><%=h @resume.profile.profile_text %></textarea>
@@ -62,7 +62,7 @@
 			<%# empty as of now %>
 		<% else %>
 			<table>
-				<th>skill_name <th>skill_remarks <th>skillset_type 
+				<th>skill_name <th>skill_remarks <th>skillset_type
 				<% @resume.skills.each do |skill| %>
 				<tr>
 					<td>
@@ -85,9 +85,9 @@
 					</td>
 				</tr>
 				<% end %>
-			</table>		
+			</table>
 		<% end %>
-		<%= link_to 'Add skills', '/new/'+@resume.title+'/skills' %>	
+		<%= link_to 'Add skills', '/new/'+@resume.title+'/skills' %>
 	</p>
 
 	<p>
@@ -131,14 +131,14 @@
 					</td>
 				</tr>
 				<% end %>
-			</table>		
+			</table>
 		<% end %>
 		<%= link_to 'Add Education', '/new/'+@resume.title+'/educations' %>
 	</p>
 
 	<p>
 		<b> Experience: </b>
-		<% if @resume.experiences.size == 0 %>	
+		<% if @resume.experiences.size == 0 %>
 			<%# empty as of now %>
 		<% else %>
 			<table>
@@ -164,7 +164,7 @@
 								value="<%=h experience.duration %>" >
 					</td>
 					<td>
-						<textarea	
+						<textarea
 								class="role"
 								name="experience[<%=h experience.id %>][role]"
 								><%=h experience.role %>" </textarea>
@@ -177,7 +177,7 @@
 					</td>
 				</tr>
 				<% end %>
-			</table>	
+			</table>
 		<% end %>
 		<%= link_to 'Add Experience', '/new/'+@resume.title+'/experiences' %>
 	</p>
@@ -186,12 +186,12 @@
 		<b>Achievements:</b>
 		<% if @resume.achievement.nil? %>
 			<%= link_to 'Add Achievements', '/new/'+@resume.title+'/achievements' %>
-		<% else %>	
+		<% else %>
 			<textarea
 					class="achievements_text"
 					name="achievement[achievements_text]"
 					><%=h @resume.achievement.achievements_text %></textarea>
-			
+
 		<% end %>
 	</p>
 
@@ -199,20 +199,20 @@
 		<b>Hobbies:</b>
 		<% if @resume.hobby.nil? %>
 			<%= link_to 'Add Hobbies', '/new/'+@resume.title+'/hobbies' %>
-		<% else %>	
+		<% else %>
 			<textarea
 					class="hobbies_text"
 					name="hobby[hobbies_text]"
 					><%=h @resume.hobby.hobbies_text %></textarea>
 		<% end %>
 	</p>
-	
-	<p>  
-		<input name="commit" type="submit" value="Update" /> 
-	</p> 
-	
+
+	<p>
+		<input name="commit" type="submit" value="Update" />
+	</p>
+
 <% end %>
 
-<%= link_to 'Edit', '/edit/'+@resume.title %> 
+<%= link_to 'Edit', '/edit/'+@resume.title %>
 <%= link_to 'Home', '/home' %>
 <%= link_to 'Logout', '/logout' %>

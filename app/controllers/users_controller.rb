@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
 	# POST /logout
 	def logout
-		@user = User.find(session[:current_user_id])	
+		@user = User.find(session[:current_user_id])
 		session[:current_user_id] = nil
 		if @user.user_type == 'TRIAL'		# delete the account if its a trial account (only account is deleted, not the resumes)
 			result = @user.destroy
@@ -32,43 +32,43 @@ class UsersController < ApplicationController
 
 	# POST /set_default_resume
 	def set_default_resume
-		@user = User.find(session[:current_user_id])	
+		@user = User.find(session[:current_user_id])
 		@user.default_resume = params["resume_id"]
 		result = @user.save
 		if (params["ajax"]=="true")
 			if result
-					render :json => { :retVal => "set" }		
+					render :json => { :retVal => "set" }
 			else
 					render :json => { :retVal => "error"}
 			end
 		else
 			redirect_to root_url
-		end	
+		end
 	end
-	
+
 	# GET /signup
 	def signup
 		# just show the template- signup.html.erb
 		if flash[:error] == "001"
 			@error_msg = flash[:notice]
-		end	
+		end
 		render :layout => "resumes.html.erb"
 	end
-	
+
 	# POST /user/create
 	def create
 		username = params[:user]["username"]
 		result = User.is_present(username)
-		if result	
+		if result
 			# the name already exists
 			flash[:notice] = "username unavailable"
 			flash[:error] = "001"
 			redirect_to '/signup'
 			return
-		else		
+		else
 			@user = User.new(params[:user])
 			result = @user.save
-			if result 
+			if result
 				flash[:notice] = "created"
 				# log the user in and redirect to home
 				session[:current_user_id] = @user.id
@@ -76,21 +76,21 @@ class UsersController < ApplicationController
 			else
 				flash[:notice] = "account creation failed"
 				redirect_to '/signup'
-			end	
-		end	
+			end
+		end
 	end
-	
+
 	# POST /user/check_availability
 	def check_availability
 		username = params["username"]
 		result = User.is_present(username)
 		if result
-			render :json => { :retVal => "not available" }	
+			render :json => { :retVal => "not available" }
 		else
-			render :json => { :retVal => "available" }			
+			render :json => { :retVal => "available" }
 		end
 	end
-	
+
 	# GET /trial
 	def trial
 		# create a temp user
@@ -101,19 +101,19 @@ class UsersController < ApplicationController
 			logger.error "Error: creating trial user"
 			redirect_to '/index'
 		end
-		
+
 		# create a trial resume for the user
 		@resume = @user.resumes.build(:title => "trialResume", :name => "trialUser")
 		result2 = @resume.save
 		if !result2
 			flash[:notice] = "some error"
 			logger.error "Error: creating trial user"
-			redirect_to '/index'			
-		end		
-		
+			redirect_to '/index'
+		end
+
 		# log the user in, by settting the session
 		session[:current_user_id] = @user.id
-		
+
 		# redirect the user to canvas page
 		redirect_to '/edit/trialResume'
 	end

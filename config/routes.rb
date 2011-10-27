@@ -8,15 +8,15 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/dashboard/:title',	:controller => 'resumes', 	:action => 'dashboard'
 	map.connect '/options/:title',		:controller => 'resumes', 	:action => 'options'
 	map.connect '/view/:title',			:controller => 'resumes', 	:action => 'view'
-	map.connect '/index',				:controller => 'resumes', 	:action => 'index'	
-	
+	map.connect '/index',				:controller => 'resumes', 	:action => 'index'
+
 	map.connect '/trial',	:controller => 'users',		:action => 'trial'
 	map.connect '/login',	:controller => 'users', 	:action => 'login'
 	map.connect '/logout',	:controller => 'users', 	:action => 'logout'
 	map.connect '/signup',	:controller => 'users', 	:action => 'signup'
-	map.connect '/user/create',	:controller => 'users', 	:action => 'create'	
-	map.connect '/user/check_availability',	:controller => 'users', 	:action => 'check_availability'	
-	
+	map.connect '/user/create',	:controller => 'users', 	:action => 'create'
+	map.connect '/user/check_availability',	:controller => 'users', 	:action => 'check_availability'
+
 	map.connect '/create',	:controller => 'resumes',	:action => 'create'
 	map.connect '/set_default_resume',	:controller => 'users', 	:action => 'set_default_resume'
 
@@ -35,12 +35,12 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/privacy',		:controller => 'static_pages', 	:action => 'show',	:page => 'privacy'
 	map.connect '/feedback',	:controller => 'static_pages', 	:action => 'show',	:page => 'feedback'
 
-	# default for urls like /new/<title>/educations or create/<title>/contact	
-	map.connect '/:action/:title/:controller'		
+	# default for urls like /new/<title>/educations or create/<title>/contact
+	map.connect '/:action/:title/:controller'
 
 	# default url for user's public resume
 	map.connect '/:username/:title',	:controller => 'resumes',	:action => 'view'
-	
+
 # 	old ones
 #	map.connect '/show_p/:title',	:controller => 'resumes',	:action => 'show_p'
 #	map.connect '/show/:title',		:controller => 'resumes',	:action => 'show'
@@ -51,7 +51,7 @@ ActionController::Routing::Routes.draw do |map|
 #	map.connect '/qedit/:title/:part',	:controller => 'resumes',	:action => 'edit3'
 #	map.connect '/:username/',			:controller => 'resumes',	:action => 'view'
 #	map.connect '/home',	:controller => 'resumes', 	:action => 'home'
-  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -71,7 +71,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments

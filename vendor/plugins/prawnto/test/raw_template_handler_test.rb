@@ -103,7 +103,7 @@ EOS
     head_lines = (INPUT_PATH + "../.git/HEAD").read.split("\n")
     head_hash = Hash[*head_lines.map {|line| line.split(':').map{|v| v.strip}}.flatten]
     head_version = (INPUT_PATH + "../.git" + head_hash['ref'])
-    
+
     REFERENCE_PATH.mkpath
     current_version = REFERENCE_PATH + 'HEAD'
     if !current_version.exist? || current_version.read!=head_version.read
@@ -146,7 +146,7 @@ EOS
     assert_equal reference, value, message
   end
 
-  #!!! Can't actually verify pdf equality until ruby 1.9 
+  #!!! Can't actually verify pdf equality until ruby 1.9
   # (cuz hash orders are messed up otherwise and no other way to test equality at the moment)
   INPUTS.each do |path|
     name = path.basename('.rb')
@@ -156,8 +156,8 @@ EOS
     end
   end
 
-  
-  
+
+
 
 end
 

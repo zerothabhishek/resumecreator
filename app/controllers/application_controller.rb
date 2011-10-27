@@ -7,25 +7,25 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
-	
-	
+
+
 	# filter - this filter routine is executed BEFORE starting the action,
 	# and looks for the existence of the session
-	private 					
-		def check_session		
+	private
+		def check_session
 			if session[:current_user_id].nil?
 				# user not logged in, redirect him to root
 				flash[:notice] = "No user logged in ....!"
 				redirect_to '/index'
-			end		
-		end	
-		
+			end
+		end
+
 		def set_urls(resume)
 			# global urls
 			@index_url		= "/index"
 			@home_url 		= "/home"
 			@new_resume_url	= "/new"
-			@logout_url		= "/logout"	
+			@logout_url		= "/logout"
 			# resume specific urls
 			@dashboard_url	= "/dashboard/#{resume.title}"				unless !resume
 			@edit_url 		= "/edit/#{resume.title}" 					unless !resume
@@ -38,32 +38,32 @@ class ApplicationController < ActionController::Base
 
 	def update_timestamp(resume)
 		retVal	= resume.update_attributes({"updated_at" => DateTime.now()})
-		if  !retVal 
-			logger.warn "Warning: problem updating resume timestamp" 
-		end	
-		return		
+		if  !retVal
+			logger.warn "Warning: problem updating resume timestamp"
+		end
+		return
 	end
-	
+
 	def update_contact(resume)
 	 	@contact 	= resume.contact
 	 	contactPut 	= params[:contact]
 	 	retVal = @contact.update_attributes(contactPut)
-		if retVal 
+		if retVal
 			update_timestamp(resume)
-		end	
-		return retVal	
+		end
+		return retVal
 	end
-	
+
 	def update_profile(resume)
 		@profile 	= resume.profile
 		profilePut 	= params[:profile]
 		retVal = @profile.update_attributes(profilePut)
-		if retVal 
+		if retVal
 			update_timestamp(resume)
-		end	
+		end
 		return retVal
 	end
-	
+
 	def update_skills(resume)
 		@skills 	= resume.skills
 		skillsPut 	= params[:skills]
@@ -72,16 +72,16 @@ class ApplicationController < ActionController::Base
 		end
 		for @skill in @skills
 			retVal = @skill.update_attributes(skillsPut[@skill.id.to_s])
-			if !retVal 
+			if !retVal
 				break
 			end			# if
-		end				# for						
-		if retVal 
+		end				# for
+		if retVal
 			update_timestamp(resume)
-		end	
-		return retVal	
+		end
+		return retVal
 	end
-	
+
 	def update_educations(resume)
 		@educations 	= resume.educations
 		educationPut 	= params[:education]
@@ -94,12 +94,12 @@ class ApplicationController < ActionController::Base
 				break
 			end
 		end
-		if retVal 
+		if retVal
 			update_timestamp(resume)
-		end	
+		end
 		return retVal
 	end
-	
+
 	def update_experiences(resume)
 		@experiences 	= resume.experiences
 		experiencePut 	= params[:experience]
@@ -111,20 +111,20 @@ class ApplicationController < ActionController::Base
 			if !retVal
 				break
 			end
-		end	
-		if retVal 
+		end
+		if retVal
 			update_timestamp(resume)
-		end	
+		end
 		return retVal
 	end
-	
+
 	def update_achievement(resume)
 		@achievement 	= resume.achievement
 		achievementPut 	= params[:achievement]
 		retVal 			= @achievement.update_attributes(achievementPut)
-		if retVal 
+		if retVal
 			update_timestamp(resume)
-		end	
+		end
 		return retVal
 	end
 
@@ -132,10 +132,10 @@ class ApplicationController < ActionController::Base
 		@hobby 		= resume.hobby
 		hobbyPut 	= params[:hobby]
 		retVal 		= @hobby.update_attributes(hobbyPut)
-		if retVal 
+		if retVal
 			update_timestamp(resume)
-		end	
+		end
 		return retVal
 	end
-	
+
 end

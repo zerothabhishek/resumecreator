@@ -1,20 +1,20 @@
 
 
 <!-- edit markup for experience part - one experience object in one go -->
-<!-- 
+<!--
 	CLASSname 	:DESCRIPTION and USAGE
 	partUnit 	:a single instance of the part - one experience detail (represnted by one object)
 	partItem	:an item within a part - field of the model (a property of object) eg - experience level
 	deleteable	:an element that can be deleted with a delete button within it
-	key_text	:the text that is displayed as the label for data displayed or input box renderd 
+	key_text	:the text that is displayed as the label for data displayed or input box renderd
 	display		:identifies an element that displays data while show
 	edit		:identifies an imput box meant for editing
 	add			:identifies an input box meant for adding
 	delete_button:	a button that can trigger the delete functionality and delete the deletable element
--->	
-	
+-->
+
 	<div id="experiences_<%=h experience.id %>" class="partUnit deleteable">
-		
+
 		<div class="partItem title">
 			<span class="key_text">Title</span>
 			<div class="value_block">
@@ -23,7 +23,7 @@
 						class="edit"
 						name="experience[<%=h experience.id %>][title]"
 						value="<%=h experience.title %>" >
-			</div>			
+			</div>
 		</div>
 
 		<div class="partItem company">
@@ -34,9 +34,9 @@
 						class="edit"
 						name="experience[<%=h experience.id %>][company]"
 						value="<%=h experience.company %>" >
-			</div>			
+			</div>
 		</div>
-		
+
 		<div class="partItem duration">
 			<span class="key_text">Duration</span>
 			<div class="value_block">
@@ -45,7 +45,7 @@
 						class="edit"
 						name="experience[<%=h experience.id %>][duration]"
 						value="<%=h experience.duration %>" >
-			</div>			
+			</div>
 		</div>
 
 		<div class="partItem role">
@@ -56,7 +56,7 @@
 						class="edit"
 						name="experience[<%=h experience.id %>][role]"
 						value="<%=h experience.role %>" >
-			</div>			
+			</div>
 		</div>
 
 		<div class="partItem more_info">
@@ -67,12 +67,12 @@
 						class="edit"
 						name="experience[<%=h experience.id %>][more_info]"
 						><%=h experience.more_info %></textarea>
-			</div>			
+			</div>
 		</div>
-		
-		<div class="delete_button">	
+
+		<div class="delete_button">
 			<button type="button">delete</button>
 		</div>
-		
+
 	</div>
 

@@ -42,7 +42,7 @@
 	margin: 0 0 0.5em 0;
 }
 .active_tab_button{
-	background-color: #C8DAE8;			/* lighter shade of steelblue */	
+	background-color: #C8DAE8;			/* lighter shade of steelblue */
 }
 .inactive_tab_button{
 	border: 0;
@@ -98,7 +98,7 @@
 }
 #resume_parts .part .addPart .key_text{
 	display: block;		/* as it is a SPAN */
-	width: 30%;			
+	width: 30%;
 	float: left;
 	text-align: right;
 	font-size: 90%;
@@ -107,7 +107,7 @@
 	margin-left: 3em;
 }
 #resume_parts .part .addPart .button_stripe{
-	margin-left: 30%;	
+	margin-left: 30%;
 	padding-left: 3em;
 }
 #resume_parts a{
@@ -115,7 +115,7 @@
 	font-weight: bold;
 }
 #resume_parts a:hover{
-	text-decoration: underline;	
+	text-decoration: underline;
 }
 
 /********** publish ******************/
@@ -177,7 +177,7 @@
 
 #other_settings{
 	font-family: verdana, sans-serif;
-	font-size: 80%;	
+	font-size: 80%;
 	width: 50%;
 }
 #other_settings .setting_div{
@@ -192,7 +192,7 @@
 	font-size: 90%;
 }
 #other_settings a:hover{
-	text-decoration: underline;	
+	text-decoration: underline;
 }
 #other_settings h4{
 	margin-bottom: 0.5em;

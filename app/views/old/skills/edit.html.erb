@@ -1,9 +1,9 @@
 <!--
 	URL/edit/:title/skills
-	app/views/skills/edit.html.erb 
-	The edit resume/skills view - form for editing a skillsets for the resume of a user 
+	app/views/skills/edit.html.erb
+	The edit resume/skills view - form for editing a skillsets for the resume of a user
 	controller: skills, action: edit
--->			
+-->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/skills/edit.css" />
@@ -11,47 +11,47 @@
 <div class="heading">
 	<h3> Edit Skills </h3>
 	<div class="links">
-		<%= link_to 'Add',  '/new/'+@resume.title+'/skills' %>	
+		<%= link_to 'Add',  '/new/'+@resume.title+'/skills' %>
 		<%= link_to 'Show', '/show/'+@resume.title+'/skills' %>
-	</div>	
+	</div>
 </div>
 
 <% url = '/update/'+@resume.title+'/skills' %>
-<% form_tag(url, :method => "post") do %> 
+<% form_tag(url, :method => "post") do %>
 	<% if @skills.length!=0 %>
 	<table class="skills_table">
 		<th> skill_name <th> skill_remarks <th> skillset_type
 		<% @skills.each do |skill| %>
 		<tr class="table_data_row">
-			<td><input 	
-					type	= "text" 
-					class	= "skill_name" 
-					name	= "skills[<%= skill.id %>][skill_name]" 
+			<td><input
+					type	= "text"
+					class	= "skill_name"
+					name	= "skills[<%= skill.id %>][skill_name]"
 					value	= "<%=h skill.skill_name %>">		</td>
-			
-			<td><input 	
+
+			<td><input
 					type	= "text"
-					class	= "skill_remarks" 
-					name	= "skills[<%= skill.id %>][skill_remarks]" 
+					class	= "skill_remarks"
+					name	= "skills[<%= skill.id %>][skill_remarks]"
 					value	= "<%=h skill.skill_remarks %>">	</td>
-					
-			<td><input 	
+
+			<td><input
 					type	= "text"
-					class	= "skillset_type" 
-					name	= "skills[<%= skill.id %>][skillset_type]" 
+					class	= "skillset_type"
+					name	= "skills[<%= skill.id %>][skillset_type]"
 					value	= "<%=h skill.skillset_type %>">	</td>
 		</tr>
 		<% end %>
 	</table>
-	
-	<p>  
-		<input name="commit" type="submit" value="Update" /> 
-	</p> 
+
+	<p>
+		<input name="commit" type="submit" value="Update" />
+	</p>
 	<% else %>
 		<p>
 			No skills data.
-			<%= link_to 'Add',  '/new/'+@resume.title+'/skills' %>	
-		</p>	
+			<%= link_to 'Add',  '/new/'+@resume.title+'/skills' %>
+		</p>
 	<% end # if-else %>
 
 <% end %>

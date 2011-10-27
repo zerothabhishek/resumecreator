@@ -8,7 +8,7 @@ one:
   hobbies: MyText
   achievements: MyText
   public_status: MyString
-  user: 
+  user:
 
 two:
   title: MyString
@@ -18,4 +18,4 @@ two:
   hobbies: MyText
   achievements: MyText
   public_status: MyString
-  user: 
+  user:

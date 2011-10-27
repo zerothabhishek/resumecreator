@@ -23,15 +23,15 @@ Some common functionality is written in application_controller
 
 
 * There are just too many files/folders. Where is most of the relevent code?
-Yes there are too many stray files, and too much unused code in some files. 
+Yes there are too many stray files, and too much unused code in some files.
 Please look into the following files first, as most of the code is contained in them -
-	
+
 	Ruby code:
 	app/controllers/resumes_controller.rb
 	app/controllers/application_controller.rb
 	app/controllers/users_controller.rb
 	app/views/resumes/[home/edit/dashboard/options].html.erb
-	
+
 	Javascript code:
 	public/javascripts/resume_common.js
 	public/javascripts/resumes/[options/edit/new].js
@@ -44,7 +44,7 @@ I'm working on the next version where the logic resides in models.
 
 
 * Where is the documentation? Code comments?
-There is no documentation separately. 
+There is no documentation separately.
 There are code comments here and there, but things are pretty disorganized right now.
 
 

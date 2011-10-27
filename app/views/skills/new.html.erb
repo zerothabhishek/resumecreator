@@ -1,8 +1,8 @@
 <!--
 	URL/new/:title/skills
-	app/views/skills/new.html.erb 
-	The new resume/skills view - form for adding a new skillset for the resume of a user 
-	controller: skills, action: new 
+	app/views/skills/new.html.erb
+	The new resume/skills view - form for adding a new skillset for the resume of a user
+	controller: skills, action: new
 -->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
@@ -11,36 +11,36 @@
 <div class="heading">
 	<h3> New Skills </h3>
 	<div class="links">
-		<%= link_to 'Edit', '/edit/'+@resume.title+'/skills' %>	
+		<%= link_to 'Edit', '/edit/'+@resume.title+'/skills' %>
 		<%= link_to 'Show', '/show/'+@resume.title+'/skills' %>
-	</div>	
+	</div>
 </div>
 
 <% url = '/create/'+@resume.title+'/skills' %>
-<% form_tag(url, :method => "post") do %> 
-	
+<% form_tag(url, :method => "post") do %>
+
 	<table class="skills_table">
 		<tr class="table_heading_row">
-			<th class="skill_name"> skill_name 
-			<th class="skill_remarks"> skill_remarks 
+			<th class="skill_name"> skill_name
+			<th class="skill_remarks"> skill_remarks
 			<th class="skillset_type"> skillset_type
 		</tr>
 		<% for i in 0..2 %>
 			<tr class="table_data_row">
 				<td class="skill_name" >
-					<input 	
-						type	= "text" 
+					<input
+						type	= "text"
 						name	= "skills[<%= i %>][skill_name]" />		</td>
 
 				<td class="skill_remarks">
-					<input 	
+					<input
 						type	= "text"
 						name	= "skills[<%= i %>][skill_remarks]" />	</td>
-						
+
 				<td	class="skillset_type">
-					<input 	
+					<input
 						type	= "text"
-						name	= "skills[<%= i %>][skillset_type]" />	</td>		
+						name	= "skills[<%= i %>][skillset_type]" />	</td>
 			</tr>
 		<% end # loop %>
 			<tr>
@@ -49,11 +49,11 @@
 				</td>
 			</tr>
 	</table>
-	
-	<p>  
-		<input name="commit" type="submit" value="Create" /> 
-	</p> 
-	
+
+	<p>
+		<input name="commit" type="submit" value="Create" />
+	</p>
+
 <% end %>
 
 <% if RAILS_ENV == "production" %>
@@ -61,10 +61,10 @@
 <script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>
-<script type="text/javascript" src="/javascripts/skills/new.js"></script>	
+<script type="text/javascript" src="/javascripts/skills/new.js"></script>
 <% end %>
 
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>

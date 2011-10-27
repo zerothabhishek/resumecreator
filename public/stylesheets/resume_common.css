@@ -20,14 +20,14 @@ a:hover{
 .button_stripe button{
 	font-family: arial;
 	font-weight: bold;
-	color: #23415A;		
+	color: #23415A;
 }
 .ajax_processing_msg{
 	background-color: #DAE6F0;
 }
 .error_msg{
 	background-color: #DAE6F0;
-	color: #23415A;		
+	color: #23415A;
 	padding: 1em;
 	font-weight: bold;
 }

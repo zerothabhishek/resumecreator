@@ -2,7 +2,7 @@ module Prawnto
   module ActionController
 
     DEFAULT_PRAWNTO_OPTIONS = {:inline=>true}
-      
+
     def self.included(base)
       base.extend ClassMethods
     end
@@ -13,7 +13,7 @@ module Prawnto
         write_inheritable_hash(:prawn, prawn_options)
         write_inheritable_hash(:prawnto, prawnto_options)
       end
-    
+
     private
 
       def breakdown_prawnto_options(options)

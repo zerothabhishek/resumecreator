@@ -1,30 +1,30 @@
 class ResumesController < ApplicationController
-	
+
 	before_filter :check_session,			# filter routine (applied before the action starts) checks for session
 		:only => [:home, :dashboard, :options, :new, :create, :edit, :update, :destroy, :makepdf] 	# actions where filter is applied
 
-	# GET /index	
+	# GET /index
 	def index
 		set_urls(@latest_resume)
 		# render index.html.erb
 	end
-	
+
 	# GET /home
 	def home
 		@user = User.find(session[:current_user_id])
-		@all_resumes = @user.resumes.all(:order => "updated_at DESC")	
+		@all_resumes = @user.resumes.all(:order => "updated_at DESC")
 		@latest_resume = @all_resumes[0]
 		if @latest_resume
-			@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@latest_resume.rtemplate_id]) 
+			@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@latest_resume.rtemplate_id])
 		end
 		set_urls(@latest_resume)
 	end
-	
+
 	# GET /dashboard/:title
 	def dashboard
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
-		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@resume.rtemplate_id])	
+		@rtemplate = Rtemplate.find(:first, :conditions => ["id =?",@resume.rtemplate_id])
 		set_urls(@resume)
 	end
 
@@ -37,13 +37,13 @@ class ResumesController < ApplicationController
 		set_urls(@resume)
 		session[:return_to] = "/options/"+@resume.title
 	end
-	
+
 	# GET /new
 	def new
 		@user = User.find(session[:current_user_id])
 		set_urls(@resume)
 	end
-	
+
 	# POST /create
 	def create
 		@user = User.find(session[:current_user_id])
@@ -53,8 +53,8 @@ class ResumesController < ApplicationController
 			result = @resume.save
 		else
 			result = nil
-		end	
-		
+		end
+
 		if params["ajax"] == "true"
 			if result
 				logger.info "Info: New resume created - #{@user.username}-#{@resume.title}"
@@ -64,19 +64,19 @@ class ResumesController < ApplicationController
 				render :json => { :retVal => "resume creation failed"	}
 			end
 		else
-			if result 
+			if result
 				logger.info "Info: New resume created - #{@user.username}-#{@resume.title}"
 				redirect_to "/edit/#{@resume.title}"
-			else	
+			else
 				error_msg = "Error: resume create - #{@user.username}"
 				if isAlreadyPresent
 					error_msg = " Error: A resume by that title already exists"
 				end
 				logger.error error_msg
 				flash[:error_new] = error_msg
-				redirect_to '/new'	
-			end		
-		end	
+				redirect_to '/new'
+			end
+		end
 	end
 
 
@@ -90,12 +90,12 @@ class ResumesController < ApplicationController
 		end
 		set_urls(@resume)
 	end
-	
+
 	# PUT /update/:title
 	def update
-		
+
 		@user 	= User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 
 		resumePut = params[:resume]
 
@@ -104,11 +104,11 @@ class ResumesController < ApplicationController
 			if resRetVal
 				render :json => { :retVal => "updated" }
 			else
-				render :json => { :retVal => "error creating" }				
+				render :json => { :retVal => "error creating" }
 			end
 			return											# without this, there can be error
 		end
-		
+
 		conRetVal = update_contact(@resume)					# Update the contact
 		proRetVal = update_profile(@resume)					# Update the profile
 		skiRetVal = update_skills(@resume)					# Update the skills
@@ -116,26 +116,26 @@ class ResumesController < ApplicationController
 		expRetVal = update_experiences(@resume)				# Update the experiences
 		achRetVal = update_achievement(@resume)				# Update the achievement
 		hobRetVal = update_hobby(@resume)					# Update the hobby
-		
+
 		errorText	=	""
-		errorText 	+= 	resRetVal ? "Name updated; " 		: "Error updating name"   		
-		errorText	+=	conRetVal ? "Contact updated; " 	: "Error updating contact" 		
-		errorText	+=	proRetVal ? "Profile updated; " 	: "Error updating profile" 		
-		errorText	+=	skiRetVal ? "Skills updated; " 		: "Error updating skills"   	
-		errorText	+=	eduRetVal ? "Educations updated; "	: "Error updating educations"   
-		errorText	+=	expRetVal ? "Experiences updated; " : "Error updating experiences"  
-		errorText	+=	achRetVal ? "Achievements updated; ": "Error updating achievements" 
-		errorText	+=	hobRetVal ? "Hobby updated; " 		: "Error updating hobby"   		
-					
+		errorText 	+= 	resRetVal ? "Name updated; " 		: "Error updating name"
+		errorText	+=	conRetVal ? "Contact updated; " 	: "Error updating contact"
+		errorText	+=	proRetVal ? "Profile updated; " 	: "Error updating profile"
+		errorText	+=	skiRetVal ? "Skills updated; " 		: "Error updating skills"
+		errorText	+=	eduRetVal ? "Educations updated; "	: "Error updating educations"
+		errorText	+=	expRetVal ? "Experiences updated; " : "Error updating experiences"
+		errorText	+=	achRetVal ? "Achievements updated; ": "Error updating achievements"
+		errorText	+=	hobRetVal ? "Hobby updated; " 		: "Error updating hobby"
+
 		flash[:notice] = errorText
-		
+
 	end
 
 	# POST /toggle_public_status
 	def toggle_public_status
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(params[:resume_id])
-		
+
 		if params["request"] == "toggle"
 			@resume.public_status = (@resume.public_status == "private") ? "public" : "private"
 			result = @resume.save
@@ -146,13 +146,13 @@ class ResumesController < ApplicationController
 			end
 		end
 	end
-	
+
 	# DELETE /destroy/:title
 	def destroy
 		@user 	= User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
-		result 	= @resume.destroy	
-		flash[:notice] = result ? "Resume destroyed" : "Error destroying resume"  
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		result 	= @resume.destroy
+		flash[:notice] = result ? "Resume destroyed" : "Error destroying resume"
 		if params["ajax"] == "true"
 			if result
 				render :json => { :retVal => "deleted" }
@@ -164,7 +164,7 @@ class ResumesController < ApplicationController
 			redirect_to root_url
 		end
 	end
-	
+
 	# GET /view/:title			# internal request - user is logged on and wants his own resume
 	# GET /:username/:title		# external requests- for public resume - someone wants to see user's resume
 	# GET /:username			# external request - for default public resume - not handled right now
@@ -174,7 +174,7 @@ class ResumesController < ApplicationController
 			@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 			@rtemplate = Rtemplate.find(@resume.rtemplate_id)
 			render :file =>
-					@rtemplate.location			
+					@rtemplate.location
 		else
 			# external request - no session
 			@user = User.find(:first, :conditions => ["username =?",params[:username]])
@@ -182,7 +182,7 @@ class ResumesController < ApplicationController
 				@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 				if resume.public_status == "private"
 					# show exception and exit
-					return		
+					return
 				end
 			else	# no title in the url
 				# show exception and exit
@@ -190,44 +190,44 @@ class ResumesController < ApplicationController
 			end
 			@rtemplate = Rtemplate.find(@resume.rtemplate_id)
 			render :file =>
-					@rtemplate.location						
+					@rtemplate.location
 		end
 	end
-	
+
 	# GET makepdf/:title   calls the wkhtmltopdf utility to create the pdf
 	def makepdf
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		fileName = "#{@user.username}_#{@resume.title}"
 		pdf_filePath = "#{RAILS_ROOT}/user_data/pdf/#{fileName}.pdf"
-		
+
 		# check if a pdf is already generated for this, and is not outdated
-		if @resume.pdf_timestamp													# a pdf exists	
+		if @resume.pdf_timestamp													# a pdf exists
 			if @resume.pdf_timestamp >= @resume.updated_at							# the pdf was created after last resume update
 				send_file pdf_filePath, :type => 'pdf', :disposition => 'inline'	# send it
 				logger.info "Info: Skipped resume creation - sent existing pdf"
 				return
-			end 
+			end
 		end
-		
-		# render the template to a string 
+
+		# render the template to a string
 		@rtemplate = Rtemplate.find(@resume.rtemplate_id)
 		content = render_to_string :file =>	@rtemplate.location
 
 		# and save it to a file
 		html_filePath = "#{RAILS_ROOT}/user_data/html/#{fileName}.html"
-		File.open(html_filePath, "w+") do |f| 
-			f.write(content) 
+		File.open(html_filePath, "w+") do |f|
+			f.write(content)
 		end
 
 		# now use this file for pdf creation
 		cmd = "wkhtmltopdf #{html_filePath} #{pdf_filePath}"
 		logger.debug cmd
 		@result = system cmd
-		
+
 		# send the created file to the browser, as inline - displayed not downloaded
 		send_file pdf_filePath, :type => 'pdf', :disposition => 'inline'
-		
+
 		#update the pdf timestamp
 		@resume.pdf_timestamp = DateTime.now()
 		result = @resume.save
@@ -236,5 +236,5 @@ class ResumesController < ApplicationController
 		end
 	end
 
-	
+
 end

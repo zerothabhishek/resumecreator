@@ -1,11 +1,11 @@
 <!--
 	URL/canvas/:title or URL/canvas
-	app/views/resumes/canvas.html.erb 
+	app/views/resumes/canvas.html.erb
 	The canvas resume view - edits (AJAXified) a particular resume of the user in full
-	controller: resumes, action: canvas 
-	
-	Conventions used for this file - 
-	1. part block id should be the controller name	
+	controller: resumes, action: canvas
+
+	Conventions used for this file -
+	1. part block id should be the controller name
 -->
 <%
 	# all urls
@@ -13,12 +13,12 @@
 	options_url 	= "/options/#{@resume.title}" unless !@resume
 	view_url		= "/view/#{@resume.title}" unless !@resume
 	pdf_url 		= "/makepdf/#{@resume.title}" 	unless !@resume
-	publish_url 	= "#{options_url}#publish" 
-	templates_url 	= "#{options_url}#templates" 
+	publish_url 	= "#{options_url}#publish"
+	templates_url 	= "#{options_url}#templates"
 	dashboard_url 	= "/dashboard"
-	newResume_url 	= "/new" 
-	logout_url 		= "/logout"	
-%>	
+	newResume_url 	= "/new"
+	logout_url 		= "/logout"
+%>
 <link rel="stylesheet" type="text/css" href="/stylesheets/resumes/canvas.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/tipTip.css" />
 
@@ -41,167 +41,167 @@
 									class="edit"
 									name="resume[name]"
 									value="<%=h @resume.name %>" >
-							</div>		
-						</div>	
+							</div>
+						</div>
 					</div>
-				</div>	
+				</div>
 			</div>	<!-- /username -->
 
 			<div class="resume_part url_holder" id="contacts">
-				<div class="part_header">contact</div>	
+				<div class="part_header">contact</div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.contact %>
-						<%= render :partial => "contacts/edit_contact.html.erb" , :locals => {:contact => @resume.contact} %> 
-						<% end #if %>	
-					</div>		
+						<%= render :partial => "contacts/edit_contact.html.erb" , :locals => {:contact => @resume.contact} %>
+						<% end #if %>
+					</div>
 					<div class="plus_button  <%=h (@resume.contact)? "hidden" : "" %>">
 						<button class="tooltip_trigger" type="button">+</button>
 						<span class="tooltip hidden">click to add contact</span>
 					</div>
-					<%= render :partial => "contacts/add_contact.html.erb" %> 
-				</div> <!-- /part_data -->	
+					<%= render :partial => "contacts/add_contact.html.erb" %>
+				</div> <!-- /part_data -->
 				<div class="part_footer">
 					<%= link_to "all-parts", canvas_url %>
 					<%= link_to "next-part", "#{canvas_url}/profiles" %>
-				</div>	
+				</div>
 			</div>	<!-- /contacts -->
 
 			<div class="resume_part url_holder" id="profiles">
-				<div class="part_header">profile<%#= link_to 'profile', "#{canvas_url}/profiles" %></div>	
+				<div class="part_header">profile<%#= link_to 'profile', "#{canvas_url}/profiles" %></div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.profile %>
-						<%= render :partial => "profiles/edit_profile.html.erb" , :locals => {:profile => @resume.profile} %> 
-						<% end #if %>	
-					</div>		
+						<%= render :partial => "profiles/edit_profile.html.erb" , :locals => {:profile => @resume.profile} %>
+						<% end #if %>
+					</div>
 					<div class="plus_button <%=h (@resume.profile)? "hidden" : "" %>">
 						<button class="tooltip_trigger" type="button">+</button>
 						<span class="tooltip hidden">click to add profile</span>
 					</div>
-					<%= render :partial => "profiles/add_profile.html.erb" %> 	
-				</div> <!-- /part_data -->	
+					<%= render :partial => "profiles/add_profile.html.erb" %>
+				</div> <!-- /part_data -->
 				<div class="part_footer">
 					<%#= link_to "prev-part", "#{canvas_url}/contacts" %>
 					<%#= link_to "all-parts", canvas_url %>
 					<%= link_to "next-part", "#{canvas_url}/skills" %>
-				</div>	
+				</div>
 			</div>	<!-- /profiles -->
 
 			<div class="resume_part url_holder" id="skills">
-				<div class="part_header">skills<%#= link_to 'skills', "#{canvas_url}/skills" %></div>	
+				<div class="part_header">skills<%#= link_to 'skills', "#{canvas_url}/skills" %></div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.skills.size !=0 %>
 							<% @resume.skills.each do |skill| %>
-							<%= render :partial => "skills/edit_skill.html.erb" , :locals => {:skill => skill} %> 
+							<%= render :partial => "skills/edit_skill.html.erb" , :locals => {:skill => skill} %>
 							<% end #loop %>
-						<% end # %>	
-					</div>		
+						<% end # %>
+					</div>
 					<div class="plus_button">
 						<button class="tooltip_trigger" type="button">+</button>
 						<span class="tooltip hidden">click to add skills</span>
 					</div>
-					<%= render :partial => "skills/add_skill.html.erb" %> 
-				</div> <!-- part_data -->	
+					<%= render :partial => "skills/add_skill.html.erb" %>
+				</div> <!-- part_data -->
 				<div class="part_footer">
 					<%#= link_to "prev-part", "#{canvas_url}/profiles" %>
 					<%#= link_to "all-parts", canvas_url %>
 					<%= link_to "next-part", "#{canvas_url}/educations" %>
-				</div>	
+				</div>
 			</div>	<!-- /skills -->
 
 			<div class="resume_part url_holder" id="educations">
-				<div class="part_header">education<%#= link_to 'education', "#{canvas_url}/educations" %></div>	
+				<div class="part_header">education<%#= link_to 'education', "#{canvas_url}/educations" %></div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.educations.size !=0 %>
 							<% @resume.educations.each do |education| %>
-							<%= render :partial => "educations/edit_education.html.erb" , :locals => {:education => education} %> 
+							<%= render :partial => "educations/edit_education.html.erb" , :locals => {:education => education} %>
 							<% end #loop %>
-						<% end # %>	
-					</div>		
+						<% end # %>
+					</div>
 					<div class="plus_button">
 						<button class="tooltip_trigger" type="button">+</button>
 						<span class="tooltip hidden">click to add education</span>
 					</div>
-					<%= render :partial => "educations/add_education.html.erb" %> 
+					<%= render :partial => "educations/add_education.html.erb" %>
 				</div> <!-- part_data -->
 				<div class="part_footer">
 					<%#= link_to "prev-part", "#{canvas_url}/skills" %>
 					<%#= link_to "all-parts", canvas_url %>
 					<%= link_to "next-part", "#{canvas_url}/experiences" %>
-				</div>	
+				</div>
 			</div>		<!-- educations -->
 
 			<div class="resume_part url_holder" id="experiences">
-				<div class="part_header">experiences<%#= link_to 'experiences', "#{canvas_url}/experiences" %></div>	
+				<div class="part_header">experiences<%#= link_to 'experiences', "#{canvas_url}/experiences" %></div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.experiences.size !=0 %>
 							<% @resume.experiences.each do |experience| %>
-							<%= render :partial => "experiences/edit_experience.html.erb" , :locals => {:experience => experience} %> 
+							<%= render :partial => "experiences/edit_experience.html.erb" , :locals => {:experience => experience} %>
 							<% end #loop %>
-						<% end # %>	
-					</div>		
+						<% end # %>
+					</div>
 					<div class="plus_button">
 						<button class="tooltip_trigger" type="button">+</button>
 						<span class="tooltip hidden">click to add expereinces</span>
 					</div>
-					<%= render :partial => "experiences/add_experience.html.erb" %> 
-				</div> <!-- part_data -->	
+					<%= render :partial => "experiences/add_experience.html.erb" %>
+				</div> <!-- part_data -->
 				<div class="part_footer">
 					<%#= link_to "prev-part", "#{canvas_url}/educations" %>
 					<%#= link_to "all-parts", canvas_url %>
 					<%= link_to "next-part", "#{canvas_url}/achievements" %>
-				</div>	
+				</div>
 			</div>	<!-- /experiences -->
-			
+
 			<div class="resume_part url_holder" id="achievements">
-				<div class="part_header">achievements<%#= link_to 'achievements', "#{canvas_url}/achievements" %></div>	
+				<div class="part_header">achievements<%#= link_to 'achievements', "#{canvas_url}/achievements" %></div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.achievement %>
-						<%= render :partial => "achievements/edit_achievement.html.erb" , :locals => {:achievement => @resume.achievement} %> 
-						<% end #if %>	
-					</div>		
+						<%= render :partial => "achievements/edit_achievement.html.erb" , :locals => {:achievement => @resume.achievement} %>
+						<% end #if %>
+					</div>
 					<div class="plus_button <%=h (@resume.achievement)? "hidden" : "" %>">
 						<button class="tooltip_trigger" type="button">+</button>
 						<span class="tooltip hidden">click to add achievements</span>
 					</div>
-					<%= render :partial => "achievements/add_achievement.html.erb" %> 					
-				</div> <!-- part_data -->	
+					<%= render :partial => "achievements/add_achievement.html.erb" %>
+				</div> <!-- part_data -->
 				<div class="part_footer">
 					<%#= link_to "prev-part", "#{canvas_url}/experiences" %>
 					<%#= link_to "all-parts", canvas_url%>
 					<%= link_to "next-part", "#{canvas_url}/hobbies" %>
-				</div>					
+				</div>
 			</div>	<!-- /achievements -->
 
 			<div class="resume_part url_holder" id="hobbies">
-				<div class="part_header">hobbies<%#= link_to 'hobbies', "#{canvas_url}/hobbies" %></div>	
+				<div class="part_header">hobbies<%#= link_to 'hobbies', "#{canvas_url}/hobbies" %></div>
 				<div class="part_data">
 					<div class="editPart">
 						<% if @resume.hobby %>
-						<%= render :partial => "hobbies/edit_hobby.html.erb" , :locals => {:hobby => @resume.hobby} %> 
-						<% end #if %>	
-					</div>		
+						<%= render :partial => "hobbies/edit_hobby.html.erb" , :locals => {:hobby => @resume.hobby} %>
+						<% end #if %>
+					</div>
 					<div class="plus_button <%=h (@resume.hobby)? "hidden" : "" %>">
 						<button class="tooltip_trigger" type="button">+</button>
-						<span class="tooltip hidden">click to add hobbies</span> 
+						<span class="tooltip hidden">click to add hobbies</span>
 					</div>
-					<%= render :partial => "hobbies/add_hobby.html.erb" %> 
-				</div> <!-- part_data -->	
+					<%= render :partial => "hobbies/add_hobby.html.erb" %>
+				</div> <!-- part_data -->
 				<div class="part_footer">
 					<%#= link_to "prev-part", "#{canvas_url}/achievements" %>
 					<%#= link_to "all-parts", canvas_url %>
 					<%= link_to "view-resume", view_url, {:target => "_blank"} %>
-				</div>									
+				</div>
 			</div>	<!-- hobbies -->
-	
+
 	</div>	<!-- /interior -->
-	</div>	<!-- /parts_container -->		
-	
+	</div>	<!-- /parts_container -->
+
 	<div id="canvas_sidebar">
 		<div class="interior">
 			<div id="resume_meta" class="url_holder sidebar_item">
@@ -227,13 +227,13 @@
 					<li class="go-to_link"><%= link_to "#{@resume.title}-options", 			options_url	%></li>
 					<li class="go-to_link"><%= link_to "dashboard", 						dashboard_url 	%></li>
 					<li class="go-to_link"><%= link_to 'create new resume',	newResume_url 	%></li>
-					<li class="go-to_link"><%= link_to 'logout', 							logout_url 		%></li>	
+					<li class="go-to_link"><%= link_to 'logout', 							logout_url 		%></li>
 				</ul>
-			</div>			
-			
+			</div>
+
 		</div>	<!-- /interior -->
 	</div>	<!-- /canvas_sidebar -->
-	
+
 </div>	<!-- /content -->
 <% end #form %>
 
@@ -248,10 +248,10 @@
 <script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>
-<script type="text/javascript" src="/javascripts/resumes/canvas.js"></script>	
+<script type="text/javascript" src="/javascripts/resumes/canvas.js"></script>
 <% end %>
 
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>

@@ -1,23 +1,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
-	<head>  
-		<meta http-equiv="content-type"  content="text/html;charset=UTF-8" />  
-		<title> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type"  content="text/html;charset=UTF-8" />
+		<title>
 			<% if controller.action_name == "preview" %>
 				default rTemplate - preview
 			<% else %>
 				Resume : <%=h @resume.name %>
 			<% end %>
-		</title>  
-	</head> 
-	<body> 
+		</title>
+	</head>
+	<body>
 
 		<style type="text/css">
 		h1{ margin: 0;}
 		h2{ margin-bottom: 0.25cm }
 		h3{ margin: 0;}
 		p{ 	margin: 0;
-			font: normal normal normal 12pt "Times New Roman";	
+			font: normal normal normal 12pt "Times New Roman";
 			/* text-align: justify; */
 		}
 
@@ -60,7 +60,7 @@
 		#skills .skill_remarks{
 			width: 35%;
 			padding-right: 1em;
-		}		
+		}
 		#experiences .subpart{
 			padding-top: 0cm;
 			padding-bottom: 0.2cm;
@@ -94,13 +94,13 @@
 					<div>
 						<div class="email">
 							<b>Email</b>
-							<p><%=h @resume.contact.emails %><p>	
-						</div>	
+							<p><%=h @resume.contact.emails %><p>
+						</div>
 						<div class="phone_nos">
 							<b>Phone no.</b>
 							<p><%=h @resume.contact.phone_nos %></p>
-						</div>	
-					</div>	
+						</div>
+					</div>
 			</div>
 			<% end  # if %>
 
@@ -122,10 +122,10 @@
 						<!--<td><%=h skill.skillset_type %></td>-->
 					</tr>
 					<% end %>
-				</table>		
+				</table>
 			</div>
 			<% end %>
-			
+
 			<% if @resume.educations.size !=0 %>
 			<div class="part" id="educations">
 				<h2>Education</h2>
@@ -136,7 +136,7 @@
 						<span><%=h education.score %>,</span>
 						<span><%=h education.college %></span>
 						<span class="more_info"><%=h education.more_info %></span>
-					</div>	
+					</div>
 				<% end %>
 			</div>
 			<% end %>
@@ -149,8 +149,8 @@
 						<table>	<tr>
 							<td class="exp_title">	<b><%=h experience.title %>		</b></td>
 							<td class="duration">	<b><%=h experience.duration %>	</b></td>
-							<td class="company">	<b><%=h experience.company %>	</b></td>					
-						</tr></table>	
+							<td class="company">	<b><%=h experience.company %>	</b></td>
+						</tr></table>
 						<p class="role"><%=h experience.role %>				</p>
 						<p class="more_info"><%=h experience.more_info %>	</p>
 					</div>
@@ -183,7 +183,7 @@
 		<script type="text/javascript" src="/javascripts/view.js"></script>
 		<% end %>
 
-		<% if RAILS_ENV == "development" %>	
+		<% if RAILS_ENV == "development" %>
 		<script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 		<script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 		<script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
@@ -192,5 +192,4 @@
 		<% end %>
 
 	</body>
-</html>	
-	
+</html>

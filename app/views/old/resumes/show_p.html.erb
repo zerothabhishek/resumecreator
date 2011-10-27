@@ -1,11 +1,11 @@
 <!--
 	This file is of no use now,
-	as resume templates are rendered 
+	as resume templates are rendered
 -->
 
 
-<!-- 
-	show the printable resume 
+<!--
+	show the printable resume
 	/showP/:title
 	app/views/resumes/showP.html.erb
 	controller: resume, action: showP
@@ -16,7 +16,7 @@ h1{ margin: 0;}
 h2{ margin-bottom: 0.25cm }
 h3{ margin: 0;}
 p{ 	margin: 0;
-	font: normal normal normal 12pt "Times New Roman";	
+	font: normal normal normal 12pt "Times New Roman";
 	/* text-align: justify; */
 }
 
@@ -84,13 +84,13 @@ p{ 	margin: 0;
 			<div>
 				<div class="email">
 					<b>Email</b>
-					<p><%=h @resume.contact.emails %><p>	
-				</div>	
+					<p><%=h @resume.contact.emails %><p>
+				</div>
 				<div class="phone_nos">
 					<b>Phone no.</b>
 					<p><%=h @resume.contact.phone_nos %></p>
-				</div>	
-			</div>	
+				</div>
+			</div>
 	</div>
 	<% end  # if %>
 
@@ -112,10 +112,10 @@ p{ 	margin: 0;
 				<td><%=h skill.skillset_type %></td>
 			</tr>
 			<% end %>
-		</table>		
+		</table>
 	</div>
 	<% end %>
-	
+
 	<% if @resume.educations.size !=0 %>
 	<div class="education part">
 		<h2>Education</h2>
@@ -126,7 +126,7 @@ p{ 	margin: 0;
 				<span><%=h education.score %>,</span>
 				<span><%=h education.college %></span>
 				<span class="more_info"><%=h education.more_info %></span>
-			</div>	
+			</div>
 		<% end %>
 	</div>
 	<% end %>
@@ -139,8 +139,8 @@ p{ 	margin: 0;
 				<table>	<tr>
 					<td class="exp_title">	<b><%=h experience.title %>		</b></td>
 					<td class="duration">	<b><%=h experience.duration %>	</b></td>
-					<td class="company">	<b><%=h experience.company %>	</b></td>					
-				</tr></table>	
+					<td class="company">	<b><%=h experience.company %>	</b></td>
+				</tr></table>
 				<p class="role"><%=h experience.role %>				</p>
 				<p class="more_info"><%=h experience.more_info %>	</p>
 			</div>

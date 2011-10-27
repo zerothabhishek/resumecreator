@@ -5,9 +5,9 @@
 	<span class="footer_item terms">	<%= link_to 'terms', '/terms' %>		</span>
 	<span class="footer_item privacy">	<%= link_to 'privacy', '/privacy' %>	</span>
 	<!--<span class="footer_item blog">	<%= link_to 'blog', '' %>				</span>	-->
-	<span class="footer_item privacy">	<%= link_to 'feedback', '/feedback' %>	</span>			
+	<span class="footer_item privacy">	<%= link_to 'feedback', '/feedback' %>	</span>
 </div>
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 	Session<%= debug(session) %>
 	Params<%= debug(params) %>
 <% end %>
