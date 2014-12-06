@@ -1,10 +1,10 @@
 <!-- edit markup for achievement part - one achievement object in one go -->
-<!-- 
+<!--
 	CLASSname 	:DESCRIPTION and USAGE
 	partUnit 	:a single instance of the part - one achievement detail (represnted by one object)
 	partItem	:an item within a part - field of the model (a property of object) eg - achievement level
 	deleteable	:an element that can be deleted with a delete button within it
-	key_text	:the text that is displayed as the label for data displayed or input box renderd 
+	key_text	:the text that is displayed as the label for data displayed or input box renderd
 	display		:identifies an element that displays data while show
 	edit		:identifies an imput box meant for editing
 	add			:identifies an input box meant for adding
@@ -17,15 +17,15 @@
 		<!--<span class="key_text">achievement text</span>-->
 		<div class="value_block">
 			<span class="display"><%=h achievement.achievements_text %></span>
-			<textarea 
+			<textarea
 				class="edit"
 				name="achievement[achievements_text]"
 				><%=h achievement.achievements_text %></textarea>
-		</div>		
+		</div>
 	</div>
-	
-	<div class="delete_button">	
+
+	<div class="delete_button">
 		<button type="button">delete</button>
-	</div>		
-	
-</div> 
+	</div>
+
+</div>

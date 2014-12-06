@@ -1,5 +1,5 @@
 <!--
-	URL/edit/:title/experiences	
+	URL/edit/:title/experiences
 	app/views/experiences/edit.html.erb
 	The edit resume/experiences view - form for editing all experience instances for the resume of a user
 	controller: experiences, action: edit
@@ -11,60 +11,60 @@
 <div class="heading">
 	<h3> Edit Experience </h3>
 	<div class="links">
-		<%= link_to 'Add',  '/new/' +@resume.title+'/experiences' %>	
+		<%= link_to 'Add',  '/new/' +@resume.title+'/experiences' %>
 		<%= link_to 'Show', '/show/'+@resume.title+'/experiences' %>
-	</div>	
+	</div>
 </div>
 
 <% url = '/update/'+@resume.title+'/experiences' %>
-<% form_tag(url, :method => "post") do %> 
+<% form_tag(url, :method => "post") do %>
 
 	<% if @experiences.length!=0 %>
 		<div class="tab_heading">
 		<% @experiences.each do |experience| %>
-			<span class="tab_item" id="tab_<%=h experience.id %>"> 
-				<%=h experience.title %> 
+			<span class="tab_item" id="tab_<%=h experience.id %>">
+				<%=h experience.title %>
 			</span>
-		<% end %>		
-		</div>	
+		<% end %>
+		</div>
 		<%@experiences.each do |experience| %>
 		<table class="experience_table" id="table_<%=h experience.id %>" >
 			<tr>
 				<td class="column1">Title</td>
 				<td class="column2">
-					<input 	
-						type	= "text" 
-						class	= "title" 
-						name	= "experience[<%=h experience.id %>][title]" 
+					<input
+						type	= "text"
+						class	= "title"
+						name	= "experience[<%=h experience.id %>][title]"
 						value	= "<%=h experience.title %>" ></td>
 			</tr>
-		
+
 			<tr>
 				<td class="column1">Company</td>
 				<td class="column2">
-					<input 	
+					<input
 						type	= "text"
-						class	= "company" 
-						name	= "experience[<%=h experience.id %>][company]" 
+						class	= "company"
+						name	= "experience[<%=h experience.id %>][company]"
 						value	= "<%=h experience.company %>" ></td>
 			</tr>
 
 			<tr>
 				<td class="column1">Duration</td>
 				<td class="column2">
-					<input 	
+					<input
 						type	= "text"
-						class	= "duration" 
-						name	= "experience[<%=h experience.id %>][duration]" 
+						class	= "duration"
+						name	= "experience[<%=h experience.id %>][duration]"
 						value	= "<%=h experience.duration %>" > </td>
 			</tr>
 
 			<tr>
 				<td class="column1">Role</td>
 				<td class="column2">
-					<textarea 	
-						class	= "role" 
-						name	= "experience[<%=h experience.id %>][role]" 
+					<textarea
+						class	= "role"
+						name	= "experience[<%=h experience.id %>][role]"
 						><%=h experience.role %></textarea></td>
 			</tr>
 
@@ -72,10 +72,10 @@
 				<td class="column1">more_info</td>
 				<td class="column2">
 					<textarea type	= "text"
-						class	= "more_info" 
-						name	= "experience[<%=h experience.id %>][more_info]" 
+						class	= "more_info"
+						name	= "experience[<%=h experience.id %>][more_info]"
 						><%=h experience.more_info %></textarea></td>
-			</tr>	
+			</tr>
 		<% end # loop %>
 
 		<table class="submit"><tr>
@@ -86,11 +86,11 @@
 		</tr></table>
 
 	<% else %>
-		<p> 
+		<p>
 			No experience data
 			<%= link_to 'Add',  '/new/' +@resume.title+'/experiences' %>
 		</p>
-	<% end # if-else %>	
+	<% end # if-else %>
 
 
 <% end # form %>

@@ -49,7 +49,7 @@ module TemplateHandlerTestMocks
       response.headers
     end
   end
-    
+
   class ActionView
     def controller
       @controller ||= ActionController.new

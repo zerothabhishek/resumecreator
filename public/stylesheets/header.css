@@ -71,7 +71,7 @@
 }
 #option_buttons .option_buttons_item{
 	background-color: #C8DAE8;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
-	padding: 0.25em 0.5em; 
+	padding: 0.25em 0.5em;
 	display: block;
 	margin: 0.5em 0 0 0;
 }
@@ -79,7 +79,7 @@
 	color: #23415A;
 }
 #option_buttons a:hover{
-	text-decoration: none;	
+	text-decoration: none;
 }
 
 /******** for edit page *************/
@@ -110,15 +110,15 @@
 	color: #23415A;
 }
 #index_header #name_banner{
-	font-family: arial;	
+	font-family: arial;
 	font-weight: bold;
 	font-size: 200%;
-	text-align: center;	
+	text-align: center;
 	padding: 5% 0 1% 0;
 }
 #index_header  #name_banner .interior{
 	background-color: #DAE6F0 ;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
-	border: 2px solid #C8DAE8;	
+	border: 2px solid #C8DAE8;
 	padding: 0 0.5em;
 }
 #index_header #name_banner a:hover{
@@ -129,15 +129,15 @@
 	color: #23415A;
 }
 #signup_header #name_banner{
-	font-family: arial;	
+	font-family: arial;
 	font-weight: bold;
 	font-size: 200%;
-	text-align: center;	
+	text-align: center;
 	padding: 5% 0 1% 0;
 }
 #signup_header #name_banner .interior{
 	background-color: #DAE6F0 ;	/*	lighter shade of steelblue, deeper than	DAE6F0*/
-	border: 2px solid #C8DAE8;	
+	border: 2px solid #C8DAE8;
 	padding: 0 0.5em;
 }
 #signup_header #name_banner a:hover{

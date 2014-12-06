@@ -9,14 +9,14 @@ class ContactsController < ApplicationController
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@contact = @resume.contact
 		session[:return_to] = '/show/'+@resume.title+'/contacts'
-	end	
-		
+	end
+
 	# GET /new/:title/contacts
 	def new
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 	end
-	
+
 	# POST /create/:title/contacts
 	def create
 		@user = User.find(session[:current_user_id])
@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
 		result = @contact.save
 		if result
 			update_timestamp(@resume)
-		end			
+		end
 		if params["ajax"]=="true"
 			if result
 				render :json => { :retVal => "created", "id" => @contact.id }
@@ -37,45 +37,45 @@ class ContactsController < ApplicationController
 			redirect_to session[:return_to]
 		end
 	end
-	
+
 	# GET /edit/:title/contacts
 	def edit
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
-		@contact = @resume.contact		
+		@contact = @resume.contact
 	end
 
 	# GET /edit2/:title/contacts
 	def edit2
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
-		@contact = @resume.contact		
+		@contact = @resume.contact
 	end
-	
+
 	# PUT update/:title/contacts
 	def update
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		conRetVal = update_contact(@resume)					# Update the contact
-		flash[:notice] = conRetVal ? "Contact updated; " : "Error updating contact" 
+		flash[:notice] = conRetVal ? "Contact updated; " : "Error updating contact"
 		if params["ajax"]
 			render :json => {:retVal => "updated" }
 		else
-			redirect_to session[:return_to]		
-		end	
+			redirect_to session[:return_to]
+		end
 	end
-	
+
 	# DELETE destroy/:title/contacts
 	def destroy
 		@user 	= User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@contact = @resume.contact
 		result 	= @contact.destroy
-		flash[:notice] = result ? "Contact destroyed" : "Error destroying resume"  
+		flash[:notice] = result ? "Contact destroyed" : "Error destroying resume"
 		if params["ajax"]
 			render :json => {:retVal => "deleted" }
 		else
-			redirect_to '/show/'+@resume.title	
+			redirect_to '/show/'+@resume.title
 		end
 	end
 end

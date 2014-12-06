@@ -1,27 +1,27 @@
-<!-- 	
+<!--
 		The home page view : app/views/resumes/home.html.erb
 		controller: resume, action: home
 		URL or URL/home 	- when user is logged in
 -->
 
-<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/home.css" />	
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/home.css" />
 <div id="content">
 
-	<%#= render :partial => "general_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
+	<%#= render :partial => "general_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %>
 
 	<div id="latest_resume">
 		<% if @latest_resume %>
-		
+
 		<div class="latest_resume_heading">
 			<span class="interior">latest resume -</span>
 		</div>
-		
+
 		<div class="thumbnail">
 			<a href ="<%=h @view_url %>" title="Click to preview" target="_blank">
 					<img src="<%=h @rtemplate.thumbnail_url %>" alt="thumbnail">
-			</a>	
+			</a>
 		</div>
-				
+
 		<div class="other_details">
 
 			<div class="resume_heading">
@@ -33,34 +33,34 @@
 			<div class="updated_at">
 				updated <%=h @latest_resume.updated_at.to_s(:long) %>
 			</div>
-					
+
 			<div class="desc">
 				<p><%=h @latest_resume.meta_desc %></p>
 			</div>
 
 			<div class="actions">
-				<div class="action_item edit">	
+				<div class="action_item edit">
 					<%= link_to 'edit', @edit_url %>
 				</div>
 				<div class="action_item view">
 					<%= link_to 'options', @options_url %>
 				</div>
 				<div class="action_item pdf_resume">
-					<%= link_to 'output', @pdf_url, {:target => "_blank"} %>	
+					<%= link_to 'output', @pdf_url, {:target => "_blank"} %>
 				</div>
 			</div>	<!-- actions -->
-			
+
 		</div> <!-- /other_details -->
 		<% else %>
 			<% if @all_resumes.size == 0 %>
 				<div class="error_msg">
 					This place lists your existing resumes and options.
 					There are none yet.
-				</div>	
+				</div>
 			<% end %>
 		<% end %>
 	</div> 	<!-- /latest_resume -->
-	
+
 	<div class="big_buttons_block" >
 		<div id="new_resume_button" class="big_button">
 			<%= link_to 'new-resume', @new_resume_url %>
@@ -83,7 +83,7 @@
 		</ul>
 	</div>
 	<% end # if %>
-	
+
 </div> <!-- /content -->
 
 <% if RAILS_ENV == "production" %>
@@ -91,10 +91,10 @@
 <script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>
-<script type="text/javascript" src="/javascripts/resumes/home.js"></script>	
+<script type="text/javascript" src="/javascripts/resumes/home.js"></script>
 <% end %>
 
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>

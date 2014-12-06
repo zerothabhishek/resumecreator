@@ -1,11 +1,11 @@
 
 <!-- add markup for skill part. Includes a button stripe at the end -->
-<!-- 
+<!--
 	CLASSname 	:DESCRIPTION and USAGE
 	partUnit 	:a single instance of the part - one skill detail (represnted by one object)
 	partItem	:an item within a part - field of the model (a property of object) eg - skill level
 	deleteable	:an element that can be deleted with a delete button within it
-	key_text	:the text that is displayed as the label for data displayed or input box renderd 
+	key_text	:the text that is displayed as the label for data displayed or input box renderd
 	display		:identifies an element that displays data while show
 	edit		:identifies an imput box meant for editing
 	add			:identifies an input box meant for adding
@@ -18,34 +18,34 @@
 	<div class="partItem skill_name">
 		<span class="key_text">skill_name</span>
 		<span class="display hidden"></span>
-		<input 	type="text" 
-				class="add tooltip_trigger" 
+		<input 	type="text"
+				class="add tooltip_trigger"
 				name="skill[skill_name]">
 		<span class="tooltip hidden">name of the skillset - single word or small phrase - what search engines could use to find you. eg- "C++" or "hiring-management"</span>
 	</div>
-	
+
 	<div class="partItem skill_remarks">
 		<span class="key_text">remarks</span>
 		<span class="display hidden"></span>
-		<input 	type="text" 
-				class="add tooltip_trigger" 
+		<input 	type="text"
+				class="add tooltip_trigger"
 				name="skill[skill_remarks]">
 		<span class="tooltip hidden">remarks about your expertise. eg- "beginner level", "expert", "six-sigma certified"</span>
 	</div>
-	
+
 	<!--
 	<div class="partItem skillset_type">
 		<span class="key_text">skillset-type</span>
 		<span class="display hidden"></span>
-		<input 	type="text" 
-				class="add tooltip_trigger" 
+		<input 	type="text"
+				class="add tooltip_trigger"
 				name="skill[skillset_type]">
 		<span class="tooltip hidden">what type if skill is this - "programming", "managerial", "teaching" etc</span>
 	</div>
 	-->
-	
-	<div class="delete_button">	
+
+	<div class="delete_button">
 		<button type="button">delete</button>
 	</div>
-	
+
 </div>		<!-- addPart -->

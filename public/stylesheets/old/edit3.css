@@ -1,6 +1,6 @@
 
 body{
-	background-color: #DAE6F0;	
+	background-color: #DAE6F0;
 }
 
 #content{
@@ -46,7 +46,7 @@ body{
 }
 #menu .menu_items .menu_item{
 	padding: 0.25em 1em;
-	background-color: #bbb;		
+	background-color: #bbb;
 	border-bottom: 1px solid #888;
 	font-size: 80%;
 }
@@ -95,7 +95,7 @@ body{
 .resume_part .part_data{
 	float: left;
 	width: 70%;
-	padding: 0 0 0 1em;	
+	padding: 0 0 0 1em;
 }
 .resume_part p{		/* <P></P> is to identify elements that need to display contents with line-breaks */
 	margin: 0;		/* Remove the automatic margin. */
@@ -197,6 +197,6 @@ body{
 	color: #23415A;
 }
 #experiences .editPart .more_info .key_text{
-	
+
 }
 

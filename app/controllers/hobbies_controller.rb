@@ -8,14 +8,14 @@ class HobbiesController < ApplicationController
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@hobby = @resume.hobby
 		session[:return_to] = '/show/'+@resume.title+'/hobbies'
-	end	
-		
+	end
+
 	# GET /new/:title/hobbies
 	def new
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 	end
-	
+
 	# POST /create/:title/hobbies
 	def create
 		@user = User.find(session[:current_user_id])
@@ -24,7 +24,7 @@ class HobbiesController < ApplicationController
 		result = @hobby.save
 		if result
 			update_timestamp(@resume)
-		end	
+		end
 		if params["ajax"]=="true"
 			if result
 				render :json => { :retVal => "created", "id" => @hobby.id }
@@ -36,7 +36,7 @@ class HobbiesController < ApplicationController
 			redirect_to session[:return_to]
 		end
 	end
-	
+
 	# GET /edit/:title/hobbies
 	def edit
 		@user = User.find(session[:current_user_id])
@@ -50,7 +50,7 @@ class HobbiesController < ApplicationController
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@hobby = @resume.hobby
 	end
-	
+
 	# PUT /update/:title/hobbies
 	def update
 		@user = User.find(session[:current_user_id])
@@ -59,22 +59,22 @@ class HobbiesController < ApplicationController
 		flash[:notice] = hobRetVal ? "Hobby updated " : "Error updating hobby"
 		if params["ajax"]
 			render :json => {:retVal => "updated" }
-		else	
-			redirect_to session[:return_to]		
-		end 
+		else
+			redirect_to session[:return_to]
+		end
 	end
 
 	# DELETE destroy/:title/hobbies
 	def destroy
 		@user 	= User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		@hobby = @resume.hobby
 		result 	= @hobby.destroy
-		flash[:notice] = result ? "Hobby destroyed" : "Error destroying resume"  
+		flash[:notice] = result ? "Hobby destroyed" : "Error destroying resume"
 		if params["ajax"]
 			render :json => {:retVal => "deleted" }
 		else
-			redirect_to '/show/'+@resume.title	
-		end	
-	end	
+			redirect_to '/show/'+@resume.title
+		end
+	end
 end

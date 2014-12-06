@@ -11,84 +11,84 @@ resume_controller.rb
 		@rhelps = Rhelp.find(:all, :conditions =>["rcontroller =? AND raction=?","resumes", "dummy01"])
 		@helpObj = Hash.new
 		@rhelps.each do |rhelp|
-			@helpObj[rhelp.key] = rhelp.msg 
+			@helpObj[rhelp.key] = rhelp.msg
 		end
 	end
-	
+
 	#GET /dummy02/:title
 	def dummy02
 		# for testing the pdf functionality
 
 		msg = "this could be a very long message ..." * 20
-		Prawn::Document.generate "public/pdf/example004c.pdf" do |pdf|	
-		
+		Prawn::Document.generate "public/pdf/example004c.pdf" do |pdf|
+
 			@doc = pdf
 			options[:document] = pdf
 			options[:width] = 300
 			box1 = Prawn::Text::Box.new(msg, {:document => pdf, :width => 500})
 			box1.render(:dry_run => true)
 			h = box1.height
-			pdf.text h.to_s			
+			pdf.text h.to_s
 			#pdf.text_box(msg, {:at => [100,100], :width => 200, :height =>400})
 		end
 		render :text => "done"
 
-#			20.times do |i| 
-#				  starting_y = pdf.y 
-#				  starting_page = pdf.page_number 
-#				  # draw left column box 
-#				  pdf.span 200, :position => :left do 
-#					  2.times do 
-#						pdf.text "Left #{i.to_s}" 
-#						pdf.text "Page #{starting_page}" 
-#						pdf.move_down 12 
-#					  end 
-#				  end 
-#				  # align with left column 
-#				  pdf.go_to_page starting_page 
-#				  pdf.y = starting_y 
-#				  # draw right column box 
-#				  pdf.span 300, :position => :right do 
-#					  4.times do 
-#						pdf.text "Right #{i.to_s}" 
-#						pdf.text "Page #{starting_page}" 
-#						pdf.move_down 12 
-#					  end 
-#					  pdf.stroke_bounds 
-#				  end 
+#			20.times do |i|
+#				  starting_y = pdf.y
+#				  starting_page = pdf.page_number
+#				  # draw left column box
+#				  pdf.span 200, :position => :left do
+#					  2.times do
+#						pdf.text "Left #{i.to_s}"
+#						pdf.text "Page #{starting_page}"
+#						pdf.move_down 12
+#					  end
+#				  end
+#				  # align with left column
+#				  pdf.go_to_page starting_page
+#				  pdf.y = starting_y
+#				  # draw right column box
+#				  pdf.span 300, :position => :right do
+#					  4.times do
+#						pdf.text "Right #{i.to_s}"
+#						pdf.text "Page #{starting_page}"
+#						pdf.move_down 12
+#					  end
+#					  pdf.stroke_bounds
+#				  end
 #			end # loop
-		
+
 #			4.times do |i|
 #				# left column
-#				starting_y = pdf.y 
-#				starting_page = pdf.page_number				
+#				starting_y = pdf.y
+#				starting_page = pdf.page_number
 #				width = pdf.bounds.width * (1.0/4.0)			# 25%
 #				pdf.span(width, :position => :left) do
 #					pdf.text("Left: hello "+i.to_s)
 #				end
-#				
+#
 #				# right column
-#				# align with left column 
-#				pdf.go_to_page starting_page 
-#				pdf.y = starting_y 				
+#				# align with left column
+#				pdf.go_to_page starting_page
+#				pdf.y = starting_y
 #				width = pdf.bounds.width * (3.0/4.0)			# 75%
 #				pdf.span(width, :position => :right) do
 #					70.times do
 #						pdf.text "Right: hi there "+i.to_s
-#					end	
+#					end
 #				end
-#				
-#				
-#			end		
+#
+#
+#			end
 #		msg = "pdf text aligned right"
 #		content = "drawn content at origin"
 #		pdf = Prawn::Document.new(:page_size => "A4")
-#		pdf.text msg, :align => :right 
+#		pdf.text msg, :align => :right
 #		pdf.font "Times-Roman"
 #		pdf.draw_text content, :at => [0,0]
 #		pdf.bounding_box([200,100], :width => 100, :height => 100) do
 #			pdf.stroke_bounds
-#		end 
+#		end
 #		pdf.bounding_box([100,500], :width => 100, :height => 300) do
 #			pdf.text "This text will flow in a very narrow box starting" +
 #					"from [100,500]. The pointer will then be moved to [100,200]" +
@@ -96,7 +96,7 @@ resume_controller.rb
 #					"the height of the containing box. It may hide, overflow, or do something random"
 #			pdf.stroke_bounds
 #		end
-#		
+#
 #		pdf.stroke_bounds
 #
 #		pdf.span(250, :position => :right) do
@@ -108,32 +108,32 @@ resume_controller.rb
 #			pdf.stroke_bounds
 #		end
 
-#		20.times do |i| 
-#			pdf.span 200, :position => :center do 
-#				pdf.text i.to_s 
-#				pdf.stroke_bounds 
-#			end 
-#			pdf.move_down 30 
-#		end 
+#		20.times do |i|
+#			pdf.span 200, :position => :center do
+#				pdf.text i.to_s
+#				pdf.stroke_bounds
+#			end
+#			pdf.move_down 30
+#		end
 #
 #		pdf.render_file('public/pdf/example003.pdf')
 #
 #		render :text =>"done"
-#		
+#
 #		pdf = Prawn::Document.new
 #		pdf.text("Prawn Rocks...!!! isn't it")
 #		# pdf.render_file('example.pdf')
-#		
+#
 #		respond_to do |format|
 #			format.pdf do
 #				send_data pdf, 	:filename => "example.pdf", 	# fails with undefined method exception
 #								:type => "application/pdf"
 #			end
 #		end
-#		
+#
 #		# Three basic ways to create a document in Prawn:
 #
-#		# assignment 
+#		# assignment
 #		pdf = Prawn::Document.new
 #		pdf.text "Hello There"
 #		pdf.render_file "example.pdf"
@@ -165,7 +165,7 @@ resume_controller.rb
 #
 #      			respond_to do |format|
 #					format.pdf do
-#          				send_data output, :filename => "hello.pdf", 
+#          				send_data output, :filename => "hello.pdf",
 #                            :type => "application/pdf"
 #					end
 #      			end
@@ -176,17 +176,17 @@ resume_controller.rb
 
 	# GET getpdf/:title
 	def getpdf
-	
+
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		pdf_name = "public/pdf/"+@user.username+"_"+@resume.title+".pdf"
-		
+
 		Prawn::Document.generate pdf_name do |pdf|
-			
+
 			############ name ################
 			pdf.move_down 18
 			pdf.text @resume.name, :style => :bold, :size => 22
-			
+
 			############ contact ################
 			pdf.move_down(18)
 			pdf.text "Contact", :style => :bold, :size =>18
@@ -196,7 +196,7 @@ resume_controller.rb
 			pdf.bounding_box([x_pos, y_pos], :width => width) do
 				pdf.text "address", :style => :bold
 				pdf.text @resume.contact.address
-			end	
+			end
 			x_pos = pdf.bounds.width/2		# from second half of the doc width
 			y_pos = y_pos					# previously calculated y_pos
 			width = width					# previously calculated width
@@ -205,13 +205,13 @@ resume_controller.rb
 				pdf.text @resume.contact.emails, :align => :right
 				pdf.text "Phone no.", :style => :bold, :align => :right
 				pdf.text @resume.contact.phone_nos, :align => :right
-			end	
-			
+			end
+
 			############ profile ################
 			pdf.move_down(18)
 			pdf.text "Profile", :style => :bold, :size =>18
 			pdf.text @resume.profile.profile_text
-			
+
 			############ skills ################
 			i=0
 			prevSkill=""
@@ -221,24 +221,24 @@ resume_controller.rb
 					data[i] = ["", skill.skill_name, skill.skill_remarks]
 				else
 					data[i] = [skill.skillset_type, skill.skill_name, skill.skill_remarks]
-				end	
+				end
 				prevSkill = skill.skillset_type
 				i +=1
 			end
 			pdf.move_down(18)
 			pdf.text "Skills", :style => :bold, :size =>18
 			pdf.table data, :border_width => 0
-			
+
 			############ education ################
 			pdf.move_down(18)
 			pdf.text "Education", :style => :bold, :size =>18
-			@resume.educations.each do |education| 
+			@resume.educations.each do |education|
 				edu_text1 = education.level+', '+education.major+', '+education.score+', '+education.college
 				edu_text2 = education.more_info
 				pdf.text edu_text1
 				pdf.text edu_text2, :size => 8
 			end
-			
+
 			############ experience ################
 			pdf.move_down(18)
 			pdf.text "Experience", :style => :bold, :size =>18
@@ -249,7 +249,7 @@ resume_controller.rb
 				h_max = 0
 				h_moveDown = 0
 				y_init = pdf.cursor
-				
+
 				x_pos = 0
 				y_pos = pdf.cursor
 				width = 0.4*pdf.bounds.width
@@ -271,7 +271,7 @@ resume_controller.rb
 					h_right = pdf.height_of(experience.company, :style => :bold, :align => :right)
 					pdf.text experience.company, :style => :bold, :align => :right
 				end
-				
+
 				h_max = (h_left>h_center&&h_left>h_right) ? h_left : ((h_center>h_right)? h_center : h_right)
 				h_moveDown = h_max - h_right
 				pdf.move_down(h_moveDown)
@@ -280,20 +280,20 @@ resume_controller.rb
 				pdf.text " "					# remove this and it introduces two blank pages when h_moveDown>0
 				#pdf.move_down(10)
 			end
-			
+
 			############ achievements ################
 			pdf.move_down(18)
 			pdf.text "Achievements", :style => :bold, :size =>18
 			pdf.text @resume.achievement.achievements_text
-			
+
 			############ hobbies ################
 			pdf.move_down(18)
 			pdf.text "Hobbies", :style => :bold, :size =>18
 			pdf.text @resume.hobby.hobbies_text
-			
+
 		end
 
-		render :text => "done"	
+		render :text => "done"
 	end
 
 
@@ -301,7 +301,7 @@ resume_controller.rb
 	def getpdf2
 		@user = User.find(session[:current_user_id])
 		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
-		pdf_name = "public/pdf/"+@user.username+"_"+@resume.title+"_2a.pdf"	
+		pdf_name = "public/pdf/"+@user.username+"_"+@resume.title+"_2a.pdf"
 
 
 		Prawn::Document.generate pdf_name do |pdf|
@@ -312,11 +312,11 @@ resume_controller.rb
 			largeText = 14
 			leftColRatio = 1.0/4.0
 			rightColRatio = 3.0/4.0
-			
+
 			pdf.move_down 30
 
-			starting_y = pdf.y 
-			starting_page = pdf.page_number 			
+			starting_y = pdf.y
+			starting_page = pdf.page_number
 			width = pdf.bounds.width * leftColRatio
 			pdf.span width, :position => :left do
 					pdf.text "contact", :align => :right, :style => :bold
@@ -327,15 +327,15 @@ resume_controller.rb
 					pdf.text "achievements", :align => :right, :style => :bold
 					pdf.text "hobbies", :align => :right, :style => :bold
 					pdf.move_down 500
-					
+
 			end
 
-			# align with left column 
-			pdf.go_to_page starting_page 
-			pdf.y = starting_y 
+			# align with left column
+			pdf.go_to_page starting_page
+			pdf.y = starting_y
 			width = pdf.bounds.width * rightColRatio - 40
 			pdf.span width, :position => :right do
-			
+
 						############ contact ################
 						#x_pos = 0
 						#y_pos = pdf.cursor
@@ -343,15 +343,15 @@ resume_controller.rb
 						#pdf.bounding_box([x_pos, y_pos], :width => width) do
 						#	pdf.text @resume.name, :style => :bold, :align => :right
 						#end
-						
+
 						pdf.text @resume.contact.address
 						pdf.text @resume.contact.emails
 						pdf.text @resume.contact.phone_nos
-						
+
 						############ profile ################
 						pdf.move_down(partGap)
 						pdf.text @resume.profile.profile_text
-						
+
 						############ skills ################
 						pdf.move_down(partGap)
 						# logic to convert skills into a table
@@ -365,37 +365,37 @@ resume_controller.rb
 						end
 						# </skill-logic>
 						pdf.table skillData, :border_width => 0		# display the skillData in a table
-						
+
 
 						############ education ################
 						pdf.move_down(partGap)
-						@resume.educations.each do |education| 
+						@resume.educations.each do |education|
 								edu_text1 = education.level+', '+education.major+', '+education.score+', '+education.college
 								edu_text2 = education.more_info
 								pdf.text edu_text1
 								pdf.text edu_text2, :size => smallText
 						end
-						
+
 						############ experience ################
 						pdf.move_down(partGap)
 						@resume.experiences.each do |experience|
-								pdf.text experience.title, :style => :bold					
+								pdf.text experience.title, :style => :bold
 								pdf.text experience.company, :size => largeText
 								pdf.text experience.duration, :style => :italic, :size => smallText
 								pdf.text experience.role
 								pdf.text experience.more_info
 						end
-						
+
 						############ achievements ################
 						pdf.move_down(partGap)
 						pdf.text @resume.achievement.achievements_text
-						
+
 						############ hobbies ################
 						pdf.move_down(partGap)
 						pdf.text @resume.hobby.hobbies_text
-				
+
 			end # right span
-		end	
-		
-		render :text => "done"	
+		end
+
+		render :text => "done"
 	end

@@ -12,6 +12,6 @@ class ChangeResume < ActiveRecord::Migration
 	add_column :resumes, :profile, :text
 	add_column :resumes, :hobbies, :text
 	add_column :resumes, :achievements, :text
-	remove_column :resumes, :meta_desc  
+	remove_column :resumes, :meta_desc
   end
 end

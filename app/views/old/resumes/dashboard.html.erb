@@ -1,19 +1,19 @@
-<!-- 	
+<!--
 		The dashboard page view : app/views/resumes/dashboard.html.erb
 		controller: resume, action: dashboard
 		URL or URL/dashboard 	- when user is logged in
 -->
 
-<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/dashboard.css" />	
-<% 
+<link rel="stylesheet" type="text/css" href="/stylesheets/resumes/dashboard.css" />
+<%
 	# global urls
 	dashboard_url 	= "/dashboard"
 	new_resume_url	= "/new"
 %>
 <div id="content">
 
-	<%= render :partial => "general_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %> 
-	
+	<%= render :partial => "general_heading.html.erb" , :locals => {:user=> @user, :resume => @resume } %>
+
 	<% form_tag('', :method => "post") do %>	<!-- for authenticity token -->
 	<div id="all_resumes_container">
 
@@ -29,18 +29,18 @@
 				view_url		= "/view/#{resume.title}" 					unless !resume
 				pdf_url			= "/makepdf/#{resume.title}" 				unless !resume
 				rtemplate_preview_url = "/preview/#{resume.title}/#{rtemplate.name}"		unless !resume
-			%>	
-			
+			%>
+
 			<div id=<%= 'resume_'+resume.id.to_s %> class="each_resume">
-				
+
 				<div class="thumbnail">
 					<a href ="<%=h rtemplate_preview_url %>" title="Click to preview" target="_blank">
 						<img src="<%=h rtemplate.thumbnail_url %>" alt="thumbnail">
-					</a>	
+					</a>
 				</div>
-				
+
 				<div class="other_details">
-				
+
 					<div class="each_resume_heading">
 						<div class="resume_title">
 							<%= link_to resume.title, canvas_url %>
@@ -50,21 +50,21 @@
 					<div class="updated_at">
 						updated <%=h resume.updated_at.to_s(:long) %>
 					</div>
-					
+
 					<div class="desc">
 						<p><%=h resume.meta_desc %></p>
 					</div>
 
-					
+
 					<div class="actions">
-						<div class="action_item quick_edit">	
+						<div class="action_item quick_edit">
 							<%= link_to 'quick-edit', canvas_url %>
 						</div>
 						<div class="action_item print_resume">
 							<%= link_to 'view', view_url, {:target => "_blank"}  %>
 						</div>
 						<div class="action_item pdf_resume">
-							<%= link_to 'get-pdf', pdf_url, {:target => "_blank"} %>	
+							<%= link_to 'get-pdf', pdf_url, {:target => "_blank"} %>
 						</div>
 						<div class="action_item rtemplate">
 							<%= link_to 'change-template', "#{options_url}#templates" %>
@@ -72,16 +72,16 @@
 						<div class="action_item public_status">
 							<%= link_to publish_msg, "#{options_url}#publish" %>
 						</div>
-						<div class="action_item delete_resume">	
+						<div class="action_item delete_resume">
 							<%= link_to 'delete', "#{options_url}#delete_resume" %>
 						</div>
 					</div>
 				</div> <!-- /other_details -->
-				
+
 			</div> 	<!-- /each_resume -->
-			
+
 		<% end #loop %>
-		<% else %>	
+		<% else %>
 			<div id="no_resume_block">
 				<div class="info">
 					This place lists resumes you have created. <br/>
@@ -90,7 +90,7 @@
 				<div class="create_new">
 					<%= link_to 'create a resume', new_resume_url, {:class => "new_resume_button" } %>
 				</div>
-			</div>	
+			</div>
 		<% end #if %>
 
 	</div>	<!-- /all_resumes_container -->
@@ -106,14 +106,14 @@
 		<div class="interior">
 			<div class="hide_activator"><span class="interior">X</span></div>
 			<div class="help_text">
-				This	<br/><br/> 
-				is		<br/><br/> 
-				the		<br/><br/> 
-				help	<br/><br/> 
-				for		<br/><br/> 
-				this	<br/><br/> 
+				This	<br/><br/>
+				is		<br/><br/>
+				the		<br/><br/>
+				help	<br/><br/>
+				for		<br/><br/>
+				this	<br/><br/>
 				page	<br/><br/>
-			</div>	
+			</div>
 		</div>
 	</div>
 </div>
@@ -124,10 +124,10 @@
 <script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>
-<script type="text/javascript" src="/javascripts/resumes/dashboard.js"></script>	
+<script type="text/javascript" src="/javascripts/resumes/dashboard.js"></script>
 <% end %>
 
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>

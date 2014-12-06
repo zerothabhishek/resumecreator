@@ -1,16 +1,16 @@
 <!--
 	URL/change/:title/rtemplates
-	app/views/rtemplates/show.html.erb 
-	The change resume-template view - displays the options for changing the user's template 
-	controller: rtemplates, action: change 
+	app/views/rtemplates/show.html.erb
+	The change resume-template view - displays the options for changing the user's template
+	controller: rtemplates, action: change
 -->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/rtemplates/change.css" />	
+<link rel="stylesheet" type="text/css" href="/stylesheets/rtemplates/change.css" />
 
 <div class="heading">
 	<h3> Templates </h3>
-	<div class="links">	</div>	
+	<div class="links">	</div>
 </div>
 
 <% form_tag('', :method => "post") do %>	<!-- for authenticity token -->
@@ -21,7 +21,7 @@
 			<td class="column1 thumbnail">
 				<a href ="<%=h '/preview/'+@resume.title+'/'+rtemplate.name %>" title="Click to preview">
 					<img src="<%=h rtemplate.thumbnail_url %>" alt="thumbnail">
-				</a>	
+				</a>
 			</td>
 			<td class="column2">
 				<div class="name">	<%=h rtemplate.name %>		</div>
@@ -32,7 +32,7 @@
 				<button type="button" class="set_button">Set</button>
 			</td>
 		</tr>
-	<% end #loop %>	
+	<% end #loop %>
 </table>
 <% end #form %>
 

@@ -1,19 +1,19 @@
 
 <!-- edit markup for education part - one education object in one go -->
-<!-- 
+<!--
 	CLASSname 	:DESCRIPTION and USAGE
 	partUnit 	:a single instance of the part - one education detail (represnted by one object)
 	partItem	:an item within a part - field of the model (a property of object) eg - education level
 	deleteable	:an element that can be deleted with a delete button within it
-	key_text	:the text that is displayed as the label for data displayed or input box renderd 
+	key_text	:the text that is displayed as the label for data displayed or input box renderd
 	display		:identifies an element that displays data while show
 	edit		:identifies an imput box meant for editing
 	add			:identifies an input box meant for adding
 	delete_button:	a button that can trigger the delete functionality and delete the deletable element
--->	
-	
+-->
+
 	<div id="educations_<%=h education.id %>" class="partUnit deleteable">
-		
+
 		<div class="partItem level">
 			<span class="key_text">Level</span>
 			<div class="value_block">
@@ -22,7 +22,7 @@
 						class="edit"
 						name="education[<%=h education.id %>][level]"
 						value="<%=h education.level %>" >
-			</div>			
+			</div>
 		</div>
 
 		<div class="partItem major">
@@ -33,9 +33,9 @@
 						class="edit"
 						name="education[<%=h education.id %>][major]"
 						value="<%=h education.major %>" >
-			</div>			
+			</div>
 		</div>
-		
+
 		<div class="partItem college">
 			<span class="key_text">College</span>
 			<div class="value_block">
@@ -44,7 +44,7 @@
 						class="edit"
 						name="education[<%=h education.id %>][college]"
 						value="<%=h education.college %>" >
-			</div>			
+			</div>
 		</div>
 
 		<div class="partItem score">
@@ -55,7 +55,7 @@
 						class="edit"
 						name="education[<%=h education.id %>][score]"
 						value="<%=h education.score %>" >
-			</div>			
+			</div>
 		</div>
 
 		<div class="partItem more_info">
@@ -66,12 +66,12 @@
 						class="edit"
 						name="education[<%=h education.id %>][more_info]"
 						><%=h education.more_info %></textarea>
-			</div>			
+			</div>
 		</div>
-		
-		<div class="delete_button">	
+
+		<div class="delete_button">
 			<button type="button">delete</button>
 		</div>
-		
+
 	</div>
 

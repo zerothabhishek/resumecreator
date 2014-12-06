@@ -1,11 +1,11 @@
 <!--
 	URL/edit2/:title
-	app/views/resumes/edit2.html.erb 
+	app/views/resumes/edit2.html.erb
 	The edit2 resume view - edits (AJAXified) a particular resume of the user in full
-	controller: resumes, action: edit2 
-	
-	Conventions used for this file - 
-	1. part block id should be the controller name	
+	controller: resumes, action: edit2
+
+	Conventions used for this file -
+	1. part block id should be the controller name
 -->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
@@ -16,10 +16,10 @@
 <div class="heading">
 	<h3> Edit2 : <%=h @resume.title %>  </h3>
 	<div class="links">
-		<%= link_to 'Show', '/show/'+@resume.title %> 
-		<%= link_to 'Print', '/show_p/'+@resume.title %> 
+		<%= link_to 'Show', '/show/'+@resume.title %>
+		<%= link_to 'Print', '/show_p/'+@resume.title %>
 		<%= link_to 'Destroy', '/destroy/'+@resume.title, :confirm => 'Are you sure?', :method => :delete %>
-	</div>	
+	</div>
 </div>
 
 <% url = '/update/'+@resume.title %>
@@ -29,7 +29,7 @@
 
 		<div class="part" id="username">
 			<div class="part_header">
-				<h3>Name</h3> 
+				<h3>Name</h3>
 			</div>
 			<div class="part_data">
 				<div class="name">
@@ -38,13 +38,13 @@
 							class="edit"
 							name="resume[name]"
 							value="<%=h @resume.name %>" >
-				</div>	
-			</div>	
+				</div>
+			</div>
 		</div>
 
 		<div class="part" id="contacts">
 			<div class="part_header">
-				<h3>Contact</h3> 
+				<h3>Contact</h3>
 			</div>
 			<div class="part_data">
 				<% if @resume.contact %>
@@ -53,19 +53,19 @@
 						<span class="display"><%=h @resume.contact.address %></span>
 						<textarea
 							class="edit"
-							name="contact[address]" 
+							name="contact[address]"
 							><%=h @resume.contact.address %></textarea>
 					</div>
-					
+
 					<b>Phone_nos -	</b>
 					<div class="phone_nos">
-						<span class="display"><%=h @resume.contact.phone_nos %></span>	
+						<span class="display"><%=h @resume.contact.phone_nos %></span>
 						<input	type="text"
 							class="edit"
 							name="contact[phone_nos]"
 							value="<%=h @resume.contact.phone_nos %>" >
 					</div>
-					
+
 					<b>Emails -		</b>
 					<div class="emails">
 						<span class="display"><%=h @resume.contact.emails %></span>
@@ -73,18 +73,18 @@
 							class="edit"
 							name="contact[emails]"
 							value="<%=h @resume.contact.emails %>" >
-					</div>		
-				<% else %>	
+					</div>
+				<% else %>
 				<div class="addPart">
 					<b>Address - 	</b>
 					<div class="address">
 						<span class="display hidden"></span>
 						<textarea
 							class="add"
-							name="contact[address]" 
+							name="contact[address]"
 							></textarea>
 					</div>
-					
+
 					<b>Phone_nos -	</b>
 					<div class="phone_nos">
 						<span class="display hidden"></span>
@@ -92,7 +92,7 @@
 							class="add"
 							name="contact[phone_nos]">
 					</div>
-					
+
 					<b>Emails -		</b>
 					<div class="emails">
 						<span class="display hidden"></span>
@@ -100,38 +100,38 @@
 							class="add"
 							name="contact[emails]" >
 					</div>
-				</div> <!-- addPart -->	
+				</div> <!-- addPart -->
 				<span class="plusButton">+</span>
 				<% end #if-else %>
-			</div>	
+			</div>
 		</div>
 
 		<div class="part" id="profiles">
 			<div class="part_header">
-				<h3>Profile</h3> 
+				<h3>Profile</h3>
 			</div>
 			<div class="part_data">
 				<% if @resume.profile %>
 					<div class="profile_text">
 						<span class="display"><%=h @resume.profile.profile_text %></span>
-						<textarea 
+						<textarea
 							class="profile_text edit"
 							name="profile[profile_text]"
 							><%=h @resume.profile.profile_text %></textarea>
-					</div>		
+					</div>
 				<% else %>
 				<div class="addPart">
 					<div class="profile_text">
 						<span class="display hidden"></span>
-						<textarea 
+						<textarea
 							class="profile_text add"
 							name="profile[profile_text]"
 							></textarea>
 					</div>
-				</div> <!-- addPart -->				
+				</div> <!-- addPart -->
 				<span class="plusButton">+</span>
 				<% end #if-else %>
-			</div>	
+			</div>
 		</div>
 
 		<div class="part" id="skills">
@@ -144,11 +144,11 @@
 				<% else %>
 					<table class="skills_table">	<!-- table meant only for headings -->
 						<tr>
-							<th class="skillset_type">skill type  
+							<th class="skillset_type">skill type
 							<th class="skill_name">skill name
-							<th class="skill_remarks">remarks 
-						</tr>	
-					</table>	
+							<th class="skill_remarks">remarks
+						</tr>
+					</table>
 					<% prev = nil %>
 					<% @skills.each do |skill| %>
 						<% isDiffSkillSet = (!prev or (skill.skillset_type!=prev.skillset_type)) %>
@@ -178,10 +178,10 @@
 							<td class="delete_column"><span class="delete_button">x</span></td>
 						</tr>
 						</table>	<!-- one row per table. Introduced table to match formatting of experience and education -->
-					<% prev = skill %>	
+					<% prev = skill %>
 					<% end #loop %>
 				<% end #if-else %>
-				<div class="addMore">	
+				<div class="addMore">
 					<table class="skills_table addTable">
 						<tr class="new_skillset">
 							<td class="skillset_type">
@@ -206,14 +206,14 @@
 						</tr>
 					</table>
 					<span class="plusButton">+</span>
-				</div>	
+				</div>
 			</div>	<!-- part_data -->
 		</div>
 
 		<div class="part" id="educations">
 			<div class="part_header">
 				<h3>Education</h3>
-			</div>	
+			</div>
 			<div class="part_data">
 				<% if @resume.educations.size ==0 %>
 					<%# empty as of now %>
@@ -260,7 +260,7 @@
 									name="education[<%=h education.id %>][score]"
 									value="<%=h education.score %>" >
 						</td>
-					</tr>	
+					</tr>
 					<tr>
 						<td class="column1">More info</td>
 						<td class="more_info">
@@ -270,7 +270,7 @@
 									name="education[<%=h education.id %>][more_info]"
 									><%=h education.more_info %></textarea>
 						</td>
-						
+
 					</tr>
 					</table>
 					<% end #loop %>
@@ -313,7 +313,7 @@
 										class="add"
 										name="education[score]" >
 							</td>
-						</tr>	
+						</tr>
 						<tr>
 							<td class="column1">More info</td>
 							<td class="more_info">
@@ -322,19 +322,19 @@
 										class="add"
 										name="education[more_info]"></textarea>
 							</td>
-						</tr>					
+						</tr>
 					</table>
 					<span class="plusButton">+</span>
 				</div>
-			</div> <!-- part_data -->	
+			</div> <!-- part_data -->
 		</div>
 
 		<div class="part" id="experiences">
 			<div class="part_header">
 				<h3> Experience </h3>
-			</div>	
+			</div>
 			<div class="part_data">
-				<% if @resume.experiences.size == 0 %>	
+				<% if @resume.experiences.size == 0 %>
 					<%# empty as of now %>
 				<% else %>
 					<% @resume.experiences.each do |experience| %>
@@ -348,7 +348,7 @@
 									name="experience[<%=h experience.id %>][title]"
 									value="<%=h experience.title %>" >
 						</td>
-						<td class="delete_column"><span class="delete_button">x</span></td>						
+						<td class="delete_column"><span class="delete_button">x</span></td>
 					</tr>
 					<tr>
 						<td class="column1">Company</td>
@@ -374,7 +374,7 @@
 						<td class="column1">Role</td>
 						<td class="role">
 							<span class="display"><%=h experience.role %></span>
-							<textarea	
+							<textarea
 									class="edit"
 									name="experience[<%=h experience.id %>][role]"
 									><%=h experience.role %>" </textarea>
@@ -390,7 +390,7 @@
 									><%=h experience.more_info %></textarea>
 						</td>
 					</tr>
-					</table>	
+					</table>
 					<% end #loop %>
 				<% end %>
 				<div class="addMore">
@@ -399,8 +399,8 @@
 							<td class="column1">Title</td>
 							<td class="experience-title">
 								<span class="display hidden"></span>
-								<input 	type="text" 
-										class="add" 
+								<input 	type="text"
+										class="add"
 										name="experience[title]">
 							</td>
 							<td class="delete_column"><span class="delete_button hidden">x</span></td>
@@ -409,8 +409,8 @@
 							<td class="column1">Company</td>
 							<td class="company">
 								<span class="display hidden"></span>
-								<input 	type="text" 
-										class="add" 
+								<input 	type="text"
+										class="add"
 										name="experience[company]">
 							</td>
 						</tr>
@@ -418,8 +418,8 @@
 							<td class="column1">Duration</td>
 							<td class="duration">
 								<span class="display hidden"></span>
-								<input 	type="text" 
-										class="add" 
+								<input 	type="text"
+										class="add"
 										name="experience[duration]">
 							</td>
 						</tr>
@@ -427,7 +427,7 @@
 							<td class="column1">Role</td>
 							<td class="role">
 								<span class="display hidden"></span>
-								<textarea 	class="add" 
+								<textarea 	class="add"
 											name="experience[role]"></textarea>
 							</td>
 						</tr>
@@ -436,19 +436,19 @@
 							<td class="more_info">
 								<span class="display hidden"></span>
 								<textarea class="add" name="experience[more_info]"></textarea>
-							</td>					
+							</td>
 						</tr>
-						</table>	
+						</table>
 					<span class="plusButton">+</span>
 				</div> <!-- add more -->
-			</div> <!-- part_data -->	
+			</div> <!-- part_data -->
 		</div>
 
 		<div class="part" id="achievements">
 			<div class="part_header">
 				<h3>Achievements</h3>
 			</div>
-			<div class="part_data">			
+			<div class="part_data">
 				<% if @resume.achievement %>
 					<div class="achievements_text">
 						<span class="display"><%=h @resume.achievement.achievements_text %></span>
@@ -457,7 +457,7 @@
 							name="achievement[achievements_text]"
 							><%=h @resume.achievement.achievements_text %></textarea>
 					</div>
-				<% else %>	
+				<% else %>
 					<div class="addPart">
 						<div class="achievements_text">
 							<span class="display hidden"></span>
@@ -467,9 +467,9 @@
 							></textarea>
 						</div>
 					</div>	<!-- addPart -->
-				<span class="plusButton">+</span>	
+				<span class="plusButton">+</span>
 				<% end %>
-			</div> <!-- part_data -->	
+			</div> <!-- part_data -->
 		</div>
 
 		<div class="part" id="hobbies">
@@ -484,8 +484,8 @@
 							class="edit"
 							name="hobby[hobbies_text]"
 							><%=h @resume.hobby.hobbies_text %></textarea>
-					</div>			
-				<% else %>	
+					</div>
+				<% else %>
 				<div class="addPart">
 					<div class="hobbies_text">
 						<span class="display hidden"></span>
@@ -493,20 +493,20 @@
 							class="add"
 							name="hobby[hobbies_text]"
 							></textarea>
-					</div>			
-				</div>	<!-- addPart -->		
+					</div>
+				</div>	<!-- addPart -->
 				<span class="plusButton">+</span>
 				<% end %>
-			</div> <!-- part_data -->	
+			</div> <!-- part_data -->
 		</div>
 
-	</div>	<!-- parts_container -->	
+	</div>	<!-- parts_container -->
 
 	<span class="button_stripe hidden">
 		<span class="update">Update</span>
 		<span class="clear">Clear</span>
 	</span>
-	
+
 <% end %>
 
 <% if RAILS_ENV == "production" %>
@@ -514,10 +514,10 @@
 <script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>
-<script type="text/javascript" src="/javascripts/resumes/edit2.js"></script>	
+<script type="text/javascript" src="/javascripts/resumes/edit2.js"></script>
 <% end %>
 
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>

@@ -2,18 +2,18 @@
 	URL/edit/:title/hobbies
 	app/views/hobbies/edit.html.erb
 	The edit resume-hobbies view - displays the form to edit hobbies part for a resume (:title) of a user
-	controller: hobbies, action: edit 
--->			
+	controller: hobbies, action: edit
+-->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/hobbies/edit.css" />	
+<link rel="stylesheet" type="text/css" href="/stylesheets/hobbies/edit.css" />
 
 <div class="heading">
 	<h3> Edit Hobbies </h3>
 	<div class="links">
 		<%= link_to 'Show', '/show/'+@resume.title+'/hobbies' %>
-		<%= link_to 'Remove', '/destroy/'+@resume.title+'/hobbies', :confirm => 'Are you sure?', :method => :delete %>	
-	</div>	
+		<%= link_to 'Remove', '/destroy/'+@resume.title+'/hobbies', :confirm => 'Are you sure?', :method => :delete %>
+	</div>
 </div>
 
 <% url = '/update/'+@resume.title+'/hobbies' %>
@@ -23,23 +23,23 @@
 		<tr>
 			<td class="column1">Hobbies </td>
 			<td class="column2">
-				<textarea 
+				<textarea
 					class="hobbies_text"
 					name="hobby[hobbies_text]"
 					><%=h @hobby.hobbies_text %></textarea>	</td>
 		</tr>
-		<tr>  
+		<tr>
 			<td></td>
-			<td class="submit"><input name="commit" type="submit" value="Update" /></td>	
-		</tr> 
+			<td class="submit"><input name="commit" type="submit" value="Update" /></td>
+		</tr>
 	</table>
 <% else %>
 	<p>
 		No hobby data.
-		<%= link_to 'Add', '/new/'+@resume.title+'/hobbies' %>		
-	</p>	
-<% end #if-else %>	
-<% end %> 
+		<%= link_to 'Add', '/new/'+@resume.title+'/hobbies' %>
+	</p>
+<% end #if-else %>
+<% end %>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>

@@ -4,10 +4,10 @@ one:
   address: MyText
   phone_nos: MyString
   emails: MyString
-  resume: 
+  resume:
 
 two:
   address: MyText
   phone_nos: MyString
   emails: MyString
-  resume: 
+  resume:

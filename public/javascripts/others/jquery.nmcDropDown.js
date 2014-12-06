@@ -5,19 +5,19 @@
  * http://www.newmediacampaigns.com
  * ---------------------------------------------
  * Usage: $('#nav').nmcDropDown({[options]});
- * 
+ *
  * See below for configuration options. If you
  * don't pass in any options, the plugin will
  * Use reasonable defaults.
  *
  * Dependancy: jQuery 1.2.6+
  * Optional depenancy: hoverIntent plugin
- *   http://cherne.net/brian/resources/jquery.hoverIntent.html  
+ *   http://cherne.net/brian/resources/jquery.hoverIntent.html
  **/
 (function($) {
 
     $.fn.nmcDropDown = function(options) {
-	
+
         // build main options before element iteration
         var opts = $.extend({}, $.fn.nmcDropDown.defaults, options);
 
@@ -25,7 +25,7 @@
         return this.each(function() {
             var menu = $(this);
             submenus = menu.children('li:has('+opts.submenu_selector+')');
-            
+
             if (opts.fix_IE) {
                 // Fix IE 6+7 z-index bug
                 menu.css('z-index', 51)
@@ -36,21 +36,21 @@
                     });
                 submenus.children(opts.submenu_selector).css('z-index', 50);
             }
-			
+
             // Function that is called to show the submenu
             over = function() {
                 $(this).addClass(opts.active_class)
                        .children(opts.submenu_selector).animate(opts.show, opts.show_speed);
                 return false;
             }
-			
+
             // Function that is called to hide the submenu
             out = function() {
                 $(this).removeClass(opts.active_class)
                        .children(opts.submenu_selector).animate(opts.hide, opts.hide_speed);
                 return false;
             }
-			
+
             // Show and hide the sub-menus
             if (opts.trigger == 'click') {
                 submenus
@@ -59,9 +59,9 @@
             } else if ($().hoverIntent) {
                 submenus
                     .hoverIntent({
-                        interval: opts.show_delay, 
-                        over: over, 
-                        timeout: opts.hide_delay, 
+                        interval: opts.show_delay,
+                        over: over,
+                        timeout: opts.hide_delay,
                         out: out
                     }).children(opts.submenu_selector).hide();
             } else {

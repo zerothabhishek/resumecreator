@@ -6,15 +6,15 @@ class SkillsController < ApplicationController
 	# GET show/:title/skills
 	def show
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])			
-		@skills = @resume.skills.all(:order => "skillset_type")	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		@skills = @resume.skills.all(:order => "skillset_type")
 		session[:return_to] = "/show/"+@resume.title+"/skills"
 	end
 
 	# GET new/:title/skills
 	def new
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])			
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 	end
 
 	# POST create/:title/skills
@@ -23,8 +23,8 @@ class SkillsController < ApplicationController
 		# Hence the skillset creation (build and save) is being done in a loop
 		# The loop runs as long as there are skillsets in the POSTed data
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])			
-	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+
 		if params["ajax"] == "true"	# ajax requests have one skillset
 			@skillset = @resume.skills.build(params[:skill])
 			return_val = @skillset.save
@@ -56,23 +56,23 @@ class SkillsController < ApplicationController
 	# POST destroy/:title/skills
 	def destroy
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
-		@skill = @resume.skills.find(params["id"])	
-		retStr = @skill.destroy ? "deleted" : "Error deleting" 
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		@skill = @resume.skills.find(params["id"])
+		retStr = @skill.destroy ? "deleted" : "Error deleting"
 		render :json => {:retVal => retStr }
 	end
-	
+
 	# POST destroyall/:title/skills
 	def destroyall
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		for skill in @resume.skills
-			skillId = skill.id 
+			skillId = skill.id
 			skillRetVal = skill.destroy
 			if skillRetVal
 				flash[:notice] += (" deleted_skillset:" + skillId.to_s)
-			else			
-				flash[:notice] += (" error_deleting_skillset:" + skillId.to_s)	
+			else
+				flash[:notice] += (" error_deleting_skillset:" + skillId.to_s)
 			end
 		end
 		redirect_to session[:return_to]
@@ -81,27 +81,27 @@ class SkillsController < ApplicationController
 	# GET /edit/:title/skills
 	def edit
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
-		@skills = @resume.skills.all	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		@skills = @resume.skills.all
 	end
 
 	# GET /edit2/:title/skills
-	def edit2	
+	def edit2
 		@user = User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
-		@skills = @resume.skills.all	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
+		@skills = @resume.skills.all
 	end
-		
+
 	# PUT /update/:title/skills
 	def update
 		@user 	= User.find(session[:current_user_id])
-		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])	
+		@resume = @user.resumes.find(:first, :conditions => ["title =?",params[:title]])
 		skiRetVal = update_skills(@resume)
-		flash[:notice] += skiRetVal ? "Skills updated; " : "Error updating skills"   	
+		flash[:notice] += skiRetVal ? "Skills updated; " : "Error updating skills"
 		if params["ajax"]
 			render :json => {:retVal => "updated" }
-		else	
-			redirect_to session[:return_to]		
+		else
+			redirect_to session[:return_to]
 		end
 
 	end

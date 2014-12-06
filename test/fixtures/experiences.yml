@@ -6,7 +6,7 @@ one:
   duration: MyString
   role: MyText
   more_info: MyText
-  resume: 
+  resume:
 
 two:
   title: MyString
@@ -14,4 +14,4 @@ two:
   duration: MyString
   role: MyText
   more_info: MyText
-  resume: 
+  resume:

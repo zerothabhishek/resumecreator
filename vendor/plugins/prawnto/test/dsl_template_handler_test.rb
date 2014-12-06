@@ -8,7 +8,7 @@ require File.dirname(__FILE__) + '/../lib/prawnto'
 #TODO: ruby1.9: pull same testing scheme from Raw once we're on 1.9
 class DslTemplateHandlerTest < Test::Unit::TestCase
   include TemplateHandlerTestMocks
-  
+
   def setup
     @view = ActionView.new
     @handler = Prawnto::TemplateHandlers::Dsl.new(@view)

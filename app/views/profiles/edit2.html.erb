@@ -1,9 +1,9 @@
 
 <!--
 	URL/edit2/:title/profiles
-	app/views/profiles/edit2.html.erb 
-	The edit2 profiles view - edits (AJAXified) profiles part of a particular resume 
-	controller: profiles, action: edit2 
+	app/views/profiles/edit2.html.erb
+	The edit2 profiles view - edits (AJAXified) profiles part of a particular resume
+	controller: profiles, action: edit2
 -->
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/resume_common.css" />
@@ -15,32 +15,32 @@
 <div class="heading">
 	<h3> <%=h @resume.title %> : profiles </h3>
 	<div class="links">
-	</div>	
+	</div>
 </div>
 
 <% form_tag('', :method => "post") do %>	<!-- for authenticity token -->
 <div class="parts_container hidden"> 	<!-- contains the part (:profiles here) -->
-		
+
 		<div class="part" id="profiles">
-			<div class="part_header"></div>	
+			<div class="part_header"></div>
 			<div class="part_data">
 				<div class="editPart">
 					<% if @resume.profile %>
-					<%= render :partial => "edit_profile.html.erb" , :locals => {:profile => @resume.profile} %> 
-					<% end #if %>	
-				</div>		
+					<%= render :partial => "edit_profile.html.erb" , :locals => {:profile => @resume.profile} %>
+					<% end #if %>
+				</div>
 				<div class="plus_button <%=h (@resume.profile)? "hidden" : "" %>">
 					<button type="button">+</button>
 				</div>
-				<%= render :partial => "add_profile.html.erb" %> 
-				
-			</div> <!-- part_data -->	
+				<%= render :partial => "add_profile.html.erb" %>
+
+			</div> <!-- part_data -->
 		</div>
 
 		<div class="button_stripe hidden">
 			<span class="update">Update</span>
 			<span class="clear">Clear</span>
-		</div>	
+		</div>
 
 </div>
 <% end # form %>
@@ -49,10 +49,10 @@
 <script type="text/javascript" src="/javascripts/jquery.tipTip.minified.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl_minimized.js"></script>
 <script type="text/javascript" src="/javascripts/resume_common.js"></script>
-<script type="text/javascript" src="/javascripts/profiles/edit2.js"></script>	
+<script type="text/javascript" src="/javascripts/profiles/edit2.js"></script>
 <% end %>
 
-<% if RAILS_ENV == "development" %>	
+<% if RAILS_ENV == "development" %>
 <script type="text/javascript" src="/javascripts/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.tipTip.js"></script>
 <script type="text/javascript" src="/javascripts/jquery.jgrowl.js"></script>
